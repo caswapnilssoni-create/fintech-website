@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#003D7A"/>
+      <stop offset="100%" style="stop-color:#17A697"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="600" y="260" font-family="Georgia,serif" font-size="96" font-weight="bold" fill="#fff" text-anchor="middle">TaxMitra</text>
+  <text x="600" y="340" font-family="Arial,sans-serif" font-size="36" fill="#FFB800" text-anchor="middle">Expert Tax &amp; Compliance · Pune</text>
+  <text x="600" y="400" font-family="Arial,sans-serif" font-size="28" fill="rgba(255,255,255,0.9)" text-anchor="middle">ITR · GST · Company Formation · CA Swapnil Soni</text>
+  <text x="600" y="520" font-family="Arial,sans-serif" font-size="24" fill="rgba(255,255,255,0.75)" text-anchor="middle">taxmitrafinance.com · +91 98908 01802</text>
+</svg>
