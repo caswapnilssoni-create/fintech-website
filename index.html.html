@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaxMitra — Expert Tax & Compliance Solutions | Pune, India</title>
+<meta name="description" content="TaxMitra provides expert tax planning, GST services, ITR filing, company formation and compliance for individuals & businesses in India. CA Swapnil Soni.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#003D7A;--teal:#17A697;--gold:#FFB800;--white:#FFFFFF;
+  --light:#F4F8FC;--gray:#64748b;--dark:#1e293b;--light-gray:#E8F4F8;
+  --red:#E74C3C;--green:#22c55e;
+  --glass:rgba(255,255,255,0.12);--glass-border:rgba(255,255,255,0.2);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--dark);line-height:1.6;background:#fff;overflow-x:hidden}
+
+/* ===== LOADER ===== */
+#loader{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-logo{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;font-weight:900;letter-spacing:2px;animation:pulse 1.2s ease-in-out infinite}
+.loader-logo span{color:var(--teal)}
+.loader-bar{width:200px;height:3px;background:rgba(255,255,255,.2);border-radius:3px;margin-top:2rem;overflow:hidden}
+.loader-fill{height:100%;width:0;background:var(--teal);border-radius:3px;animation:load 1.8s ease forwards}
+@keyframes load{to{width:100%}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+/* ===== STICKY BANNER ===== */
+#sticky-banner{background:linear-gradient(90deg,var(--navy),var(--teal));color:#fff;text-align:center;padding:.6rem 1rem;font-size:.88rem;font-weight:500;position:sticky;top:0;z-index:998;display:flex;align-items:center;justify-content:center;gap:1rem}
+#sticky-banner a{color:var(--gold);font-weight:700;text-decoration:none}
+#sticky-banner button{background:none;border:none;color:#fff;cursor:pointer;font-size:1.1rem;opacity:.7;margin-left:.5rem}
+#sticky-banner button:hover{opacity:1}
+
+/* ===== NAV ===== */
+nav{position:sticky;top:36px;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:997;box-shadow:0 1px 24px rgba(0,61,122,.07);transition:top .3s}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--navy);text-decoration:none;cursor:pointer;letter-spacing:.5px}
+.logo span{color:var(--teal)}
+.nav-menu{display:flex;gap:1.8rem;list-style:none;align-items:center}
+.nav-menu a{text-decoration:none;color:var(--dark);font-weight:500;font-size:.92rem;transition:color .3s;cursor:pointer;position:relative}
+.nav-menu a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--teal);transition:width .3s}
+.nav-menu a:hover{color:var(--teal)}
+.nav-menu a:hover::after{width:100%}
+.nav-cta{background:var(--teal);color:#fff!important;padding:.65rem 1.5rem;border-radius:50px;font-weight:600!important;transition:all .3s!important}
+.nav-cta:hover{background:var(--navy)!important;transform:translateY(-2px);box-shadow:0 8px 24px rgba(23,166,151,.3)}
+.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,61,122,.97);z-index:996;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;transition:opacity .3s}
+.mobile-nav.open{display:flex;opacity:1}
+.mobile-nav a{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;text-decoration:none;cursor:pointer;transition:color .3s}
+.mobile-nav a:hover{color:var(--teal)}
+
+/* ===== PAGE SYSTEM ===== */
+.page{display:none;animation:fadeSlide .5s ease}
+.page.active{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#003D7A 0%,#005ba4 40%,#17A697 100%);position:relative;overflow:hidden;padding:120px 5% 80px}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.hero-particles span{position:absolute;width:2px;height:2px;background:rgba(255,255,255,.4);border-radius:50%;animation:float-particle linear infinite}
+@keyframes float-particle{from{transform:translateY(100vh) rotate(0)}to{transform:translateY(-10vh) rotate(720deg)}}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1400px;margin:0 auto;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,184,0,.15);border:1px solid rgba(255,184,0,.3);color:var(--gold);padding:.4rem 1rem;border-radius:50px;font-size:.85rem;font-weight:600;margin-bottom:1.5rem;animation:fadeSlide .6s ease}
+.hero-text h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,4.5rem);line-height:1.1;color:#fff;font-weight:900;margin-bottom:1.5rem;animation:fadeSlide .7s ease}
+.hero-text h1 span{color:var(--gold);position:relative}
+.hero-text p{font-size:1.15rem;color:rgba(255,255,255,.82);margin-bottom:2.5rem;line-height:1.8;animation:fadeSlide .8s ease}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeSlide .9s ease}
+.btn-primary{background:var(--gold);color:var(--navy);padding:.9rem 2.2rem;border-radius:50px;text-decoration:none;font-weight:700;border:none;cursor:pointer;font-size:1rem;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(255,184,0,.4)}
+.btn-outline{background:transparent;color:#fff;padding:.9rem 2.2rem;border-radius:50px;text-decoration:none;font-weight:600;border:2px solid rgba(255,255,255,.4);cursor:pointer;font-size:1rem;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.hero-stats{display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;animation:fadeSlide 1s ease}
+.hero-stat{text-align:center;padding:1rem 1.5rem;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:16px}
+.hero-stat .num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#fff;display:block}
+.hero-stat .lbl{font-size:.78rem;color:rgba(255,255,255,.7);font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+.hero-visual{position:relative;animation:fadeSlide 1s ease}
+.hero-card-stack{position:relative;height:480px}
+.h-card{position:absolute;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:1.8rem;color:#fff}
+.h-card-main{width:100%;top:0;left:0;animation:card-float 4s ease-in-out infinite}
+.h-card-2{width:85%;top:120px;left:30px;animation:card-float 4s ease-in-out infinite .5s}
+.h-card-3{width:70%;top:230px;left:55px;animation:card-float 4s ease-in-out infinite 1s}
+@keyframes card-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.h-card-icon{font-size:2rem;margin-bottom:.8rem}
+.h-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
+.h-card p{font-size:.82rem;opacity:.75}
+
+/* ===== SECTION BASE ===== */
+.section-title{text-align:center;margin-bottom:4rem}
+.section-label{display:inline-block;background:rgba(23,166,151,.1);color:var(--teal);padding:.35rem 1rem;border-radius:50px;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}
+.section-title h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);color:var(--navy);margin-bottom:1rem;font-weight:900}
+.section-title h2 span{color:var(--teal)}
+.section-title p{font-size:1.05rem;color:var(--gray);max-width:580px;margin:0 auto;line-height:1.8}
+section{padding:90px 5%}
+
+/* ===== CLIENT COUNTER ===== */
+.counter-section{background:var(--navy);padding:60px 5%}
+.counter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1200px;margin:0 auto}
+.counter-item{text-align:center;color:#fff}
+.counter-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--gold);display:block}
+.counter-label{font-size:.9rem;opacity:.75;text-transform:uppercase;letter-spacing:.5px;margin-top:.3rem}
+
+/* ===== SERVICE CARDS ===== */
+.services{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;max-width:1400px;margin:0 auto}
+.service-card{background:#fff;padding:2.5rem;border-radius:20px;border:1px solid #e8edf5;transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden;cursor:pointer}
+.service-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,61,122,0)0%,rgba(23,166,151,.05)100%);opacity:0;transition:opacity .4s}
+.service-card:hover{box-shadow:0 24px 60px rgba(0,61,122,.12);border-color:var(--teal);transform:translateY(-8px)}
+.service-card:hover::after{opacity:1}
+.service-icon-wrap{width:64px;height:64px;background:linear-gradient(135deg,rgba(23,166,151,.1),rgba(0,61,122,.1));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:1.5rem}
+.service-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:.8rem;font-weight:700}
+.service-card p{color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:1.5rem}
+.service-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.service-tag{background:rgba(23,166,151,.08);color:var(--teal);padding:.25rem .75rem;border-radius:20px;font-size:.78rem;font-weight:600}
+.service-cta{background:transparent;color:var(--teal);padding:.7rem 1.5rem;border:2px solid var(--teal);border-radius:50px;font-weight:600;cursor:pointer;transition:all .3s;font-size:.9rem;width:100%}
+.service-cta:hover{background:var(--teal);color:#fff}
+
+/* ===== WHY US ===== */
+.why-us{background:var(--light)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.why-card{background:#fff;padding:2rem;border-radius:16px;text-align:center;box-shadow:0 4px 20px rgba(0,61,122,.06);transition:all .3s}
+.why-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,61,122,.12)}
+.why-icon{font-size:2.5rem;margin-bottom:1rem}
+.why-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--navy);margin-bottom:.6rem;font-weight:700}
+.why-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
+
+/* ===== GOOGLE REVIEWS ===== */
+.reviews{background:#fff}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto}
+.review-card{background:var(--light);padding:1.8rem;border-radius:16px;border:1px solid #e8edf5;transition:all .3s}
+.review-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,61,122,.1)}
+.review-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.review-avatar{width:48px;height:48px;background:linear-gradient(135deg,var(--teal),var(--navy));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;flex-shrink:0}
+.review-meta h4{font-weight:700;color:var(--navy);font-size:.95rem}
+.review-meta p{font-size:.78rem;color:var(--gray)}
+.stars{color:#F9AB00;font-size:1rem;margin-bottom:.8rem;display:flex;align-items:center;gap:.1rem}
+.google-badge{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--gray);margin-top:1rem}
+.google-badge svg{width:16px;height:16px}
+.review-text{color:var(--gray);line-height:1.7;font-size:.92rem;font-style:italic}
+.reviews-summary{max-width:400px;margin:3rem auto 0;text-align:center;background:var(--light);padding:2rem;border-radius:20px;border:1px solid #e8edf5}
+.overall-rating{font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:var(--navy)}
+.overall-sub{color:var(--gray);font-size:.9rem}
+
+/* ===== BLOG ===== */
+.blog{background:var(--light)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.blog-card{background:#fff;border-radius:20px;overflow:hidden;border:1px solid #e8edf5;transition:all .3s;cursor:pointer}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,61,122,.12)}
+.blog-img{height:200px;background:linear-gradient(135deg,var(--navy),var(--teal));display:flex;align-items:center;justify-content:center;font-size:4rem}
+.blog-body{padding:1.8rem}
+.blog-cat{color:var(--teal);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+.blog-body h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--navy);margin:.5rem 0 .8rem;font-weight:700;line-height:1.4}
+.blog-body p{color:var(--gray);font-size:.9rem;line-height:1.7}
+.blog-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1.2rem;padding-top:1rem;border-top:1px solid #f0f0f0}
+.blog-date{font-size:.8rem;color:var(--gray)}
+.blog-read{font-size:.8rem;color:var(--teal);font-weight:600;cursor:pointer}
+
+/* ===== CALCULATORS ===== */
+.calculators{background:#fff}
+.calc-tabs{display:flex;gap:1rem;justify-content:center;margin-bottom:3rem;flex-wrap:wrap}
+.calc-tab{padding:.7rem 1.8rem;border-radius:50px;border:2px solid #e8edf5;background:#fff;color:var(--gray);font-weight:600;cursor:pointer;transition:all .3s;font-size:.9rem}
+.calc-tab.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+.calc-panel{display:none;max-width:700px;margin:0 auto;background:var(--light);border-radius:24px;padding:2.5rem;border:1px solid #e8edf5}
+.calc-panel.active{display:block}
+.calc-panel h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);margin-bottom:1.5rem;font-weight:700}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.form-group label{display:block;font-weight:600;color:var(--dark);margin-bottom:.5rem;font-size:.9rem}
+.form-group input,.form-group select{width:100%;padding:.85rem 1rem;border:2px solid #e8edf5;border-radius:12px;font-size:1rem;color:var(--dark);transition:border-color .3s;background:#fff;font-family:'DM Sans',sans-serif}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--teal)}
+.calc-btn{background:var(--teal);color:#fff;padding:.9rem 2rem;border:none;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;transition:all .3s;width:100%;font-family:'DM Sans',sans-serif}
+.calc-btn:hover{background:var(--navy);transform:translateY(-2px)}
+.calc-result{background:#fff;border-radius:16px;padding:1.5rem;margin-top:1.5rem;border:1px solid #e8edf5;display:none}
+.calc-result.show{display:block}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid #f0f0f0;font-size:.92rem}
+.result-row:last-child{border-bottom:none;font-weight:700;color:var(--navy);font-size:1rem}
+.result-label{color:var(--gray)}
+.result-value{font-weight:600;color:var(--dark)}
+
+/* ===== DUE DATES ===== */
+.due-dates{background:var(--light)}
+.due-alert{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;padding:2rem;border-radius:16px;text-align:center;margin:0 auto 3rem;max-width:750px}
+.due-alert h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.5rem;font-weight:900}
+.due-alert p{opacity:.9;font-size:1rem}
+.tab-nav{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap;border-bottom:2px solid #e8edf5;padding-bottom:0;max-width:1000px;margin-left:auto;margin-right:auto}
+.tab-btn{padding:.75rem 1.5rem;background:transparent;color:var(--gray);border:none;border-bottom:3px solid transparent;cursor:pointer;font-weight:600;font-size:.9rem;transition:all .3s;margin-bottom:-2px}
+.tab-btn.active{color:var(--teal);border-bottom-color:var(--teal)}
+.tab-content{display:none;animation:fadeSlide .3s ease}
+.tab-content.active{display:block}
+.dates-table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,61,122,.08);max-width:1000px;margin:0 auto 2rem}
+.dates-table th{background:var(--navy);color:#fff;padding:1rem 1.2rem;text-align:left;font-weight:600;font-size:.9rem}
+.dates-table td{padding:1rem 1.2rem;border-bottom:1px solid #f0f0f0;font-size:.92rem;color:var(--gray)}
+.dates-table tr:last-child td{border-bottom:none}
+.dates-table tr:hover{background:#f8fcff}
+.dates-table .date-col{font-weight:700;color:var(--navy)}
+.status{display:inline-block;padding:.3rem .8rem;border-radius:20px;font-size:.78rem;font-weight:600}
+.status.upcoming{background:rgba(255,184,0,.15);color:#d4a000}
+.status.urgent{background:rgba(231,76,60,.15);color:var(--red)}
+.status.ok{background:rgba(34,197,94,.15);color:#16a34a}
+
+/* ===== APPOINTMENT ===== */
+.appointment{background:#fff}
+.appt-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;max-width:1200px;margin:0 auto}
+.appt-info h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--navy);margin-bottom:1rem;font-weight:900}
+.appt-info p{color:var(--gray);line-height:1.8;margin-bottom:1.5rem}
+.appt-feature{display:flex;gap:1rem;margin-bottom:1rem;align-items:flex-start}
+.appt-feature-icon{width:40px;height:40px;background:rgba(23,166,151,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.appt-form{background:var(--light);padding:2.5rem;border-radius:24px;border:1px solid #e8edf5}
+.appt-form h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:1.5rem}
+
+/* ===== NEWSLETTER ===== */
+.newsletter{background:linear-gradient(135deg,var(--navy) 0%,var(--teal) 100%);padding:80px 5%;text-align:center}
+.newsletter h2{font-family:'Playfair Display',serif;font-size:2.5rem;color:#fff;margin-bottom:1rem;font-weight:900}
+.newsletter p{color:rgba(255,255,255,.82);font-size:1.05rem;margin-bottom:2rem}
+.newsletter-form{display:flex;gap:1rem;max-width:500px;margin:0 auto;flex-wrap:wrap}
+.newsletter-form input{flex:1;padding:.9rem 1.5rem;border:none;border-radius:50px;font-size:1rem;font-family:'DM Sans',sans-serif;min-width:220px}
+.newsletter-form input:focus{outline:2px solid var(--gold)}
+.newsletter-form button{background:var(--gold);color:var(--navy);padding:.9rem 1.8rem;border:none;border-radius:50px;font-weight:700;cursor:pointer;transition:all .3s;font-size:1rem;font-family:'DM Sans',sans-serif}
+.newsletter-form button:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,184,0,.4)}
+
+/* ===== CLIENT LOGIN ===== */
+.client-login{background:var(--light);padding:80px 5%}
+.login-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto}
+.login-text h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--navy);margin-bottom:1rem;font-weight:900}
+.login-text p{color:var(--gray);line-height:1.8;margin-bottom:1.5rem}
+.login-features li{list-style:none;display:flex;align-items:center;gap:.7rem;color:var(--gray);margin-bottom:.7rem;font-size:.92rem}
+.login-features li::before{content:'✓';color:var(--teal);font-weight:700}
+.login-form{background:#fff;padding:2.5rem;border-radius:24px;box-shadow:0 8px 40px rgba(0,61,122,.1);border:1px solid #e8edf5}
+.login-form h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:1.5rem}
+.login-form input{width:100%;padding:.85rem 1rem;border:2px solid #e8edf5;border-radius:12px;font-size:.95rem;color:var(--dark);margin-bottom:1rem;font-family:'DM Sans',sans-serif;transition:border-color .3s}
+.login-form input:focus{outline:none;border-color:var(--teal)}
+.login-form button{width:100%;background:var(--navy);color:#fff;padding:.9rem;border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:1rem;transition:all .3s;font-family:'DM Sans',sans-serif}
+.login-form button:hover{background:var(--teal)}
+.login-links{display:flex;justify-content:space-between;margin-top:1rem;font-size:.85rem}
+.login-links a{color:var(--teal);text-decoration:none;cursor:pointer}
+
+/* ===== CONTACT ===== */
+.contact-section{background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;max-width:1200px;margin:0 auto;align-items:start}
+.contact-info h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--navy);margin-bottom:1rem;font-weight:900}
+.contact-info p{color:var(--gray);line-height:1.8;margin-bottom:2rem}
+.contact-item{display:flex;gap:1rem;padding:1.2rem;background:var(--light);border-radius:14px;margin-bottom:1rem;transition:all .3s}
+.contact-item:hover{transform:translateX(6px)}
+.c-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--teal),var(--navy));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.c-detail h4{font-weight:700;color:var(--navy);font-size:.92rem}
+.c-detail a,.c-detail p{color:var(--gray);text-decoration:none;font-size:.88rem}
+.c-detail a:hover{color:var(--teal)}
+.contact-form{background:var(--light);padding:2.5rem;border-radius:24px;border:1px solid #e8edf5}
+.contact-form h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:1.5rem}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:.85rem 1rem;border:2px solid #e8edf5;border-radius:12px;font-size:.95rem;color:var(--dark);margin-bottom:1rem;font-family:'DM Sans',sans-serif;background:#fff;transition:border-color .3s}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:none;border-color:var(--teal)}
+.contact-form textarea{min-height:120px;resize:vertical}
+.form-submit{background:var(--teal);color:#fff;padding:1rem 2rem;border:none;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;width:100%;transition:all .3s;font-family:'DM Sans',sans-serif}
+.form-submit:hover{background:var(--navy);transform:translateY(-2px)}
+
+/* ===== ABOUT ===== */
+.about-section{background:var(--light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto}
+.about-visual{background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:24px;padding:3rem;text-align:center;font-size:8rem;min-height:380px;display:flex;align-items:center;justify-content:center;box-shadow:0 24px 60px rgba(0,61,122,.2)}
+.about-text h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--navy);margin-bottom:1rem;font-weight:900}
+.about-text h2 span{color:var(--teal)}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:1.2rem;font-size:1rem}
+.about-features{margin-top:2rem;display:flex;flex-direction:column;gap:1.2rem}
+.af-item{display:flex;gap:1rem;align-items:flex-start}
+.af-icon{width:44px;height:44px;background:rgba(23,166,151,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.af-text h4{font-weight:700;color:var(--navy);margin-bottom:.2rem;font-size:.95rem}
+.af-text p{color:var(--gray);font-size:.88rem;line-height:1.6}
+
+/* ===== FINAL CTA ===== */
+.final-cta{background:linear-gradient(135deg,var(--navy) 0%,var(--teal) 100%);padding:80px 5%;text-align:center}
+.final-cta h2{font-family:'Playfair Display',serif;font-size:2.5rem;color:#fff;margin-bottom:1rem;font-weight:900}
+.final-cta p{color:rgba(255,255,255,.82);font-size:1.05rem;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ===== FOOTER ===== */
+footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;max-width:1400px;margin-left:auto;margin-right:auto}
+.footer-brand .logo{display:inline-block;margin-bottom:1rem;font-size:1.5rem}
+.footer-brand p{color:rgba(255,255,255,.55);font-size:.88rem;line-height:1.8;margin-bottom:1.5rem}
+.footer-social{display:flex;gap:.8rem}
+.s-btn{width:38px;height:38px;background:rgba(255,255,255,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .3s;cursor:pointer;text-decoration:none;color:#fff}
+.s-btn:hover{background:var(--teal);transform:translateY(-3px)}
+.footer-col h4{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:1.2rem;font-weight:700}
+.footer-col a{display:block;color:rgba(255,255,255,.5);text-decoration:none;font-size:.88rem;margin-bottom:.7rem;transition:color .3s;cursor:pointer}
+.footer-col a:hover{color:var(--teal)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;font-size:.82rem;color:rgba(255,255,255,.4);max-width:1400px;margin:0 auto}
+
+/* ===== FLOATING BUTTONS ===== */
+.floating-btns{position:fixed;bottom:2rem;right:2rem;display:flex;flex-direction:column;gap:.8rem;z-index:900}
+.float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:all .3s;font-size:1.5rem;border:none;cursor:pointer;color:#fff}
+.float-btn:hover{transform:scale(1.12) translateY(-3px)}
+.float-whatsapp{background:#25D366}
+.float-call{background:var(--navy)}
+.float-chat{background:var(--teal)}
+.float-label{position:absolute;right:68px;background:#fff;color:var(--dark);padding:.3rem .8rem;border-radius:8px;font-size:.78rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.12);opacity:0;transform:translateX(10px);transition:all .3s;pointer-events:none}
+.float-btn:hover .float-label{opacity:1;transform:translateX(0)}
+
+/* ===== LIVE CHAT WIDGET ===== */
+#chat-widget{position:fixed;bottom:8rem;right:2rem;width:320px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.2);z-index:901;display:none;animation:fadeSlide .3s ease}
+#chat-widget.open{display:block}
+.chat-header{background:linear-gradient(135deg,var(--navy),var(--teal));padding:1.2rem;border-radius:20px 20px 0 0;display:flex;align-items:center;justify-content:space-between}
+.chat-header h4{color:#fff;font-weight:700;font-size:.95rem}
+.chat-header p{color:rgba(255,255,255,.7);font-size:.75rem}
+.chat-close{color:#fff;background:none;border:none;cursor:pointer;font-size:1.2rem;opacity:.7}
+.chat-body{padding:1.2rem;height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:.8rem}
+.chat-msg{padding:.7rem 1rem;border-radius:12px;font-size:.85rem;line-height:1.5;max-width:80%}
+.chat-msg.bot{background:var(--light);color:var(--dark);align-self:flex-start}
+.chat-msg.user{background:var(--teal);color:#fff;align-self:flex-end}
+.chat-input-row{display:flex;gap:.5rem;padding:.8rem;border-top:1px solid #f0f0f0}
+.chat-input-row input{flex:1;border:1px solid #e8edf5;border-radius:50px;padding:.6rem 1rem;font-size:.85rem;font-family:'DM Sans',sans-serif}
+.chat-input-row input:focus{outline:none;border-color:var(--teal)}
+.chat-send{background:var(--teal);color:#fff;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:.9rem;flex-shrink:0;transition:all .3s}
+.chat-send:hover{background:var(--navy)}
+
+/* ===== MODAL ===== */
+.modal{display:none;position:fixed;z-index:2000;inset:0;background:rgba(0,0,0,.5);animation:fadeSlide .3s ease;overflow-y:auto}
+.modal.active{display:block}
+.modal-content{background:#fff;margin:50px auto;padding:3rem;max-width:700px;border-radius:24px;position:relative}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;cursor:pointer;color:var(--gray);background:none;border:none;transition:color .3s}
+.modal-close:hover{color:var(--navy)}
+.modal-body h3{color:var(--teal);margin-top:1.5rem;margin-bottom:.7rem;font-weight:700}
+.modal-body p{color:var(--gray);line-height:1.8;margin-bottom:.8rem;font-size:.95rem}
+.modal-body ul{list-style:none}
+.modal-body li{display:flex;align-items:center;gap:.7rem;color:var(--gray);margin-bottom:.7rem;font-size:.9rem}
+.modal-body li::before{content:'✓';color:var(--teal);font-weight:700}
+.modal-footer{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.modal-btn{flex:1;min-width:140px;padding:.9rem;border:none;border-radius:50px;font-weight:700;cursor:pointer;font-size:.95rem;transition:all .3s;font-family:'DM Sans',sans-serif}
+.modal-btn-primary{background:var(--teal);color:#fff}
+.modal-btn-primary:hover{background:var(--navy)}
+.modal-btn-secondary{background:var(--light);color:var(--navy);border:2px solid var(--navy)}
+.modal-btn-secondary:hover{background:var(--navy);color:#fff}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero-content,.about-grid,.appt-grid,.login-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .counter-grid{grid-template-columns:repeat(2,1fr)}
+  .calc-row{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-menu{display:none}
+  .hamburger{display:flex}
+  .hero-stat .num{font-size:1.5rem}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+  .counter-grid{grid-template-columns:repeat(2,1fr)}
+  .dates-table{font-size:.8rem}
+  .dates-table th,.dates-table td{padding:.7rem .8rem}
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Tax<span>Mitra</span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- STICKY BANNER -->
+<div id="sticky-banner">
+  📅 <strong>ITR Filing Deadline: July 31, 2025</strong> — Don't miss it!
+  <a onclick="showPage('duedates');closeBanner()">View All Due Dates →</a>
+  <button onclick="closeBanner()">✕</button>
+</div>
+
+<!-- NAVIGATION -->
+<nav>
+  <span class="logo" onclick="showPage('home')">Tax<span>Mitra</span></span>
+  <ul class="nav-menu">
+    <li><a onclick="showPage('home')">Home</a></li>
+    <li><a onclick="showPage('services')">Services</a></li>
+    <li><a onclick="showPage('about')">About</a></li>
+    <li><a onclick="showPage('blog')">Blog</a></li>
+    <li><a onclick="showPage('duedates')">Due Dates</a></li>
+    <li><a onclick="showPage('calculators')">Calculators</a></li>
+    <li><a onclick="showPage('contact')" class="nav-cta">Book Appointment</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-nav" id="mobileNav">
+  <a onclick="showPage('home');closeMobileMenu()">Home</a>
+  <a onclick="showPage('services');closeMobileMenu()">Services</a>
+  <a onclick="showPage('about');closeMobileMenu()">About</a>
+  <a onclick="showPage('blog');closeMobileMenu()">Blog</a>
+  <a onclick="showPage('duedates');closeMobileMenu()">Due Dates</a>
+  <a onclick="showPage('calculators');closeMobileMenu()">Calculators</a>
+  <a onclick="showPage('contact');closeMobileMenu()">Book Appointment</a>
+</div>
+
+<!-- ========== HOME PAGE ========== -->
+<div id="home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">⭐ Trusted by 500+ Happy Clients</div>
+        <h1>India's Most <span>Trusted</span> Tax & Compliance Partner</h1>
+        <p>Expert CA services for ITR filing, GST, company formation, and complete tax planning. We handle compliance so you can focus on growth.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="showPage('contact')">📅 Book Free Consultation</button>
+          <button class="btn-outline" onclick="showPage('services')">Explore Services →</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="num" data-target="500">0</span><span class="lbl">Clients Served</span></div>
+          <div class="hero-stat"><span class="num" data-target="10">0</span><span class="lbl">Years Experience</span></div>
+          <div class="hero-stat"><span class="num" data-target="98">0</span><span class="lbl">% Satisfaction</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="h-card h-card-main">
+            <div class="h-card-icon">📊</div>
+            <h3>Tax Planning</h3>
+            <p>Smart strategies to minimize your tax liability legally</p>
+          </div>
+          <div class="h-card h-card-2">
+            <div class="h-card-icon">🏢</div>
+            <h3>Company Formation</h3>
+            <p>From idea to registered entity in days</p>
+          </div>
+          <div class="h-card h-card-3">
+            <div class="h-card-icon">✅</div>
+            <h3>GST Compliance</h3>
+            <p>End-to-end GST filing and advisory</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT COUNTER -->
+  <div class="counter-section">
+    <div class="counter-grid">
+      <div class="counter-item reveal"><span class="counter-num" data-target="500">0</span>+<div class="counter-label">Happy Clients</div></div>
+      <div class="counter-item reveal"><span class="counter-num" data-target="10">0</span>+<div class="counter-label">Years Experience</div></div>
+      <div class="counter-item reveal"><span class="counter-num" data-target="1000">0</span>+<div class="counter-label">Returns Filed</div></div>
+      <div class="counter-item reveal"><span class="counter-num" data-target="50">0</span>+<div class="counter-label">Companies Formed</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="services">
+    <div class="section-title reveal">
+      <div class="section-label">Our Expertise</div>
+      <h2>Premium Tax & <span>Compliance</span> Services</h2>
+      <p>Comprehensive financial services tailored for individuals, startups, and businesses across India.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal" onclick="openModal('itr')">
+        <div class="service-icon-wrap">📋</div>
+        <h3>ITR Filing</h3>
+        <p>Accurate income tax return filing for salaried professionals, freelancers, and business owners with maximum refund optimization.</p>
+        <div class="service-tags"><span class="service-tag">Individual</span><span class="service-tag">Business</span><span class="service-tag">NRI</span></div>
+        <button class="service-cta">Learn More →</button>
+      </div>
+      <div class="service-card reveal" onclick="openModal('gst')">
+        <div class="service-icon-wrap">🧾</div>
+        <h3>GST Services</h3>
+        <p>Complete GST registration, monthly/quarterly return filing, GST audit, and advisory to keep your business compliant.</p>
+        <div class="service-tags"><span class="service-tag">Registration</span><span class="service-tag">Filing</span><span class="service-tag">Audit</span></div>
+        <button class="service-cta">Learn More →</button>
+      </div>
+      <div class="service-card reveal" onclick="openModal('tax')">
+        <div class="service-icon-wrap">💡</div>
+        <h3>Tax Planning</h3>
+        <p>Strategic tax planning to legally minimize liability through smart investments, deductions, and year-round advisory.</p>
+        <div class="service-tags"><span class="service-tag">Deductions</span><span class="service-tag">Investments</span><span class="service-tag">HUF</span></div>
+        <button class="service-cta">Learn More →</button>
+      </div>
+      <div class="service-card reveal" onclick="openModal('company')">
+        <div class="service-icon-wrap">🏢</div>
+        <h3>Company Formation</h3>
+        <p>End-to-end company registration — Private Ltd, LLP, OPC, Partnership — with complete post-incorporation support.</p>
+        <div class="service-tags"><span class="service-tag">Pvt Ltd</span><span class="service-tag">LLP</span><span class="service-tag">OPC</span></div>
+        <button class="service-cta">Learn More →</button>
+      </div>
+      <div class="service-card reveal" onclick="openModal('roc')">
+        <div class="service-icon-wrap">📁</div>
+        <h3>ROC Compliance</h3>
+        <p>Annual filings, board resolutions, statutory registers, MCA forms, and complete ROC compliance management.</p>
+        <div class="service-tags"><span class="service-tag">Annual Filing</span><span class="service-tag">MCA</span><span class="service-tag">ROC</span></div>
+        <button class="service-cta">Learn More →</button>
+      </div>
+      <div class="service-card reveal" onclick="openModal('business')">
+        <div class="service-icon-wrap">📈</div>
+        <h3>Business Compliance</h3>
+        <p>Payroll, TDS deduction, PF, ESI, professional tax, and comprehensive regulatory compliance for growing businesses.</p>
+        <div class="service-tags"><span class="service-tag">TDS</span><span class="service-tag">Payroll</span><span class="service-tag">PF/ESI</span></div>
+        <button class="service-cta">Learn More →</button>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <button class="btn-primary" onclick="showPage('services')">View All Services</button>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us">
+    <div class="section-title reveal">
+      <div class="section-label">Why TaxMitra</div>
+      <h2>The <span>Difference</span> We Make</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">🎓</div><h3>CA Expertise</h3><p>Led by CA Swapnil Soni with 10+ years of professional experience across sectors.</p></div>
+      <div class="why-card reveal"><div class="why-icon">⚡</div><h3>Fast Turnaround</h3><p>Most filings completed within 24–48 hours. We respect your deadlines.</p></div>
+      <div class="why-card reveal"><div class="why-icon">🔒</div><h3>100% Confidential</h3><p>Your financial data is protected with bank-grade security and strict confidentiality.</p></div>
+      <div class="why-card reveal"><div class="why-icon">💰</div><h3>Transparent Pricing</h3><p>No hidden fees. Clear pricing discussed upfront before any engagement.</p></div>
+    </div>
+  </section>
+
+  <!-- GOOGLE REVIEWS -->
+  <section class="reviews">
+    <div class="section-title reveal">
+      <div class="section-label">Google Reviews</div>
+      <h2>What Our <span>Clients</span> Say</h2>
+      <p>Rated 4.9/5 on Google — here's what real clients have to say about TaxMitra.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-header"><div class="review-avatar">R</div><div class="review-meta"><h4>Rahul Sharma</h4><p>Business Owner, Pune</p></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"TaxMitra saved us lakhs through smart tax planning. CA Swapnil explains everything in simple language. Best CA firm I've worked with!"</p>
+        <div class="google-badge"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Verified Google Review</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-header"><div class="review-avatar">P</div><div class="review-meta"><h4>Priya Desai</h4><p>Salaried Professional</p></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Got my ITR filed within a day with maximum refund! The team is super responsive on WhatsApp. Highly recommend for hassle-free filing."</p>
+        <div class="google-badge"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Verified Google Review</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-header"><div class="review-avatar">A</div><div class="review-meta"><h4>Amit Kulkarni</h4><p>Startup Founder</p></div></div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We incorporated our startup and got all compliance sorted through TaxMitra. Professional, affordable, and always available for queries. 10/10!"</p>
+        <div class="google-badge"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Verified Google Review</div>
+      </div>
+    </div>
+    <div class="reviews-summary reveal">
+      <div class="overall-rating">4.9</div>
+      <div class="stars" style="justify-content:center;font-size:1.5rem;margin:.5rem 0">★★★★★</div>
+      <div class="overall-sub">Based on 120+ Google Reviews</div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section class="blog">
+    <div class="section-title reveal">
+      <div class="section-label">Knowledge Hub</div>
+      <h2>Latest <span>Tax</span> Insights</h2>
+      <p>Stay updated with expert articles on tax laws, GST changes, and financial planning.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-img">📰</div>
+        <div class="blog-body">
+          <div class="blog-cat">Income Tax</div>
+          <h3>New Tax Regime vs Old Tax Regime: Which is Better for You in 2025?</h3>
+          <p>A comprehensive comparison of both regimes with examples to help you decide what maximizes your savings.</p>
+          <div class="blog-footer"><span class="blog-date">May 10, 2025</span><span class="blog-read">Read More →</span></div>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-img">🧾</div>
+        <div class="blog-body">
+          <div class="blog-cat">GST</div>
+          <h3>GST Changes in Budget 2025: What Every Business Owner Must Know</h3>
+          <p>Key amendments to GST provisions and how they impact your business cash flow and compliance.</p>
+          <div class="blog-footer"><span class="blog-date">April 28, 2025</span><span class="blog-read">Read More →</span></div>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-img">💼</div>
+        <div class="blog-body">
+          <div class="blog-cat">Tax Planning</div>
+          <h3>10 Legal Ways to Save Tax on Your Salary in FY 2025–26</h3>
+          <p>Expert tips on using Section 80C, HRA, NPS, and more to reduce your income tax burden legally.</p>
+          <div class="blog-footer"><span class="blog-date">April 15, 2025</span><span class="blog-read">Read More →</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <button class="btn-primary" onclick="showPage('blog')">View All Articles</button>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h2>Stay Tax-Smart</h2>
+    <p>Get free expert tax tips, due date reminders, and compliance updates delivered to your inbox.</p>
+    <div class="newsletter-form">
+      <input type="email" id="newsletter-email" placeholder="Enter your email address">
+      <button onclick="subscribeNewsletter()">Subscribe Free</button>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <h2>Ready to Simplify Your Taxes?</h2>
+    <p>Join 500+ clients who trust TaxMitra for expert, affordable, and timely financial compliance.</p>
+    <div class="cta-buttons">
+      <button class="btn-primary" onclick="showPage('contact')">📅 Book Free Consultation</button>
+      <a href="https://wa.me/919890801802" target="_blank" class="btn-outline">💬 WhatsApp Us</a>
+    </div>
+  </div>
+
+</div><!-- end home -->
+
+<!-- ========== SERVICES PAGE ========== -->
+<div id="services" class="page">
+  <section style="padding-top:130px;padding-bottom:60px;background:var(--light)">
+    <div class="section-title">
+      <div class="section-label">All Services</div>
+      <h2>Complete Tax & <span>Compliance</span> Solutions</h2>
+      <p>Every service your business needs, under one roof.</p>
+    </div>
+    <div class="services-grid" style="max-width:1400px;margin:0 auto;padding:0 5%">
+      <div class="service-card" onclick="openModal('itr')"><div class="service-icon-wrap">📋</div><h3>ITR Filing</h3><p>Accurate income tax return filing for individuals, HUF, firms, LLP, and companies with maximum refunds.</p><div class="service-tags"><span class="service-tag">Salary</span><span class="service-tag">Business</span><span class="service-tag">Capital Gains</span><span class="service-tag">NRI</span></div><button class="service-cta">Know More →</button></div>
+      <div class="service-card" onclick="openModal('gst')"><div class="service-icon-wrap">🧾</div><h3>GST Services</h3><p>End-to-end GST services from registration to audit, return filing and reconciliation for all business types.</p><div class="service-tags"><span class="service-tag">GSTR-1</span><span class="service-tag">GSTR-3B</span><span class="service-tag">Annual Return</span></div><button class="service-cta">Know More →</button></div>
+      <div class="service-card" onclick="openModal('tax')"><div class="service-icon-wrap">💡</div><h3>Tax Planning</h3><p>Proactive year-round tax planning through 80C, HRA, NPS, HUF, and other legal avenues to minimize liability.</p><div class="service-tags"><span class="service-tag">80C</span><span class="service-tag">HRA</span><span class="service-tag">NPS</span></div><button class="service-cta">Know More →</button></div>
+      <div class="service-card" onclick="openModal('company')"><div class="service-icon-wrap">🏢</div><h3>Company Formation</h3><p>Hassle-free company registration including Private Limited, LLP, OPC, Sole Proprietorship, and Section 8.</p><div class="service-tags"><span class="service-tag">Pvt Ltd</span><span class="service-tag">LLP</span><span class="service-tag">OPC</span><span class="service-tag">Section 8</span></div><button class="service-cta">Know More →</button></div>
+      <div class="service-card" onclick="openModal('roc')"><div class="service-icon-wrap">📁</div><h3>ROC Compliance</h3><p>Complete MCA/ROC annual compliance — AOC-4, MGT-7, board resolutions, statutory registers, and more.</p><div class="service-tags"><span class="service-tag">AOC-4</span><span class="service-tag">MGT-7</span><span class="service-tag">MCA</span></div><button class="service-cta">Know More →</button></div>
+      <div class="service-card" onclick="openModal('business')"><div class="service-icon-wrap">📈</div><h3>Business Compliance</h3><p>TDS deduction, PF, ESI, Professional Tax, payroll management, and other statutory compliance for employers.</p><div class="service-tags"><span class="service-tag">TDS</span><span class="service-tag">PF</span><span class="service-tag">ESI</span><span class="service-tag">Payroll</span></div><button class="service-cta">Know More →</button></div>
+      <div class="service-card" onclick="openModal('audit')"><div class="service-icon-wrap">🔍</div><h3>Audit Services</h3><p>Statutory audit, tax audit (44AB), concurrent audit, and internal audit for businesses across industries.</p><div class="service-tags"><span class="service-tag">44AB</span><span class="service-tag">Statutory</span><span class="service-tag">Internal</span></div><button class="service-cta">Know More →</button></div>
+      <div class="service-card" onclick="openModal('fema')"><div class="service-icon-wrap">🌏</div><h3>FEMA & NRI Services</h3><p>FEMA compliance, NRI ITR filing, repatriation advisory, DTAA benefits, and international tax planning.</p><div class="service-tags"><span class="service-tag">NRI</span><span class="service-tag">FEMA</span><span class="service-tag">DTAA</span></div><button class="service-cta">Know More →</button></div>
+      <div class="service-card" onclick="openModal('msme')"><div class="service-icon-wrap">🏗️</div><h3>MSME & Startup Services</h3><p>MSME registration, startup India recognition, DPIIT certification, and government scheme advisory.</p><div class="service-tags"><span class="service-tag">MSME</span><span class="service-tag">Startup India</span><span class="service-tag">DPIIT</span></div><button class="service-cta">Know More →</button></div>
+    </div>
+  </section>
+  <div class="final-cta"><h2>Need a Custom Solution?</h2><p>Every business is unique. Let us build a compliance strategy tailored just for you.</p><div class="cta-buttons"><button class="btn-primary" onclick="showPage('contact')">Talk to an Expert</button></div></div>
+</div>
+
+<!-- ========== ABOUT PAGE ========== -->
+<div id="about" class="page">
+  <section class="about-section" style="padding-top:130px">
+    <div class="about-grid">
+      <div class="about-visual">🧑‍💼</div>
+      <div class="about-text">
+        <div class="section-label">About TaxMitra</div>
+        <h2>Your Trusted <span>Financial Navigator</span></h2>
+        <p>TaxMitra is led by <strong>CA Swapnil Soni</strong>, a Chartered Accountant with over 10 years of experience serving individuals, startups, and established businesses across India.</p>
+        <p>We believe compliance shouldn't be stressful. Our mission is to provide expert financial guidance that is accurate, affordable, and delivered on time — every time.</p>
+        <p>From ITR filing to complex business structuring, we bring the same dedication and expertise to every client engagement.</p>
+        <div class="about-features">
+          <div class="af-item"><div class="af-icon">🎓</div><div class="af-text"><h4>Qualified Chartered Accountant</h4><p>ICAI member with specialized training in taxation and corporate law.</p></div></div>
+          <div class="af-item"><div class="af-icon">📍</div><div class="af-text"><h4>Based in Pune, Serving Pan-India</h4><p>Physical office in Pune with clients across India served digitally.</p></div></div>
+          <div class="af-item"><div class="af-icon">🤝</div><div class="af-text"><h4>Relationship-First Approach</h4><p>Long-term client relationships built on trust, transparency, and consistent results.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="final-cta"><h2>Let's Work Together</h2><p>Ready to experience stress-free compliance? Book your free consultation today.</p><div class="cta-buttons"><button class="btn-primary" onclick="showPage('contact')">Book Free Consultation</button></div></div>
+</div>
+
+<!-- ========== BLOG PAGE ========== -->
+<div id="blog" class="page">
+  <section class="blog" style="padding-top:130px">
+    <div class="section-title">
+      <div class="section-label">Knowledge Hub</div>
+      <h2>Expert <span>Tax</span> Insights</h2>
+      <p>Free articles, guides, and updates from CA Swapnil Soni to help you stay compliant and save more.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card"><div class="blog-img">📰</div><div class="blog-body"><div class="blog-cat">Income Tax</div><h3>New Tax Regime vs Old Tax Regime: Which is Better for You in 2025?</h3><p>A comprehensive comparison with real examples to help you decide what maximizes your savings this year.</p><div class="blog-footer"><span class="blog-date">May 10, 2025</span><span class="blog-read">Read More →</span></div></div></div>
+      <div class="blog-card"><div class="blog-img">🧾</div><div class="blog-body"><div class="blog-cat">GST</div><h3>GST Changes in Budget 2025: What Every Business Owner Must Know</h3><p>Key amendments to GST provisions and how they impact your business cash flow and compliance requirements.</p><div class="blog-footer"><span class="blog-date">April 28, 2025</span><span class="blog-read">Read More →</span></div></div></div>
+      <div class="blog-card"><div class="blog-img">💼</div><div class="blog-body"><div class="blog-cat">Tax Planning</div><h3>10 Legal Ways to Save Tax on Your Salary in FY 2025–26</h3><p>Expert tips on using Section 80C, HRA, NPS, medical insurance and more to reduce your tax burden.</p><div class="blog-footer"><span class="blog-date">April 15, 2025</span><span class="blog-read">Read More →</span></div></div></div>
+      <div class="blog-card"><div class="blog-img">🏢</div><div class="blog-body"><div class="blog-cat">Startup</div><h3>Private Limited vs LLP: Which Structure is Right for Your Startup?</h3><p>A side-by-side comparison of compliance burden, taxation, and fundraising ability for new businesses.</p><div class="blog-footer"><span class="blog-date">March 30, 2025</span><span class="blog-read">Read More →</span></div></div></div>
+      <div class="blog-card"><div class="blog-img">💰</div><div class="blog-body"><div class="blog-cat">TDS</div><h3>TDS on Property Purchase: A Complete Guide for Buyers</h3><p>Step-by-step guide on TDS deduction, Form 26QB filing, and certificate download for property transactions above ₹50 lakh.</p><div class="blog-footer"><span class="blog-date">March 15, 2025</span><span class="blog-read">Read More →</span></div></div></div>
+      <div class="blog-card"><div class="blog-img">📊</div><div class="blog-body"><div class="blog-cat">Capital Gains</div><h3>LTCG & STCG Tax on Mutual Funds and Stocks in 2025</h3><p>Updated rates, exemptions, and reporting requirements for capital gains after the 2025 budget amendments.</p><div class="blog-footer"><span class="blog-date">February 28, 2025</span><span class="blog-read">Read More →</span></div></div></div>
+    </div>
+  </section>
+  <div class="newsletter"><h2>Get Articles in Your Inbox</h2><p>Subscribe to our newsletter for free weekly tax tips and compliance reminders.</p><div class="newsletter-form"><input type="email" placeholder="Your email address"><button>Subscribe Free</button></div></div>
+</div>
+
+<!-- ========== DUE DATES PAGE ========== -->
+<div id="duedates" class="page">
+  <section class="due-dates" style="padding-top:130px">
+    <div class="section-title">
+      <div class="section-label">Stay Compliant</div>
+      <h2>Tax & Compliance <span>Due Dates</span></h2>
+      <p>Never miss a deadline. Updated compliance calendar for FY 2025–26.</p>
+    </div>
+    <div class="due-alert">
+      <h3>⚠️ Important Deadlines This Month</h3>
+      <p>Several compliance deadlines are approaching. Contact us to ensure you stay penalty-free.</p>
+    </div>
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(event,'income-tax')">Income Tax</button>
+      <button class="tab-btn" onclick="switchTab(event,'gst-tab')">GST</button>
+      <button class="tab-btn" onclick="switchTab(event,'tds-tab')">TDS/TCS</button>
+      <button class="tab-btn" onclick="switchTab(event,'roc-tab')">ROC/MCA</button>
+    </div>
+    <div id="income-tax" class="tab-content active">
+      <table class="dates-table">
+        <thead><tr><th>Due Date</th><th>Compliance</th><th>Who It Applies To</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="date-col">July 31, 2025</td><td>ITR Filing (Non-Audit Cases)</td><td>Individuals, HUF, Firms (non-audit)</td><td><span class="status upcoming">Upcoming</span></td></tr>
+          <tr><td class="date-col">Oct 31, 2025</td><td>ITR Filing (Audit Cases)</td><td>Companies, Audit required assesses</td><td><span class="status upcoming">Upcoming</span></td></tr>
+          <tr><td class="date-col">Jun 15, 2025</td><td>Advance Tax — 1st Installment</td><td>All taxpayers (15% of advance tax)</td><td><span class="status ok">Due Soon</span></td></tr>
+          <tr><td class="date-col">Sep 15, 2025</td><td>Advance Tax — 2nd Installment</td><td>All taxpayers (45% cumulative)</td><td><span class="status upcoming">Upcoming</span></td></tr>
+          <tr><td class="date-col">Dec 15, 2025</td><td>Advance Tax — 3rd Installment</td><td>All taxpayers (75% cumulative)</td><td><span class="status upcoming">Upcoming</span></td></tr>
+          <tr><td class="date-col">Mar 15, 2026</td><td>Advance Tax — 4th Installment</td><td>All taxpayers (100% cumulative)</td><td><span class="status upcoming">Upcoming</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="gst-tab" class="tab-content">
+      <table class="dates-table">
+        <thead><tr><th>Due Date</th><th>Form</th><th>Applicable To</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="date-col">11th of every month</td><td>GSTR-1 (Monthly)</td><td>Turnover > ₹5 Cr</td><td><span class="status urgent">Recurring</span></td></tr>
+          <tr><td class="date-col">13th of every month</td><td>GSTR-1 (Quarterly - IFF)</td><td>QRMP taxpayers</td><td><span class="status upcoming">Recurring</span></td></tr>
+          <tr><td class="date-col">20th of every month</td><td>GSTR-3B (Monthly)</td><td>Turnover > ₹5 Cr</td><td><span class="status urgent">Recurring</span></td></tr>
+          <tr><td class="date-col">22nd/24th of month</td><td>GSTR-3B (Quarterly)</td><td>QRMP taxpayers</td><td><span class="status upcoming">Recurring</span></td></tr>
+          <tr><td class="date-col">Dec 31, 2025</td><td>GSTR-9 (Annual Return)</td><td>All registered taxpayers</td><td><span class="status upcoming">Upcoming</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="tds-tab" class="tab-content">
+      <table class="dates-table">
+        <thead><tr><th>Due Date</th><th>Compliance</th><th>Who It Applies To</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="date-col">7th of every month</td><td>TDS/TCS Deposit</td><td>All deductors (except March)</td><td><span class="status urgent">Recurring</span></td></tr>
+          <tr><td class="date-col">30th April (for March)</td><td>TDS/TCS Deposit (March quarter)</td><td>All deductors</td><td><span class="status upcoming">Annual</span></td></tr>
+          <tr><td class="date-col">30th July 2025</td><td>TDS Return — Q1 (Apr–Jun 2025)</td><td>All deductors</td><td><span class="status upcoming">Upcoming</span></td></tr>
+          <tr><td class="date-col">31st Oct 2025</td><td>TDS Return — Q2 (Jul–Sep 2025)</td><td>All deductors</td><td><span class="status upcoming">Upcoming</span></td></tr>
+          <tr><td class="date-col">15th of every month</td><td>TCS Return Filing</td><td>All TCS collectors</td><td><span class="status upcoming">Recurring</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="roc-tab" class="tab-content">
+      <table class="dates-table">
+        <thead><tr><th>Due Date</th><th>Compliance</th><th>Who It Applies To</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="date-col">30th Sep 2025</td><td>AOC-4 (Financial Statements)</td><td>All Private Limited Companies</td><td><span class="status upcoming">Upcoming</span></td></tr>
+          <tr><td class="date-col">31st Oct 2025</td><td>MGT-7 (Annual Return)</td><td>All Private Limited Companies</td><td><span class="status upcoming">Upcoming</span></td></tr>
+          <tr><td class="date-col">30th Apr 2025</td><td>DIR-3 KYC (Director KYC)</td><td>All DINs allotted before Mar 31</td><td><span class="status ok">Done</span></td></tr>
+          <tr><td class="date-col">Within 30 days</td><td>INC-20A (Business Commencement)</td><td>Newly incorporated companies</td><td><span class="status upcoming">Event-Based</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <button class="btn-primary" onclick="showPage('contact')">📅 Get Deadline Reminders</button>
+    </div>
+  </section>
+</div>
+
+<!-- ========== CALCULATORS PAGE ========== -->
+<div id="calculators" class="page">
+  <section class="calculators" style="padding-top:130px">
+    <div class="section-title">
+      <div class="section-label">Free Tools</div>
+      <h2>Tax & <span>Financial</span> Calculators</h2>
+      <p>Free online calculators to help you plan your finances better.</p>
+    </div>
+    <div class="calc-tabs">
+      <button class="calc-tab active" onclick="showCalc('gst-calc')">GST Calculator</button>
+      <button class="calc-tab" onclick="showCalc('emi-calc')">EMI Calculator</button>
+      <button class="calc-tab" onclick="showCalc('itr-calc')">Tax Estimator</button>
+    </div>
+
+    <!-- GST CALCULATOR -->
+    <div id="gst-calc" class="calc-panel active">
+      <h3>🧾 GST Calculator</h3>
+      <div class="calc-row">
+        <div class="form-group">
+          <label>Amount (₹)</label>
+          <input type="number" id="gst-amount" placeholder="e.g. 10000" oninput="calcGST()">
+        </div>
+        <div class="form-group">
+          <label>GST Rate</label>
+          <select id="gst-rate" onchange="calcGST()">
+            <option value="5">5%</option>
+            <option value="12">12%</option>
+            <option value="18" selected>18%</option>
+            <option value="28">28%</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Calculation Type</label>
+        <select id="gst-type" onchange="calcGST()">
+          <option value="exclusive">Add GST (Exclusive)</option>
+          <option value="inclusive">Extract GST (Inclusive)</option>
+        </select>
+      </div>
+      <div class="calc-result" id="gst-result">
+        <div class="result-row"><span class="result-label">Base Amount</span><span class="result-value" id="gr-base">—</span></div>
+        <div class="result-row"><span class="result-label">CGST</span><span class="result-value" id="gr-cgst">—</span></div>
+        <div class="result-row"><span class="result-label">SGST</span><span class="result-value" id="gr-sgst">—</span></div>
+        <div class="result-row"><span class="result-label" style="font-weight:700;color:var(--navy)">Total Amount</span><span class="result-value" id="gr-total">—</span></div>
+      </div>
+    </div>
+
+    <!-- EMI CALCULATOR -->
+    <div id="emi-calc" class="calc-panel">
+      <h3>🏦 EMI Calculator</h3>
+      <div class="calc-row">
+        <div class="form-group">
+          <label>Loan Amount (₹)</label>
+          <input type="number" id="emi-principal" placeholder="e.g. 1000000">
+        </div>
+        <div class="form-group">
+          <label>Annual Interest Rate (%)</label>
+          <input type="number" id="emi-rate" placeholder="e.g. 8.5" step="0.1">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Loan Tenure (Months)</label>
+        <input type="number" id="emi-tenure" placeholder="e.g. 60">
+      </div>
+      <button class="calc-btn" onclick="calcEMI()">Calculate EMI</button>
+      <div class="calc-result" id="emi-result">
+        <div class="result-row"><span class="result-label">Monthly EMI</span><span class="result-value" id="er-emi">—</span></div>
+        <div class="result-row"><span class="result-label">Total Interest</span><span class="result-value" id="er-interest">—</span></div>
+        <div class="result-row"><span class="result-label">Total Amount Payable</span><span class="result-value" id="er-total">—</span></div>
+      </div>
+    </div>
+
+    <!-- INCOME TAX ESTIMATOR -->
+    <div id="itr-calc" class="calc-panel">
+      <h3>📊 Income Tax Estimator (FY 2025–26)</h3>
+      <div class="calc-row">
+        <div class="form-group">
+          <label>Annual Gross Income (₹)</label>
+          <input type="number" id="tax-income" placeholder="e.g. 1200000">
+        </div>
+        <div class="form-group">
+          <label>Tax Regime</label>
+          <select id="tax-regime">
+            <option value="new">New Tax Regime</option>
+            <option value="old">Old Tax Regime</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" id="deductions-group">
+        <label>Total Deductions (80C, HRA etc.) (₹) — Old Regime Only</label>
+        <input type="number" id="tax-deductions" placeholder="e.g. 150000">
+      </div>
+      <button class="calc-btn" onclick="calcTax()">Estimate Tax</button>
+      <div class="calc-result" id="tax-result">
+        <div class="result-row"><span class="result-label">Taxable Income</span><span class="result-value" id="tr-taxable">—</span></div>
+        <div class="result-row"><span class="result-label">Income Tax</span><span class="result-value" id="tr-tax">—</span></div>
+        <div class="result-row"><span class="result-label">Surcharge</span><span class="result-value" id="tr-surcharge">—</span></div>
+        <div class="result-row"><span class="result-label">Health & Education Cess (4%)</span><span class="result-value" id="tr-cess">—</span></div>
+        <div class="result-row"><span class="result-label">Total Tax Liability</span><span class="result-value" id="tr-total">—</span></div>
+      </div>
+      <p style="text-align:center;margin-top:1rem;font-size:.82rem;color:var(--gray)">*Indicative estimate only. Consult a CA for accurate computation.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ========== CONTACT / APPOINTMENT PAGE ========== -->
+<div id="contact" class="page">
+  <!-- APPOINTMENT BOOKING -->
+  <section class="appointment" style="padding-top:130px">
+    <div class="section-title">
+      <div class="section-label">Book a Meeting</div>
+      <h2>Schedule Your <span>Free Consultation</span></h2>
+    </div>
+    <div class="appt-grid">
+      <div class="appt-info">
+        <h2>Talk to CA Swapnil Soni Directly</h2>
+        <p>Get expert advice on your specific tax situation. First consultation is always free and commitment-free.</p>
+        <div class="appt-feature"><div class="appt-feature-icon">📞</div><div><strong>Phone / WhatsApp</strong><br><a href="tel:+919890801802" style="color:var(--gray);text-decoration:none">+91 98908 01802</a></div></div>
+        <div class="appt-feature"><div class="appt-feature-icon">📧</div><div><strong>Email</strong><br><a href="mailto:caswapnilsoni@gmail.com" style="color:var(--gray);text-decoration:none">caswapnilsoni@gmail.com</a></div></div>
+        <div class="appt-feature"><div class="appt-feature-icon">📍</div><div><strong>Office</strong><br><span style="color:var(--gray)">Pune, Maharashtra, India</span></div></div>
+        <div class="appt-feature"><div class="appt-feature-icon">🕐</div><div><strong>Hours</strong><br><span style="color:var(--gray)">Mon–Sun: 9 AM – 6 PM IST</span></div></div>
+      </div>
+      <div class="appt-form">
+        <h3>📅 Book an Appointment</h3>
+        <div class="form-group"><label>Full Name *</label><input type="text" id="appt-name" placeholder="Your full name"></div>
+        <div class="form-group"><label>Email *</label><input type="email" id="appt-email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Phone / WhatsApp *</label><input type="tel" id="appt-phone" placeholder="+91 XXXXX XXXXX"></div>
+        <div class="form-group"><label>Service Needed *</label>
+          <select id="appt-service">
+            <option value="">Select a service</option>
+            <option>ITR Filing</option><option>GST Services</option><option>Tax Planning</option>
+            <option>Company Formation</option><option>ROC Compliance</option><option>Business Compliance</option><option>Other</option>
+          </select></div>
+        <div class="form-group"><label>Preferred Date</label><input type="date" id="appt-date"></div>
+        <div class="form-group"><label>Message (Optional)</label><input type="text" id="appt-msg" placeholder="Brief description of your requirement"></div>
+        <button class="calc-btn" onclick="bookAppointment()">📅 Confirm Booking</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT INFO -->
+  <section class="contact-section">
+    <div class="section-title"><div class="section-label">Get In Touch</div><h2>Contact <span>Details</span></h2></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>We're Here to Help</h2>
+        <p>Reach us through any channel below. We respond promptly to all queries.</p>
+        <div class="contact-item"><div class="c-icon">📧</div><div class="c-detail"><h4>Email</h4><a href="mailto:caswapnilsoni@gmail.com">caswapnilsoni@gmail.com</a></div></div>
+        <div class="contact-item"><div class="c-icon">💬</div><div class="c-detail"><h4>WhatsApp</h4><a href="https://wa.me/919890801802" target="_blank">+91 98908 01802</a></div></div>
+        <div class="contact-item"><div class="c-icon">☎️</div><div class="c-detail"><h4>Phone</h4><a href="tel:+919890801802">+91 98908 01802</a></div></div>
+        <div class="contact-item"><div class="c-icon">📍</div><div class="c-detail"><h4>Location</h4><p>Pune, Maharashtra, India</p></div></div>
+      </div>
+      <div class="contact-form">
+        <h3>Send us a Message</h3>
+        <input type="text" id="cf-name" placeholder="Full Name *">
+        <input type="email" id="cf-email" placeholder="Email Address *">
+        <input type="tel" id="cf-phone" placeholder="Phone Number *">
+        <select id="cf-service"><option value="">Service Interested In</option><option>ITR Filing</option><option>GST Services</option><option>Tax Planning</option><option>Company Formation</option><option>Other</option></select>
+        <textarea id="cf-msg" placeholder="Your message or query..."></textarea>
+        <button class="form-submit" onclick="sendContact()">Send Message →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT LOGIN -->
+  <section class="client-login">
+    <div class="section-title"><div class="section-label">Client Portal</div><h2>Client <span>Login Area</span></h2></div>
+    <div class="login-grid">
+      <div class="login-text">
+        <h2>Access Your Financial Dashboard</h2>
+        <p>Existing clients can log in to track return status, download documents, and communicate securely.</p>
+        <ul class="login-features">
+          <li>Track ITR and GST filing status</li>
+          <li>Download Form 16, certificates, reports</li>
+          <li>Secure document sharing</li>
+          <li>Upcoming due date reminders</li>
+          <li>Invoice and payment history</li>
+        </ul>
+        <p style="margin-top:1rem;font-size:.9rem;color:var(--gray)">Don't have an account? <a onclick="showPage('contact')" style="color:var(--teal);cursor:pointer;font-weight:600">Contact us to get started →</a></p>
+      </div>
+      <div class="login-form">
+        <h3>🔐 Client Login</h3>
+        <input type="email" id="login-email" placeholder="Registered Email Address">
+        <input type="password" id="login-pw" placeholder="Password">
+        <button onclick="loginClient()">Login to Portal</button>
+        <div class="login-links">
+          <a>Forgot Password?</a>
+          <a onclick="showPage('contact')">New Client? Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========== MODALS ========== -->
+<div id="itr-modal" class="modal" onclick="closeModalOutside(event,'itr-modal')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('itr-modal')">✕</button>
+    <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">📋 ITR Filing Services</h2>
+    <div class="modal-body">
+      <h3>Who We Help</h3><p>Salaried employees, self-employed professionals, business owners, HUF, partnerships, companies, NRIs, and first-time filers.</p>
+      <h3>What's Included</h3>
+      <ul><li>Document collection and verification</li><li>Computation of income and tax liability</li><li>Form 26AS and AIS reconciliation</li><li>e-Filing and ITR-V submission</li><li>Refund tracking and follow-up</li><li>Notice handling if any</li></ul>
+      <h3>Starting From</h3><p>₹499 for basic salaried return. Custom pricing for business returns.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn modal-btn-primary" onclick="bookService('ITR Filing')">Book Now</button>
+      <a href="https://wa.me/919890801802" target="_blank" class="modal-btn modal-btn-secondary" style="text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<div id="gst-modal" class="modal" onclick="closeModalOutside(event,'gst-modal')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('gst-modal')">✕</button>
+    <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">🧾 GST Services</h2>
+    <div class="modal-body">
+      <h3>Complete GST Management</h3><p>From registration to annual return — we handle everything so you can focus on your business.</p>
+      <h3>Services Covered</h3>
+      <ul><li>GST Registration (Regular, Composition, Casual)</li><li>Monthly/Quarterly GSTR-1 and GSTR-3B filing</li><li>GSTR-9 and GSTR-9C (Annual Returns)</li><li>GST Reconciliation (2A/2B matching)</li><li>GST Notices and Litigation support</li><li>GST Advisory and Planning</li></ul>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn modal-btn-primary" onclick="bookService('GST Services')">Book Now</button>
+      <a href="https://wa.me/919890801802" target="_blank" class="modal-btn modal-btn-secondary" style="text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<div id="tax-modal" class="modal" onclick="closeModalOutside(event,'tax-modal')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('tax-modal')">✕</button>
+    <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">💡 Tax Planning</h2>
+    <div class="modal-body">
+      <h3>Proactive Tax Strategy</h3><p>We don't just file your returns — we help you plan the entire year to legally minimize what you pay.</p>
+      <ul><li>80C investment planning (ELSS, PPF, LIC)</li><li>HRA structuring for salaried employees</li><li>NPS and pension deductions</li><li>HUF formation and tax splitting</li><li>Capital gains harvest and planning</li><li>Business expense optimization</li></ul>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn modal-btn-primary" onclick="bookService('Tax Planning')">Book Now</button>
+      <a href="https://wa.me/919890801802" target="_blank" class="modal-btn modal-btn-secondary" style="text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<div id="company-modal" class="modal" onclick="closeModalOutside(event,'company-modal')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('company-modal')">✕</button>
+    <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">🏢 Company Formation</h2>
+    <div class="modal-body">
+      <h3>Start Your Business Right</h3><p>We handle the entire registration process — from name approval to incorporation certificate — within days.</p>
+      <ul><li>Private Limited Company registration</li><li>Limited Liability Partnership (LLP)</li><li>One Person Company (OPC)</li><li>Sole Proprietorship / Partnership</li><li>Section 8 (NGO) / Trust registration</li><li>Post-incorporation compliance setup</li></ul>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn modal-btn-primary" onclick="bookService('Company Formation')">Book Now</button>
+      <a href="https://wa.me/919890801802" target="_blank" class="modal-btn modal-btn-secondary" style="text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<div id="roc-modal" class="modal" onclick="closeModalOutside(event,'roc-modal')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('roc-modal')">✕</button>
+    <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">📁 ROC Compliance</h2>
+    <div class="modal-body">
+      <h3>Stay Compliant with MCA</h3><p>Annual ROC compliance is mandatory for all registered companies. Missing filings attracts heavy penalties.</p>
+      <ul><li>AOC-4: Filing of Financial Statements</li><li>MGT-7: Annual Return filing</li><li>DIR-3 KYC: Director KYC</li><li>Board meeting minutes & resolutions</li><li>Statutory register maintenance</li><li>ROC notice reply and rectification</li></ul>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn modal-btn-primary" onclick="bookService('ROC Compliance')">Book Now</button>
+      <a href="https://wa.me/919890801802" target="_blank" class="modal-btn modal-btn-secondary" style="text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<div id="business-modal" class="modal" onclick="closeModalOutside(event,'business-modal')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('business-modal')">✕</button>
+    <h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">📈 Business Compliance</h2>
+    <div class="modal-body">
+      <h3>Complete Employer Compliance</h3><p>Avoid penalties with timely TDS, PF, ESI, and payroll filings managed by our experts.</p>
+      <ul><li>TDS deduction and monthly deposit</li><li>Quarterly TDS returns (24Q, 26Q)</li><li>PF & ESI registration and monthly filing</li><li>Professional Tax registration and filing</li><li>Payroll processing and salary slips</li><li>Labour law compliance advisory</li></ul>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn modal-btn-primary" onclick="bookService('Business Compliance')">Book Now</button>
+      <a href="https://wa.me/919890801802" target="_blank" class="modal-btn modal-btn-secondary" style="text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<div id="audit-modal" class="modal" onclick="closeModalOutside(event,'audit-modal')"><div class="modal-content"><button class="modal-close" onclick="closeModal('audit-modal')">✕</button><h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">🔍 Audit Services</h2><div class="modal-body"><h3>Independent Audit</h3><p>Statutory, tax, and internal audits conducted with integrity and professional standards.</p><ul><li>Statutory audit under Companies Act</li><li>Tax Audit under Section 44AB</li><li>Internal audit for process improvement</li><li>Concurrent audit for banks/NBFCs</li></ul></div><div class="modal-footer"><button class="modal-btn modal-btn-primary" onclick="bookService('Audit Services')">Book Now</button></div></div></div>
+
+<div id="fema-modal" class="modal" onclick="closeModalOutside(event,'fema-modal')"><div class="modal-content"><button class="modal-close" onclick="closeModal('fema-modal')">✕</button><h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">🌏 FEMA & NRI Services</h2><div class="modal-body"><h3>Cross-Border Compliance</h3><p>Expertise in NRI taxation, FEMA regulations, and international tax planning under DTAA.</p><ul><li>NRI ITR filing</li><li>DTAA benefit advisory</li><li>Repatriation of funds</li><li>FEMA compliance filings</li></ul></div><div class="modal-footer"><button class="modal-btn modal-btn-primary" onclick="bookService('FEMA Services')">Book Now</button></div></div></div>
+
+<div id="msme-modal" class="modal" onclick="closeModalOutside(event,'msme-modal')"><div class="modal-content"><button class="modal-close" onclick="closeModal('msme-modal')">✕</button><h2 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem">🏗️ MSME & Startup Services</h2><div class="modal-body"><h3>Grow With Government Support</h3><p>Unlock government benefits and schemes with proper MSME and Startup India registration.</p><ul><li>Udyam MSME registration</li><li>Startup India recognition</li><li>DPIIT certification</li><li>Government scheme advisory</li></ul></div><div class="modal-footer"><button class="modal-btn modal-btn-primary" onclick="bookService('MSME Services')">Book Now</button></div></div></div>
+
+<!-- PROFESSIONAL FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Tax<span>Mitra</span></span>
+      <p>India's trusted tax and compliance partner. Expert CA services for individuals, startups, and businesses. Serving clients pan-India with integrity and expertise.</p>
+      <div class="footer-social">
+        <a class="s-btn" href="https://wa.me/919890801802" target="_blank">💬</a>
+        <a class="s-btn" href="mailto:caswapnilsoni@gmail.com">📧</a>
+        <a class="s-btn" href="tel:+919890801802">📞</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a onclick="openModal('itr')">ITR Filing</a>
+      <a onclick="openModal('gst')">GST Services</a>
+      <a onclick="openModal('tax')">Tax Planning</a>
+      <a onclick="openModal('company')">Company Formation</a>
+      <a onclick="openModal('roc')">ROC Compliance</a>
+      <a onclick="openModal('audit')">Audit Services</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About Us</a>
+      <a onclick="showPage('blog')">Blog</a>
+      <a onclick="showPage('duedates')">Due Dates</a>
+      <a onclick="showPage('calculators')">Calculators</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+919890801802">+91 98908 01802</a>
+      <a href="mailto:caswapnilsoni@gmail.com">caswapnilsoni@gmail.com</a>
+      <a>Pune, Maharashtra, India</a>
+      <a>Mon–Sun: 9 AM – 6 PM</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024–2025 TaxMitra. All rights reserved. | CA Swapnil Soni</span>
+    <span>Made with ❤️ for Indian Taxpayers</span>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-btns">
+  <a href="https://wa.me/919890801802" target="_blank" class="float-btn float-whatsapp" title="WhatsApp">
+    <span class="float-label">WhatsApp Us</span>💬
+  </a>
+  <a href="tel:+919890801802" class="float-btn float-call" title="Call Us">
+    <span class="float-label">Call Now</span>📞
+  </a>
+  <button class="float-btn float-chat" onclick="toggleChat()" title="Live Chat">
+    <span class="float-label">Live Chat</span>💭
+  </button>
+</div>
+
+<!-- LIVE CHAT WIDGET -->
+<div id="chat-widget">
+  <div class="chat-header">
+    <div><h4>TaxMitra Support</h4><p>🟢 Usually responds in minutes</p></div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div class="chat-msg bot">👋 Hi! Welcome to TaxMitra. How can I help you today?</div>
+    <div class="chat-msg bot">You can ask about our services, pricing, or book an appointment!</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="chatEnter(event)">
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<script>
+// ===== LOADER =====
+window.addEventListener('load',()=>{
+  setTimeout(()=>{document.getElementById('loader').classList.add('hide')},2000);
+  animateCounters();
+  initParticles();
+  initReveal();
+});
+
+// ===== BANNER =====
+function closeBanner(){document.getElementById('sticky-banner').style.display='none';document.querySelector('nav').style.top='0'}
+
+// ===== MOBILE MENU =====
+function toggleMobileMenu(){
+  const ham=document.getElementById('hamburger');
+  const nav=document.getElementById('mobileNav');
+  ham.classList.toggle('open');
+  nav.classList.toggle('open');
+  document.body.style.overflow=nav.classList.contains('open')?'hidden':'auto';
+}
+function closeMobileMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileNav').classList.remove('open');
+  document.body.style.overflow='auto';
+}
+
+// ===== PAGE NAVIGATION =====
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById(id);
+  if(pg){pg.classList.add('active');window.scrollTo(0,0);}
+}
+
+// ===== TAB SWITCHING =====
+function switchTab(e,id){
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  e.target.classList.add('active');
+}
+
+// ===== MODALS =====
+const modalMap={itr:'itr-modal',gst:'gst-modal',tax:'tax-modal',company:'company-modal',roc:'roc-modal',business:'business-modal',audit:'audit-modal',fema:'fema-modal',msme:'msme-modal'};
+function openModal(key){const m=document.getElementById(modalMap[key]);if(m){m.classList.add('active');document.body.style.overflow='hidden';}}
+function closeModal(id){document.getElementById(id).classList.remove('active');document.body.style.overflow='auto';}
+function closeModalOutside(e,id){if(e.target.id===id)closeModal(id);}
+function bookService(name){
+  Object.values(modalMap).forEach(m=>{document.getElementById(m).classList.remove('active');});
+  document.body.style.overflow='auto';
+  showPage('contact');
+  setTimeout(()=>{const s=document.getElementById('appt-service');if(s)s.value=name;},100);
+}
+
+// ===== PARTICLES =====
+function initParticles(){
+  const c=document.getElementById('particles');if(!c)return;
+  for(let i=0;i<25;i++){
+    const s=document.createElement('span');
+    s.style.cssText=`left:${Math.random()*100}%;width:${Math.random()*3+1}px;height:${Math.random()*3+1}px;animation-duration:${Math.random()*8+6}s;animation-delay:${Math.random()*5}s`;
+    c.appendChild(s);
+  }
+}
+
+// ===== COUNTERS =====
+function animateCounters(){
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const target=parseInt(el.getAttribute('data-target'));
+    let cur=0;const step=target/60;
+    const t=setInterval(()=>{
+      cur=Math.min(cur+step,target);
+      el.textContent=Math.floor(cur);
+      if(cur>=target)clearInterval(t);
+    },25);
+  });
+}
+
+// ===== SCROLL REVEAL =====
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+// ===== CALCULATORS =====
+function calcGST(){
+  const amt=parseFloat(document.getElementById('gst-amount').value)||0;
+  const rate=parseFloat(document.getElementById('gst-rate').value);
+  const type=document.getElementById('gst-type').value;
+  let base,gstAmt,total;
+  if(type==='exclusive'){base=amt;gstAmt=amt*rate/100;total=amt+gstAmt;}
+  else{total=amt;base=amt/(1+rate/100);gstAmt=total-base;}
+  const half=gstAmt/2;
+  document.getElementById('gr-base').textContent='₹'+base.toFixed(2);
+  document.getElementById('gr-cgst').textContent='₹'+half.toFixed(2);
+  document.getElementById('gr-sgst').textContent='₹'+half.toFixed(2);
+  document.getElementById('gr-total').textContent='₹'+total.toFixed(2);
+  document.getElementById('gst-result').classList.add('show');
+}
+function calcEMI(){
+  const P=parseFloat(document.getElementById('emi-principal').value)||0;
+  const annR=parseFloat(document.getElementById('emi-rate').value)||0;
+  const n=parseInt(document.getElementById('emi-tenure').value)||0;
+  if(!P||!annR||!n){alert('Please fill all fields.');return;}
+  const r=annR/(12*100);
+  const emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const total=emi*n;const interest=total-P;
+  document.getElementById('er-emi').textContent='₹'+emi.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  document.getElementById('er-interest').textContent='₹'+interest.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  document.getElementById('er-total').textContent='₹'+total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  document.getElementById('emi-result').classList.add('show');
+}
+function calcTax(){
+  const gross=parseFloat(document.getElementById('tax-income').value)||0;
+  const regime=document.getElementById('tax-regime').value;
+  const ded=parseFloat(document.getElementById('tax-deductions').value)||0;
+  let taxable=gross;
+  if(regime==='new'){taxable=Math.max(0,gross-75000);}
+  else{taxable=Math.max(0,gross-ded-50000);}
+  let tax=0;
+  if(regime==='new'){
+    const slabs=[[300000,0],[400000,.05],[300000,.1],[300000,.15],[300000,.2],[Infinity,.3]];
+    let rem=taxable,base=0;
+    for(const[s,r]of slabs){if(rem<=0)break;const apply=Math.min(rem,s);tax+=apply*r;rem-=apply;base+=s;if(rem<=0)break;}
+  } else {
+    const slabs=[[250000,0],[250000,.05],[500000,.2],[Infinity,.3]];
+    let rem=taxable;
+    for(const[s,r]of slabs){if(rem<=0)break;const apply=Math.min(rem,s);tax+=apply*r;rem-=apply;}
+    if(taxable<=500000&&tax>0)tax=Math.max(0,tax-12500);
+  }
+  const cess=tax*.04;const total=tax+cess;
+  const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+  document.getElementById('tr-taxable').textContent=fmt(taxable);
+  document.getElementById('tr-tax').textContent=fmt(tax);
+  document.getElementById('tr-surcharge').textContent='₹0';
+  document.getElementById('tr-cess').textContent=fmt(cess);
+  document.getElementById('tr-total').textContent=fmt(total);
+  document.getElementById('tax-result').classList.add('show');
+}
+function showCalc(id){
+  document.querySelectorAll('.calc-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.calc-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ===== NEWSLETTER =====
+function subscribeNewsletter(){
+  const e=document.getElementById('newsletter-email');
+  if(!e||!e.value){alert('Please enter your email.');return;}
+  alert('✅ Thank you for subscribing!\n\nYou will receive expert tax tips and compliance reminders at:\n'+e.value);
+  e.value='';
+}
+
+// ===== APPOINTMENT =====
+function bookAppointment(){
+  const n=document.getElementById('appt-name').value;
+  const e=document.getElementById('appt-email').value;
+  const p=document.getElementById('appt-phone').value;
+  const s=document.getElementById('appt-service').value;
+  if(!n||!e||!p||!s){alert('Please fill all required fields.');return;}
+  alert(`✅ Appointment Booked!\n\nName: ${n}\nService: ${s}\n\nCA Swapnil Soni will contact you on ${p} to confirm the appointment time.\n\nConfirmation sent to: ${e}`);
+  ['appt-name','appt-email','appt-phone','appt-msg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+}
+
+// ===== CONTACT =====
+function sendContact(){
+  const n=document.getElementById('cf-name').value;
+  if(!n){alert('Please fill your name.');return;}
+  alert(`✅ Message Sent!\n\nThank you ${n}! We'll get back to you within 24 hours.`);
+  ['cf-name','cf-email','cf-phone','cf-msg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+}
+
+// ===== LOGIN =====
+function loginClient(){
+  const e=document.getElementById('login-email').value;
+  if(!e){alert('Please enter your email.');return;}
+  alert('Client portal is currently being set up. Please contact us on WhatsApp or email for document access.\n\nWhatsApp: +91 98908 01802\nEmail: caswapnilsoni@gmail.com');
+}
+
+// ===== CHAT =====
+function toggleChat(){
+  const w=document.getElementById('chat-widget');
+  w.classList.toggle('open');
+}
+const chatResponses=['Thank you for reaching out! Please share more details so I can help you better.','For urgent queries, please WhatsApp us at +91 98908 01802.','CA Swapnil Soni will personally address your query within a few hours.','You can book a free consultation using the "Book Appointment" button.','We offer services across ITR filing, GST, Company Formation, Tax Planning and more!'];
+let chatIdx=0;
+function sendChat(){
+  const inp=document.getElementById('chat-input');
+  const body=document.getElementById('chat-body');
+  if(!inp.value.trim())return;
+  const um=document.createElement('div');um.className='chat-msg user';um.textContent=inp.value;body.appendChild(um);
+  inp.value='';
+  setTimeout(()=>{
+    const bm=document.createElement('div');bm.className='chat-msg bot';bm.textContent=chatResponses[chatIdx%chatResponses.length];chatIdx++;
+    body.appendChild(bm);body.scrollTop=body.scrollHeight;
+  },800);
+  body.scrollTop=body.scrollHeight;
+}
+function chatEnter(e){if(e.key==='Enter')sendChat();}
+</script>
+</body>
+</html>
