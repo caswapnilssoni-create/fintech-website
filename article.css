@@ -1,0 +1,30 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#003D7A;--teal:#17A697;--gold:#FFB800;--gray:#64748b;--dark:#1e293b;--light:#F4F8FC}
+body{font-family:'DM Sans',sans-serif;color:var(--dark);line-height:1.75;background:#fff}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
+.site-nav{background:#fff;box-shadow:0 1px 20px rgba(0,61,122,.08);padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--navy);text-decoration:none}
+.logo span{color:var(--teal)}
+.back{font-weight:600;font-size:.92rem}
+.article-wrap{max-width:780px;margin:0 auto;padding:3rem 5% 5rem}
+.article-meta{color:var(--gray);font-size:.88rem;margin-bottom:1rem}
+.article-meta span{margin-right:1rem}
+.article-wrap h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--navy);line-height:1.2;margin-bottom:1.5rem}
+.article-wrap h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--navy);margin:2rem 0 .75rem}
+.article-wrap h3{font-size:1.05rem;color:var(--navy);margin:1.5rem 0 .5rem}
+.article-wrap p,.article-wrap li{margin-bottom:1rem;color:#334155}
+.article-wrap ul,.article-wrap ol{margin:0 0 1rem 1.25rem}
+.article-wrap table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:.9rem}
+.article-wrap th,.article-wrap td{border:1px solid #e2e8f0;padding:.65rem .75rem;text-align:left}
+.article-wrap th{background:var(--light);color:var(--navy);font-weight:600}
+.cta-box{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;border-radius:16px;padding:2rem;margin-top:2.5rem}
+.cta-box h3{color:#fff;margin:0 0 .5rem;font-family:'Playfair Display',serif}
+.cta-box p{color:rgba(255,255,255,.9);margin-bottom:1rem}
+.cta-box a{display:inline-block;background:var(--gold);color:var(--navy);padding:.75rem 1.5rem;border-radius:50px;font-weight:700;text-decoration:none}
+.site-footer{background:var(--navy);color:rgba(255,255,255,.8);text-align:center;padding:2rem 5%;font-size:.85rem}
+.article-content img{max-width:100%;height:auto;border-radius:12px;margin:1rem 0}
+.article-content a{color:var(--teal);font-weight:600}
+.article-content blockquote{border-left:4px solid var(--teal);padding-left:1rem;margin:1.5rem 0;color:var(--gray)}
+.article-content pre,.article-content code{background:var(--light);border-radius:8px;font-size:.9em}
+.article-content pre{padding:1rem;overflow-x:auto;margin:1rem 0}
