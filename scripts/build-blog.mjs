@@ -147,7 +147,135 @@ function estimateReadTime(markdown) {
   return Math.max(1, Math.round(words / 220));
 }
 
-function buildArticleHtml(post) {
+/**
+ * Detect a FAQ section in the Markdown body and return an array of {q, a} pairs.
+ * Supports two common formats:
+ *   1. ## Frequently Asked Questions
+ *      **Question text?**
+ *      Answer paragraph...
+ *   2. ## FAQs
+ *      ### Question text?
+ *      Answer paragraph...
+ */
+function extractFAQs(markdown) {
+  if (!markdown) return [];
+  const lower = markdown.toLowerCase();
+  const headerRe = /^(#{2,3})\s+(?:frequently\s+asked\s+questions|faqs?)\b.*$/im;
+  const m = lower.match(headerRe);
+  if (!m) return [];
+  const startIdx = m.index + m[0].length;
+  // Find next ## heading after the FAQ section
+  const rest = markdown.slice(startIdx);
+  const nextHead = rest.search(/^##\s/m);
+  const section = nextHead === -1 ? rest : rest.slice(0, nextHead);
+
+  const faqs = [];
+
+  // Format 1: **Q?**\nAnswer
+  const re1 = /^\s*\*\*(.+?\?)\*\*\s*\n+([^\n][^\n*][\s\S]*?)(?=\n\s*\*\*|\n\s*###|\n\s*##|$)/gm;
+  let m1;
+  while ((m1 = re1.exec(section))) {
+    const q = m1[1].trim();
+    const a = m1[2].trim();
+    if (q && a) faqs.push({ q, a });
+  }
+
+  if (faqs.length === 0) {
+    // Format 2: ### Q?\nAnswer
+    const re2 = /^###\s+(.+?\?)\s*\n+([\s\S]*?)(?=\n###\s|\n##\s|$)/gm;
+    let m2;
+    while ((m2 = re2.exec(section))) {
+      const q = m2[1].trim();
+      const a = m2[2].trim();
+      if (q && a) faqs.push({ q, a });
+    }
+  }
+
+  return faqs;
+}
+
+/** Pick up to 3 related posts: same category first, then most recent. */
+function pickRelated(post, allPosts) {
+  const others = allPosts.filter((p) => p.slug !== post.slug);
+  const sameCat = others.filter((p) => (p.category || '').toLowerCase() === (post.category || '').toLowerCase());
+  const seen = new Set();
+  const pick = [];
+  for (const p of sameCat) {
+    if (pick.length >= 3) break;
+    if (!seen.has(p.slug)) {
+      seen.add(p.slug);
+      pick.push(p);
+    }
+  }
+  for (const p of others) {
+    if (pick.length >= 3) break;
+    if (!seen.has(p.slug)) {
+      seen.add(p.slug);
+      pick.push(p);
+    }
+  }
+  return pick;
+}
+
+function buildRelatedHtml(related) {
+  if (!related.length) return '';
+  const cards = related
+    .map((p) => {
+      const date = p.dateLabel || '';
+      return `<a class="related-card" href="${escapeHtml(p.slug)}.html">
+      <span class="r-icon">${escapeHtml(p.icon || '📄')}</span>
+      <span class="r-cat">${escapeHtml(p.category || '')}</span>
+      <span class="r-title">${escapeHtml(p.title)}</span>
+      <span class="r-date">${escapeHtml(date)}</span>
+    </a>`;
+    })
+    .join('\n');
+  return `<aside class="related-wrap" aria-label="Related articles">
+  <h2>Related Articles</h2>
+  <div class="related-grid">${cards}</div>
+</aside>`;
+}
+
+function buildBreadcrumbHtml(post) {
+  const cat = post.category || 'Articles';
+  const catParam = encodeURIComponent(cat);
+  return `<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../index.html">Home</a><span class="sep">›</span>
+  <a href="../index.html#blog">Blog</a><span class="sep">›</span>
+  <a href="../index.html?cat=${catParam}#blog">${escapeHtml(cat)}</a><span class="sep">›</span>
+  <span aria-current="page">${escapeHtml(post.title)}</span>
+</nav>`;
+}
+
+function buildBreadcrumbSchema(post) {
+  const cat = post.category || 'Articles';
+  const catParam = encodeURIComponent(cat);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/#blog` },
+      { '@type': 'ListItem', position: 3, name: cat, item: `${SITE_URL}/?cat=${catParam}#blog` },
+      { '@type': 'ListItem', position: 4, name: post.title, item: `${SITE_URL}/blog/${post.slug}.html` },
+    ],
+  };
+}
+
+function buildFaqSchema(faqs) {
+  if (!faqs.length) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+}
+
+function buildArticleHtml(post, allPosts) {
   const title = escapeHtml(post.title);
   const cat = escapeHtml(post.category);
   const date = post.dateLabel || '';
@@ -162,6 +290,28 @@ function buildArticleHtml(post) {
   const hashnodeRef = post.hashnodeUrl
     ? `<p style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #eee;font-size:.9rem;color:var(--gray)">Originally published on <a href="${escapeHtml(post.hashnodeUrl)}" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600">blog.taxmitrafinance.com</a></p>`
     : '';
+
+  const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    image: post.coverImage || undefined,
+    author: { '@type': 'Person', name: 'CA Swapnil Soni' },
+    publisher: { '@type': 'Organization', name: 'TaxMitra' },
+    mainEntityOfPage: canonical,
+  };
+  const breadcrumbSchema = buildBreadcrumbSchema(post);
+  const faqSchema = buildFaqSchema(post.faqs || []);
+  const ldScripts = [blogPostingSchema, breadcrumbSchema, faqSchema]
+    .filter(Boolean)
+    .map((s) => `<script type="application/ld+json">\n${JSON.stringify(s)}\n</script>`)
+    .join('\n');
+
+  const breadcrumbHtml = buildBreadcrumbHtml(post);
+  const related = pickRelated(post, allPosts);
+  const relatedHtml = buildRelatedHtml(related);
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -181,19 +331,7 @@ ${ogImage}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${ogDesc}">
-<script type="application/ld+json">
-${JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: post.title,
-  description: post.excerpt,
-  datePublished: post.date,
-  image: post.coverImage || undefined,
-  author: { '@type': 'Person', name: 'CA Swapnil Soni' },
-  publisher: { '@type': 'Organization', name: 'TaxMitra' },
-  mainEntityOfPage: canonical,
-})}
-</script>
+${ldScripts}
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -204,6 +342,7 @@ ${JSON.stringify({
   <a class="logo" href="../index.html">Tax<span>Mitra</span></a>
   <a class="back" href="../index.html#blog">← All articles</a>
 </nav>
+${breadcrumbHtml}
 <article class="article-wrap">
   <p class="article-meta"><span>${meta}</span></p>
   <h1>${title}</h1>
@@ -215,6 +354,7 @@ ${JSON.stringify({
     <a href="../index.html">Book free consultation →</a>
   </div>
 </article>
+${relatedHtml}
 <footer class="site-footer">© TaxMitra · <a href="../index.html" style="color:var(--gold)">taxmitrafinance.com</a></footer>
 </body>
 </html>`;
@@ -271,6 +411,7 @@ function readPosts() {
 
     const isoDate = data.date ? new Date(data.date).toISOString() : null;
 
+    const faqs = extractFAQs(body || '');
     const post = {
       title: String(data.title),
       slug: slugSafe,
@@ -284,9 +425,10 @@ function readPosts() {
       hashnodeUrl: data.hashnodeUrl || null,
       coverImage: data.coverImage || null,
       contentHtml,
+      faqs,
     };
     posts.push(post);
-    console.log(`  + ${slugSafe} (${contentHtml.length} chars, ${readTime} min)`);
+    console.log(`  + ${slugSafe} (${contentHtml.length} chars, ${readTime} min${faqs.length ? `, ${faqs.length} FAQ(s)` : ''})`);
   }
 
   // newest first
@@ -304,13 +446,13 @@ function writeOutputs(posts) {
   }
 
   for (const post of posts) {
-    const html = buildArticleHtml(post);
+    const html = buildArticleHtml(post, posts);
     fs.writeFileSync(path.join(BLOG_OUT, `${post.slug}.html`), html, 'utf8');
     console.log(`  ✓ blog/${post.slug}.html`);
   }
 
-  // Strip contentHtml from blogs.json (homepage doesn't need full bodies — saves bandwidth)
-  const manifestPosts = posts.map(({ contentHtml, ...rest }) => rest);
+  // Strip contentHtml and faqs from blogs.json (homepage doesn't need full bodies — saves bandwidth)
+  const manifestPosts = posts.map(({ contentHtml, faqs, ...rest }) => rest);
   const manifest = {
     builtAt: new Date().toISOString(),
     source: 'markdown',

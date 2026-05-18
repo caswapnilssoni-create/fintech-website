@@ -206,6 +206,11 @@ section{padding:90px 5%}
 .blog-meta{font-size:.82rem;color:var(--gray);margin-bottom:.5rem}
 .blog-empty{text-align:center;padding:3rem 1.5rem;color:var(--gray);max-width:520px;margin:2rem auto 0}
 .blog-empty p{margin-top:.5rem;font-size:.95rem}
+.blog-filters{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;max-width:1100px;margin:0 auto 2rem;padding:0 1rem}
+.blog-filter-chip{background:#fff;border:1px solid #e2e8f0;color:var(--dark);padding:.55rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .25s;font-family:inherit}
+.blog-filter-chip:hover{border-color:var(--teal);color:var(--teal)}
+.blog-filter-chip.active{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 6px 16px rgba(23,166,151,.25)}
+.blog-filter-chip .chip-count{margin-left:.4rem;font-size:.78rem;opacity:.7}
 
 /* ===== CALCULATORS ===== */
 .calculators{background:#fff}
@@ -782,6 +787,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
       <h2>Expert <span>Tax</span> Insights</h2>
       <p>Articles written by CA Swapnil Soni — read the full guides on TaxMitra.</p>
     </div>
+    <div class="blog-filters" id="blog-filters" role="tablist" aria-label="Filter articles by category"></div>
     <div class="blog-grid" id="blog-list-grid"></div>
     <p id="blog-sync-note" style="text-align:center;margin-top:.5rem;font-size:.8rem;color:var(--gray)"></p>
         <p style="text-align:center;margin-top:1.5rem;font-size:.85rem;color:var(--gray)">Also on <a href="https://blog.taxmitrafinance.com" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600">blog.taxmitrafinance.com</a> (Hashnode)</p>
@@ -1360,14 +1366,11 @@ window.addEventListener('load',()=>{
   initParticles();
   initReveal();
   initItrPopup();
-  if(location.hash==='blog')showPage('blog');
+  if(location.hash==='#blog'||new URL(location.href).searchParams.get('cat'))showPage('blog');
   loadBlogs();
 });
+let __ALL_POSTS=[];let __ACTIVE_CAT='All';
 async function loadBlogs(){
-  const grids=[
-    {id:'home-blog-grid',limit:2,reveal:true},
-    {id:'blog-list-grid',limit:0,reveal:false}
-  ];
   let data;
   try{
     const res=await fetch('data/blogs.json',{cache:'no-store'});
@@ -1377,13 +1380,46 @@ async function loadBlogs(){
     console.warn('Blog load failed:',e);
     return;
   }
-  const posts=(data.posts||[]).sort((a,b)=>new Date(b.date)-new Date(a.date));
-  grids.forEach(({id,limit,reveal})=>{
+  __ALL_POSTS=(data.posts||[]).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  // Restore category from URL hash (#blog?cat=Income+Tax) or sessionStorage
+  const cat=new URL(location.href).searchParams.get('cat')||sessionStorage.getItem('blogCat')||'All';
+  __ACTIVE_CAT=cat;
+  renderFilterChips();
+  renderBlogGrids();
+  const note=document.getElementById('blog-sync-note');
+  if(note&&data.syncedAt)note.textContent='Last updated: '+new Date(data.syncedAt).toLocaleString('en-IN');
+  if(note&&data.builtAt)note.textContent='Last updated: '+new Date(data.builtAt).toLocaleString('en-IN');
+}
+function renderFilterChips(){
+  const wrap=document.getElementById('blog-filters');
+  if(!wrap)return;
+  const counts={};__ALL_POSTS.forEach(p=>{const c=p.category||'Other';counts[c]=(counts[c]||0)+1});
+  const cats=['All',...Object.keys(counts).sort()];
+  wrap.innerHTML=cats.map(c=>{
+    const n=c==='All'?__ALL_POSTS.length:counts[c]||0;
+    const active=c===__ACTIVE_CAT?' active':'';
+    return '<button class="blog-filter-chip'+active+'" role="tab" aria-selected="'+(c===__ACTIVE_CAT)+'" onclick="filterBlog(\''+c.replace(/'/g,"\\'")+'\')">'+escapeHtml(c)+'<span class="chip-count">'+n+'</span></button>';
+  }).join('');
+}
+function filterBlog(cat){
+  __ACTIVE_CAT=cat;
+  sessionStorage.setItem('blogCat',cat);
+  renderFilterChips();
+  renderBlogGrids();
+}
+function renderBlogGrids(){
+  const grids=[
+    {id:'home-blog-grid',limit:2,reveal:true,filter:false},
+    {id:'blog-list-grid',limit:0,reveal:false,filter:true}
+  ];
+  grids.forEach(({id,limit,reveal,filter})=>{
     const el=document.getElementById(id);
     if(!el)return;
-    const list=limit>0?posts.slice(0,limit):posts;
+    let list=__ALL_POSTS;
+    if(filter&&__ACTIVE_CAT!=='All')list=list.filter(p=>(p.category||'Other')===__ACTIVE_CAT);
+    if(limit>0)list=list.slice(0,limit);
     if(!list.length){
-      el.innerHTML='<p class="blog-empty">No articles yet. Publish on Hashnode, then sync runs automatically.</p>';
+      el.innerHTML='<p class="blog-empty">No articles in this category yet.</p>';
       return;
     }
     el.innerHTML=list.map(p=>{
@@ -1393,8 +1429,6 @@ async function loadBlogs(){
     }).join('');
     if(reveal&&typeof initReveal==='function')initReveal();
   });
-  const note=document.getElementById('blog-sync-note');
-  if(note&&data.syncedAt)note.textContent='Last updated: '+new Date(data.syncedAt).toLocaleString('en-IN');
 }
 function escapeHtml(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML;}
 
