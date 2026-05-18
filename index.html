@@ -25,7 +25,7 @@ gtag('config', 'G-S2JLZPJM4F');
 <!-- SETUP CHECKLIST:
   1. Formspree: Already configured with ID meedjgok — verify at formspree.io/dashboard
   2. Google Search Console: Uncomment verification meta tag below and paste your code
-  3. Professional email: Replace soniswapnil207@gmail.com with infor@taxmitrafinance.com once set up
+  3. Professional email: Replace soniswapnil207@gmail.com with info@taxmitrafinance.com once set up
   4. OG image: Convert og-image.svg to og-image.png (1200×630px) for better WhatsApp/LinkedIn previews
 -->
 <!-- Google Search Console verification — paste code from search.google.com/search-console -->
@@ -1059,7 +1059,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
         <h2>Talk to CA Swapnil Soni Directly</h2>
         <p>Get expert advice on your specific tax situation. First consultation is always free and commitment-free.</p>
         <div class="appt-feature"><div class="appt-feature-icon">📞</div><div><strong>Phone / WhatsApp</strong><br><a href="tel:+919890801802" style="color:var(--gray);text-decoration:none">+91 98908 01802</a></div></div>
-        <div class="appt-feature"><div class="appt-feature-icon">📧</div><div><strong>Email</strong><br><a href="mailto:infor@taxmitrafinance.com" style="color:var(--gray);text-decoration:none">infor@taxmitrafinance.com</a></div></div>
+        <div class="appt-feature"><div class="appt-feature-icon">📧</div><div><strong>Email</strong><br><a href="mailto:info@taxmitrafinance.com" style="color:var(--gray);text-decoration:none">info@taxmitrafinance.com</a></div></div>
         <div class="appt-feature"><div class="appt-feature-icon">📍</div><div><strong>Office</strong><br><span style="color:var(--gray)">Pune, Maharashtra, India</span></div></div>
         <div class="appt-feature"><div class="appt-feature-icon">🕐</div><div><strong>Hours</strong><br><span style="color:var(--gray)">Mon–Sun: 9 AM – 6 PM IST</span></div></div>
       </div>
@@ -1089,7 +1089,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
       <div class="contact-info">
         <h2>We're Here to Help</h2>
         <p>Reach us through any channel below. We respond promptly to all queries.</p>
-        <div class="contact-item"><div class="c-icon">📧</div><div class="c-detail"><h4>Email</h4><a href="mailto:infor@taxmitrafinance.com">infor@taxmitrafinance.com</a></div></div>
+        <div class="contact-item"><div class="c-icon">📧</div><div class="c-detail"><h4>Email</h4><a href="mailto:info@taxmitrafinance.com">info@taxmitrafinance.com</a></div></div>
         <div class="contact-item"><div class="c-icon">💬</div><div class="c-detail"><h4>WhatsApp</h4><a href="https://wa.me/919890801802" target="_blank">+91 98908 01802</a></div></div>
         <div class="contact-item"><div class="c-icon">☎️</div><div class="c-detail"><h4>Phone</h4><a href="tel:+919890801802">+91 98908 01802</a></div></div>
         <div class="contact-item"><div class="c-icon">📍</div><div class="c-detail"><h4>Location</h4><p>Pune, Maharashtra, India</p><a href="https://www.google.com/maps/search/CA+Swapnil+Soni+TaxMitra+Pune" target="_blank" rel="noopener" style="font-size:.85rem;color:var(--teal)">View on Google Maps →</a></div></div>
@@ -1248,7 +1248,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
       <a class="footer-gbp" id="google-business-link" href="https://www.google.com/maps/search/CA+Swapnil+Soni+TaxMitra+Pune" target="_blank" rel="noopener">⭐ Find us on Google / Leave a review</a>
       <div class="footer-social">
         <a class="s-btn" href="https://wa.me/919890801802" target="_blank">💬</a>
-        <a class="s-btn" href="mailto:infor@taxmitrafinance.com">📧</a>
+        <a class="s-btn" href="mailto:info@taxmitrafinance.com">📧</a>
         <a class="s-btn" href="tel:+919890801802">📞</a>
       </div>
     </div>
@@ -1274,7 +1274,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
     <div class="footer-col">
       <h4>Contact</h4>
       <a href="tel:+919890801802">+91 98908 01802</a>
-      <a href="mailto:infor@taxmitrafinance.com">infor@taxmitrafinance.com</a>
+      <a href="mailto:info@taxmitrafinance.com">info@taxmitrafinance.com</a>
       <a>Pune, Maharashtra, India</a>
       <a>Mon–Sun: 9 AM – 6 PM</a>
     </div>
@@ -1556,7 +1556,7 @@ const TAXMITRA_SITE={
   hashnodeUrl:'https://hashnode.com/@taxmitra',
   formspree:'https://formspree.io/f/meedjgok',
   googleBusinessUrl:'https://www.google.com/maps/search/CA+Swapnil+Soni+TaxMitra+Pune',
-  email:'infor@taxmitrafinance.com',
+  email:'info@taxmitrafinance.com',
   phone:'+919890801802'
 };
 (function(){const g=document.getElementById('google-business-link');if(g&&TAXMITRA_SITE.googleBusinessUrl)g.href=TAXMITRA_SITE.googleBusinessUrl;})();
@@ -1570,7 +1570,7 @@ async function submitToFormspree(payload){
   const res=await fetch(TAXMITRA_SITE.formspree,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_replyto:payload.email||payload.Email||'',_subject:payload._subject||'TaxMitra Website',...payload})});
   return{ok:res.ok};
 }
-function mailtoFallback(subject,body){window.location.href='mailto:infor@taxmitrafinance.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);}
+function mailtoFallback(subject,body){window.location.href='mailto:info@taxmitrafinance.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);}
 
 async function subscribeNewsletter(inputId,msgId){
   const e=document.getElementById(inputId||'newsletter-email');
@@ -1631,7 +1631,7 @@ async function portalWaitlist(){
   const r=await submitToFormspree({form_type:'Portal Waitlist',email:e,message:'Client portal waitlist',_subject:'Portal waitlist — TaxMitra'});
   if(r.needSetup){mailtoFallback('Portal waitlist',e);setFormMsg('portal-msg','Email opened. Configure Formspree for waitlist signups.','err');return;}
   if(r.ok){setFormMsg('portal-msg','You are on the waitlist! We will email you when the portal is ready.','ok');showToast('Added to portal waitlist','success');}
-  else{setFormMsg('portal-msg','Could not add. Email us at infor@taxmitrafinance.com','err');}
+  else{setFormMsg('portal-msg','Could not add. Email us at info@taxmitrafinance.com','err');}
 }
 
 // ===== CHAT =====
