@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const RSS_URL = "https://blog.taxmitrafinance.com/rss.xml";
+const RSS_URL = "https://hashnode.com/@taxmitra/rss.xml";
 
 async function fetchRSS() {
   const res = await fetch(RSS_URL);
