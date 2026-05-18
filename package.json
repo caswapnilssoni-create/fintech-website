@@ -1,0 +1,13 @@
+{
+  "name": "taxmitra-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "TaxMitra Finance — CA Swapnil Soni's website",
+  "scripts": {
+    "build:blog": "node scripts/build-blog.mjs"
+  },
+  "dependencies": {
+    "marked": "^12.0.2"
+  }
+}

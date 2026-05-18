@@ -1,28 +1,24 @@
-name: Sync blog from Hashnode
+name: Build blog from Markdown
 
 on:
-  schedule:
-    # Every hour at minute 7 (UTC)
-    - cron: '7 * * * *'
-  workflow_dispatch: # lets you trigger from GitHub UI -> Actions -> Run workflow
   push:
     branches: [main]
     paths:
-      - 'data/blogs.json'           # rebuild HTML if you edit the manifest by hand
-      - 'scripts/sync-blog.mjs'     # rebuild HTML on script changes
+      - 'content/blog/**'
+      - 'scripts/build-blog.mjs'
+      - 'package.json'
       - '.github/workflows/sync-blog.yml'
-  repository_dispatch:
-    types: [hashnode-webhook]       # call from Hashnode/Zapier/etc.: instant publish
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: sync-blog
+  group: build-blog
   cancel-in-progress: false
 
 jobs:
-  sync:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,13 +28,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Sync posts
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build blog
         env:
-          HASHNODE_HOST: blog.taxmitrafinance.com
-          HASHNODE_TOKEN: ${{ secrets.HASHNODE_TOKEN }}
           SITE_URL: https://taxmitrafinance.com
-        run: node scripts/sync-blog.mjs
+        run: npm run build:blog
 
       - name: Commit and push if changed
         run: |
@@ -46,8 +44,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/blogs.json blog sitemap.xml 2>/dev/null || true
           if git diff --staged --quiet; then
-            echo "No blog changes to commit."
+            echo "No changes to commit."
           else
-            git commit -m "chore: sync blog posts from Hashnode [skip ci]"
+            git commit -m "chore: rebuild blog from markdown [skip ci]"
             git push
           fi
