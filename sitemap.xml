@@ -3,8 +3,27 @@
 
   <url>
     <loc>https://taxmitrafinance.com/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://taxmitrafinance.com/income-tax-calculator/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://taxmitrafinance.com/gst-calculator/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://taxmitrafinance.com/emi-calculator/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <!-- BLOG_AUTO_START -->
   <url>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMI Calculator — Home / Car / Personal Loan | TaxMitra</title>
+<meta name="description" content="Free EMI calculator for home loan, car loan, and personal loan. Calculate monthly EMI, total interest payable, and full repayment amount instantly. By CA Swapnil Soni — TaxMitra.">
+<meta name="keywords" content="EMI calculator, home loan EMI calculator, car loan EMI, personal loan EMI, loan EMI India">
+<meta name="author" content="CA Swapnil Soni — TaxMitra">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://taxmitrafinance.com/emi-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taxmitrafinance.com/emi-calculator/">
+<meta property="og:title" content="EMI Calculator — Home / Car / Personal Loan | TaxMitra">
+<meta property="og:description" content="Calculate monthly EMI, total interest, and full repayment for any loan. Free and accurate.">
+<meta property="og:image" content="https://taxmitrafinance.com/og-image.png">
+<meta property="og:site_name" content="TaxMitra">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EMI Calculator | TaxMitra">
+<meta name="twitter:description" content="Calculate monthly EMI, total interest, and full repayment for any loan.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"EMI Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Free online EMI calculator for home loan, car loan, and personal loan. Calculates monthly installment, total interest payable, and full repayment amount.","url":"https://taxmitrafinance.com/emi-calculator/","author":{"@type":"Person","name":"CA Swapnil Soni"},"provider":{"@type":"Organization","name":"TaxMitra","url":"https://taxmitrafinance.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://taxmitrafinance.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://taxmitrafinance.com/#calculators"},{"@type":"ListItem","position":3,"name":"EMI Calculator","item":"https://taxmitrafinance.com/emi-calculator/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How is EMI calculated?","acceptedAnswer":{"@type":"Answer","text":"EMI is calculated using the formula EMI = [P × r × (1+r)^n] / [(1+r)^n − 1], where P is the loan principal, r is the monthly interest rate (annual rate ÷ 12 ÷ 100), and n is the number of monthly installments."}},
+{"@type":"Question","name":"Does prepayment reduce my EMI?","acceptedAnswer":{"@type":"Answer","text":"Prepayment reduces your outstanding principal. You can usually choose to either keep the EMI the same and shorten the tenure, or reduce the EMI and keep the tenure. Shortening tenure typically saves more interest."}},
+{"@type":"Question","name":"Are home loan EMIs tax-deductible?","acceptedAnswer":{"@type":"Answer","text":"Yes, under the Old Tax Regime. Principal repayment qualifies under Section 80C (up to ₹1.5 lakh) and interest under Section 24(b) (up to ₹2 lakh for self-occupied property). Use our income tax calculator to see the full benefit."}},
+{"@type":"Question","name":"What is the difference between fixed and floating rate?","acceptedAnswer":{"@type":"Answer","text":"Fixed-rate keeps your EMI constant for the entire tenure. Floating-rate (more common) changes when the bank revises its repo-linked rate, so EMI can rise or fall. Most home loans in India today are floating-rate."}},
+{"@type":"Question","name":"What is a good tenure for a home loan?","acceptedAnswer":{"@type":"Answer","text":"Shorter tenure saves significant interest but increases monthly burden. Longer tenure is easier on monthly cash flow but pays much more interest. A 15–20 year tenure is common for home loans; consult a CA to balance EMI affordability with total interest cost."}}
+]}
+</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calc.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="logo" href="../index.html">Tax<span>Mitra</span></a>
+  <div class="nav-actions">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#blog">Blog</a>
+    <a href="../income-tax-calculator/">Income Tax Calc</a>
+    <a href="../gst-calculator/">GST Calc</a>
+    <a class="cta" href="../index.html#contact">Book CA</a>
+  </div>
+</nav>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../index.html">Home</a><span class="sep">›</span>
+  <a href="../index.html#calculators">Calculators</a><span class="sep">›</span>
+  <span aria-current="page">EMI Calculator</span>
+</nav>
+
+<header class="page-hero">
+  <div class="badge">Free Tool · Loan EMI</div>
+  <h1>EMI Calculator — <span>Home / Car / Personal Loan</span></h1>
+  <p class="lead">Calculate monthly EMI, total interest payable, and full repayment amount for any loan instantly.</p>
+</header>
+
+<section class="calc-wrap">
+  <div class="calc-panel">
+    <h2>🏦 EMI Calculator</h2>
+    <div class="calc-row">
+      <div class="form-group"><label>Loan Amount (₹)</label>
+        <input type="number" id="emi-principal" placeholder="e.g. 2500000">
+      </div>
+      <div class="form-group"><label>Annual Interest Rate (%)</label>
+        <input type="number" id="emi-rate" placeholder="e.g. 8.5" step="0.1">
+      </div>
+    </div>
+    <div class="form-group"><label>Loan Tenure (Months)</label>
+      <input type="number" id="emi-tenure" placeholder="e.g. 240 (20 years)">
+    </div>
+    <button class="calc-btn" onclick="TaxMitraCalc.calcEMI()">Calculate EMI</button>
+    <div class="calc-result" id="emi-result">
+      <div class="result-row"><span class="result-label">Monthly EMI</span><span id="er-emi">—</span></div>
+      <div class="result-row"><span class="result-label">Total Interest Payable</span><span id="er-interest">—</span></div>
+      <div class="result-row"><span class="result-label">Total Amount Payable</span><span id="er-total">—</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section">
+  <h2>How to Use the EMI Calculator</h2>
+  <p>Enter your loan principal amount, the annual interest rate, and the tenure in months. The calculator computes your monthly EMI using the standard reducing-balance formula, along with the total interest you'll pay over the life of the loan and the full repayment amount.</p>
+
+  <h2>EMI Formula</h2>
+  <p>The Equated Monthly Installment (EMI) is calculated using:</p>
+  <p style="background:var(--light);padding:1rem;border-radius:8px;font-family:monospace;text-align:center"><strong>EMI = [P × r × (1+r)<sup>n</sup>] / [(1+r)<sup>n</sup> − 1]</strong></p>
+  <ul>
+    <li><strong>P</strong> = Loan principal amount</li>
+    <li><strong>r</strong> = Monthly interest rate (annual rate ÷ 12 ÷ 100)</li>
+    <li><strong>n</strong> = Number of monthly installments (tenure in months)</li>
+  </ul>
+
+  <h2>Typical Interest Rates in India (FY 2025-26)</h2>
+  <table>
+    <thead><tr><th>Loan Type</th><th>Indicative Rate</th></tr></thead>
+    <tbody>
+      <tr><td>Home Loan</td><td>8.4% – 9.5%</td></tr>
+      <tr><td>Car Loan</td><td>9% – 11%</td></tr>
+      <tr><td>Personal Loan</td><td>10.5% – 18%</td></tr>
+      <tr><td>Loan Against Property</td><td>9% – 11%</td></tr>
+      <tr><td>Education Loan</td><td>9% – 13%</td></tr>
+    </tbody>
+  </table>
+  <p><em>Rates vary by bank, credit score, loan amount, and tenure. Check with your lender for current rates.</em></p>
+
+  <h2>Tax Benefits on Home Loan EMI</h2>
+  <p>Under the <strong>Old Tax Regime</strong>, home loan EMIs offer significant tax savings:</p>
+  <ul>
+    <li><strong>Principal repayment</strong> — Deductible under Section 80C up to ₹1.5 lakh per year (combined with other 80C items).</li>
+    <li><strong>Interest payment</strong> — Deductible under Section 24(b) up to ₹2 lakh per year for self-occupied property. No upper limit for let-out property.</li>
+    <li><strong>Section 80EE</strong> (first-time buyers) — Additional ₹50,000 interest deduction if loan was sanctioned in eligible window.</li>
+  </ul>
+  <p>Use our <a href="../income-tax-calculator/">Income Tax Calculator</a> to see exactly how much tax you save with your home loan.</p>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><h3>How is EMI calculated?</h3><p>EMI is calculated using the formula EMI = [P × r × (1+r)<sup>n</sup>] / [(1+r)<sup>n</sup> − 1], where P is the loan principal, r is the monthly interest rate (annual rate ÷ 12 ÷ 100), and n is the number of monthly installments.</p></div>
+    <div class="faq-item"><h3>Does prepayment reduce my EMI?</h3><p>Prepayment reduces your outstanding principal. You can usually choose to either keep the EMI the same and shorten the tenure, or reduce the EMI and keep the tenure. Shortening tenure typically saves more interest.</p></div>
+    <div class="faq-item"><h3>Are home loan EMIs tax-deductible?</h3><p>Yes, under the Old Tax Regime. Principal repayment qualifies under Section 80C (up to ₹1.5 lakh) and interest under Section 24(b) (up to ₹2 lakh for self-occupied property). Use our income tax calculator to see the full benefit.</p></div>
+    <div class="faq-item"><h3>What is the difference between fixed and floating rate?</h3><p>Fixed-rate keeps your EMI constant for the entire tenure. Floating-rate (more common) changes when the bank revises its repo-linked rate, so EMI can rise or fall. Most home loans in India today are floating-rate.</p></div>
+    <div class="faq-item"><h3>What is a good tenure for a home loan?</h3><p>Shorter tenure saves significant interest but increases monthly burden. Longer tenure is easier on monthly cash flow but pays much more interest. A 15–20 year tenure is common for home loans; consult a CA to balance EMI affordability with total interest cost.</p></div>
+  </div>
+</section>
+
+<section class="related-calc">
+  <h2>Other Free Calculators</h2>
+  <div class="calc-grid">
+    <a class="calc-card" href="../income-tax-calculator/"><div class="c-icon">📊</div><h3>Income Tax Calculator</h3><p>Compare Old vs New regime for FY 2025-26 with all deductions.</p></a>
+    <a class="calc-card" href="../gst-calculator/"><div class="c-icon">🧾</div><h3>GST Calculator</h3><p>Add or extract GST at all standard rates with CGST + SGST split.</p></a>
+    <a class="calc-card" href="../index.html#investments"><div class="c-icon">📈</div><h3>Investment Advisory</h3><p>SIP, ELSS, NPS — tax-efficient investing guided by your CA.</p></a>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Need Loan Advisory or Tax Planning Help?</h2>
+  <p>CA Swapnil Soni helps you balance EMI affordability with tax efficiency — across home loans, business loans, and tax-saving investments.</p>
+  <a class="btn" href="../index.html#contact">📅 Book Free Consultation</a>
+</section>
+
+<footer class="site-footer">© TaxMitra · <a href="../index.html">taxmitrafinance.com</a> · CA Swapnil Soni, Pune</footer>
+
+<script src="../assets/calc.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+/* ===== TaxMitra — Shared Calculator Styles ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#003D7A;--teal:#17A697;--gold:#FFB800;--white:#FFFFFF;
+  --light:#F4F8FC;--gray:#64748b;--dark:#1e293b;--light-gray:#E8F4F8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--dark);line-height:1.6;background:#fff}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.site-nav{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 1px 20px rgba(0,61,122,.07)}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--navy);text-decoration:none}
+.logo span{color:var(--teal)}
+.nav-actions{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+.nav-actions a{color:var(--dark);font-weight:500;font-size:.9rem}
+.nav-actions a.cta{background:var(--teal);color:#fff!important;padding:.6rem 1.4rem;border-radius:50px;font-weight:600;transition:all .3s}
+.nav-actions a.cta:hover{background:var(--navy);text-decoration:none}
+
+.breadcrumbs{max-width:1100px;margin:1.5rem auto 0;padding:0 5%;font-size:.85rem;color:var(--gray)}
+.breadcrumbs a{color:var(--gray);font-weight:500}
+.breadcrumbs a:hover{color:var(--teal);text-decoration:none}
+.breadcrumbs .sep{margin:0 .5rem;color:#cbd5e1}
+.breadcrumbs [aria-current="page"]{color:var(--navy);font-weight:600}
+
+.page-hero{padding:2.5rem 5% 1.5rem;text-align:center;max-width:900px;margin:0 auto}
+.page-hero .badge{display:inline-block;background:rgba(23,166,151,.1);color:var(--teal);padding:.35rem 1rem;border-radius:50px;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--navy);line-height:1.2;margin-bottom:1rem;font-weight:900}
+.page-hero h1 span{color:var(--teal)}
+.page-hero p.lead{font-size:1.05rem;color:var(--gray);max-width:700px;margin:0 auto}
+
+.calc-wrap{max-width:1100px;margin:0 auto;padding:1rem 5% 3rem}
+.calc-panel{background:var(--light);border-radius:24px;padding:2rem;border:1px solid #e8edf5}
+.calc-panel h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.3rem;margin-bottom:1.2rem;font-weight:700}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
+.form-group label{display:block;font-weight:600;color:var(--dark);margin-bottom:.4rem;font-size:.88rem}
+.form-group input,.form-group select{width:100%;padding:.8rem 1rem;border:2px solid #e8edf5;border-radius:12px;font-size:1rem;color:var(--dark);background:#fff;font-family:inherit;transition:border-color .25s}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--teal)}
+.calc-btn{background:var(--teal);color:#fff;padding:.95rem 2rem;border:none;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;width:100%;transition:all .25s;font-family:inherit;margin-top:.5rem}
+.calc-btn:hover{background:var(--navy);transform:translateY(-2px)}
+
+.calc-result{background:#fff;border-radius:16px;padding:1.5rem;margin-top:1.5rem;border:1px solid #e8edf5;display:none}
+.calc-result.show{display:block}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid #f0f0f0;font-size:.92rem}
+.result-row:last-child{border-bottom:none;font-weight:700;color:var(--navy);font-size:1.05rem}
+.result-label{color:var(--gray)}
+
+.tax-section-title{font-size:1rem;font-weight:700;color:var(--navy);margin:1.5rem 0 1rem;padding-bottom:.5rem;border-bottom:2px solid #e8edf5}
+.tax-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-top:2rem;display:none}
+.tax-compare.show{display:grid}
+.tax-regime-card{background:var(--light);border-radius:20px;padding:1.5rem;border:2px solid #e8edf5;text-align:center}
+.tax-regime-card.winner{border-color:var(--teal);box-shadow:0 8px 30px rgba(23,166,151,.15)}
+.tax-regime-card h3{font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.5rem;font-size:1.1rem}
+.tax-big{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--navy)}
+.tax-vs{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gray);font-weight:700;text-align:center}
+.tax-savings-banner{background:linear-gradient(135deg,var(--gold),#ffc933);color:var(--navy);padding:1rem 1.5rem;border-radius:16px;text-align:center;font-weight:700;margin:1.5rem 0}
+.tax-recommend{padding:1rem;border-radius:12px;font-weight:600;text-align:center;margin-top:1rem;background:rgba(23,166,151,.1);color:var(--teal)}
+.tax-recommend.old{background:rgba(0,61,122,.08);color:var(--navy)}
+.tax-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+.tax-detail-grid h3{color:var(--navy);margin-bottom:.8rem;font-family:'Playfair Display',serif;font-size:1.1rem}
+.slab-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:.5rem}
+.slab-table th{background:var(--navy);color:#fff;padding:.55rem .75rem;text-align:left;font-weight:600}
+.slab-table td{padding:.5rem .75rem;border-bottom:1px solid #f0f0f0}
+
+.info-section{max-width:900px;margin:3rem auto;padding:0 5%}
+.info-section h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.6rem;margin:2rem 0 1rem;font-weight:900}
+.info-section h3{color:var(--navy);font-size:1.1rem;margin:1.5rem 0 .6rem;font-weight:700}
+.info-section p,.info-section li{color:#334155;margin-bottom:.8rem;line-height:1.75}
+.info-section ul,.info-section ol{margin:0 0 1rem 1.5rem}
+.info-section table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:.92rem}
+.info-section th,.info-section td{border:1px solid #e2e8f0;padding:.6rem .8rem;text-align:left}
+.info-section th{background:var(--light);color:var(--navy);font-weight:700}
+
+.faq-list{margin:1rem 0}
+.faq-item{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:.8rem}
+.faq-item h3{color:var(--navy);font-size:1rem;margin-bottom:.5rem;font-weight:700}
+.faq-item p{margin:0;color:#334155;font-size:.94rem}
+
+.related-calc{max-width:1100px;margin:0 auto;padding:1rem 5% 3rem}
+.related-calc h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.5rem;margin-bottom:1.2rem}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.calc-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:1.4rem;text-decoration:none;color:inherit;transition:all .25s;display:block}
+.calc-card:hover{border-color:var(--teal);box-shadow:0 12px 30px rgba(0,61,122,.08);transform:translateY(-3px);text-decoration:none}
+.calc-card .c-icon{font-size:1.8rem;margin-bottom:.4rem}
+.calc-card h3{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.05rem;margin-bottom:.4rem;font-weight:700}
+.calc-card p{color:var(--gray);font-size:.88rem;margin:0}
+
+.cta-section{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;padding:3rem 5%;text-align:center;margin-top:2rem}
+.cta-section h2{font-family:'Playfair Display',serif;color:#fff;font-size:1.7rem;margin-bottom:.8rem}
+.cta-section p{color:rgba(255,255,255,.9);margin-bottom:1.4rem;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-section a.btn{display:inline-block;background:var(--gold);color:var(--navy);padding:.85rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;transition:transform .25s}
+.cta-section a.btn:hover{transform:translateY(-2px);text-decoration:none}
+
+.site-footer{background:var(--navy);color:rgba(255,255,255,.8);text-align:center;padding:2rem 5%;font-size:.88rem}
+.site-footer a{color:var(--gold);font-weight:600}
+
+@media(max-width:768px){
+  .calc-row,.tax-compare,.tax-detail-grid{grid-template-columns:1fr}
+  .nav-actions{gap:.7rem}
+  .nav-actions a{font-size:.82rem}
+  .nav-actions a.cta{padding:.5rem 1rem}
+}
