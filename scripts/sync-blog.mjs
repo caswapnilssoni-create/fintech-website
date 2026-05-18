@@ -3,13 +3,19 @@ import fs from "fs";
 const RSS_URL = "https://hashnode.com/@taxmitra/rss.xml";
 
 async function fetchRSS() {
-  const res = await fetch(RSS_URL);
+  const response = await fetch(RSS_URL, {
+    headers: {
+      "User-Agent": "Mozilla/5.0"
+    }
+  });
 
-  if (!res.ok) {
+  const text = await response.text();
+
+  if (!text || text.length < 50) {
     throw new Error("Failed to fetch RSS");
   }
 
-  return await res.text();
+  return text;
 }
 
 function extract(text, start, end) {
@@ -31,6 +37,7 @@ function slugFromLink(link) {
 function createHTML(post) {
   return `<!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,6 +49,7 @@ function createHTML(post) {
 </head>
 
 <body>
+
 <div class="article-container">
 
 <a href="../index.html" class="back-link">
@@ -73,9 +81,10 @@ company registration & advisory across India.
 <a href="https://taxmitrafinance.com/#contact" class="cta-button">
 Book free consultation →
 </a>
-</div>
 
 </div>
+</div>
+
 </body>
 </html>`;
 }
@@ -92,6 +101,7 @@ async function main() {
   }
 
   for (const item of items) {
+
     const title = extract(item, "<title>", "</title>");
     const link = extract(item, "<link>", "</link>");
     const description = extract(item, "<description><![CDATA[", "]]></description>");
