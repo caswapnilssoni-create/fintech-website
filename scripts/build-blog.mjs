@@ -240,9 +240,9 @@ function buildBreadcrumbHtml(post) {
   const cat = post.category || 'Articles';
   const catParam = encodeURIComponent(cat);
   return `<nav class="breadcrumbs" aria-label="Breadcrumb">
-  <a href="../index.html">Home</a><span class="sep">›</span>
-  <a href="../index.html#blog">Blog</a><span class="sep">›</span>
-  <a href="../index.html?cat=${catParam}#blog">${escapeHtml(cat)}</a><span class="sep">›</span>
+  <a href="../">Home</a><span class="sep">›</span>
+  <a href="../#blog">Blog</a><span class="sep">›</span>
+  <a href="../?cat=${catParam}#blog">${escapeHtml(cat)}</a><span class="sep">›</span>
   <span aria-current="page">${escapeHtml(post.title)}</span>
 </nav>`;
 }
@@ -339,8 +339,8 @@ ${ldScripts}
 </head>
 <body>
 <nav class="site-nav">
-  <a class="logo" href="../index.html">Tax<span>Mitra</span></a>
-  <a class="back" href="../index.html#blog">← All articles</a>
+  <a class="logo" href="../">Tax<span>Mitra</span></a>
+  <a class="back" href="../#blog">← All articles</a>
 </nav>
 ${breadcrumbHtml}
 <article class="article-wrap">
@@ -351,11 +351,11 @@ ${breadcrumbHtml}
   <div class="cta-box">
     <h3>Need expert tax or compliance help?</h3>
     <p>TaxMitra — CA Swapnil Soni · ITR, GST, company registration &amp; advisory across India.</p>
-    <a href="../index.html">Book free consultation →</a>
+    <a href="../">Book free consultation →</a>
   </div>
 </article>
 ${relatedHtml}
-<footer class="site-footer">© TaxMitra · <a href="../index.html" style="color:var(--gold)">taxmitrafinance.com</a></footer>
+<footer class="site-footer">© TaxMitra · <a href="../" style="color:var(--gold)">taxmitrafinance.com</a></footer>
 </body>
 </html>`;
 }

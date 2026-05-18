@@ -1372,9 +1372,17 @@ window.addEventListener('load',()=>{
   initParticles();
   initReveal();
   initItrPopup();
-  if(location.hash==='#blog'||new URL(location.href).searchParams.get('cat'))showPage('blog');
+  showPage(getPageFromUrl(),true);
   loadBlogs();
 });
+window.addEventListener('hashchange',()=>{showPage(getPageFromUrl(),true);});
+const __VALID_PAGES=['home','services','about','blog','duedates','calculators','investments','contact'];
+function getPageFromUrl(){
+  const hash=location.hash.replace(/^#/,'').split('?')[0].trim();
+  if(__VALID_PAGES.includes(hash))return hash;
+  if(new URL(location.href).searchParams.get('cat'))return 'blog';
+  return 'home';
+}
 let __ALL_POSTS=[];let __ACTIVE_CAT='All';
 async function loadBlogs(){
   let data;
@@ -1457,10 +1465,29 @@ function closeMobileMenu(){
 }
 
 // ===== PAGE NAVIGATION =====
-function showPage(id){
+function showPage(id,silent){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const pg=document.getElementById(id);
   if(pg){pg.classList.add('active');window.scrollTo(0,0);}
+  // Update URL: home gets no hash, others get #id
+  if(!silent){
+    const target=id==='home'?location.pathname+location.search:location.pathname+location.search+'#'+id;
+    if(location.pathname+location.search+location.hash!==target){
+      try{history.pushState(null,'',target);}catch(e){}
+    }
+  }
+  // Update page title for SEO/UX as user navigates the SPA
+  const titles={
+    home:'TaxMitra — Expert Tax & Compliance Solutions | CA Swapnil Soni, Pune',
+    services:'Services — ITR Filing, GST, Company Registration | TaxMitra',
+    about:'About CA Swapnil Soni | TaxMitra',
+    blog:'Tax & Compliance Insights | TaxMitra Blog',
+    duedates:'Tax Due Dates & Deadlines FY 2025-26 | TaxMitra',
+    calculators:'Free Tax & Financial Calculators | TaxMitra',
+    investments:'Investment Advisory by CA | TaxMitra',
+    contact:'Book Free Consultation with CA Swapnil Soni | TaxMitra'
+  };
+  if(titles[id])document.title=titles[id];
 }
 
 // ===== TAB SWITCHING =====
