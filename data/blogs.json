@@ -1,9 +1,20 @@
 {
-  "syncedAt": "2026-05-18T00:00:00.000Z",
-  "source": "seed",
-  "host": "blog.taxmitrafinance.com",
-  "publication": "TaxMitra — Tax Insights by CA Swapnil Soni",
+  "builtAt": "2026-05-18T08:37:01.554Z",
+  "source": "markdown",
   "posts": [
+    {
+      "title": "TDS on House Purchase in India – Complete Guide (FY 2025-26)",
+      "slug": "tds-on-house-purchase-in-india-complete-guide",
+      "excerpt": "Buying property worth ₹50 lakh or more? Understand Section 194-IA, 1% TDS rate, Form 26QB filing, due dates and penalties for FY 2025-26.",
+      "date": "2026-05-18T00:00:00.000Z",
+      "dateLabel": "18 May 2026",
+      "readTime": 4,
+      "category": "Income Tax",
+      "icon": "🏠",
+      "url": "blog/tds-on-house-purchase-in-india-complete-guide.html",
+      "hashnodeUrl": "https://blog.taxmitrafinance.com/tds-on-house-purchase-in-india-complete-guide",
+      "coverImage": null
+    },
     {
       "title": "New Tax Regime vs Old Tax Regime: Which is Better in FY 2025–26?",
       "slug": "new-tax-regime-vs-old-tax-regime-which-is-better-in-fy-2025-26",
@@ -14,19 +25,21 @@
       "category": "Income Tax",
       "icon": "📰",
       "url": "blog/new-tax-regime-vs-old-tax-regime-which-is-better-in-fy-2025-26.html",
-      "hashnodeUrl": "https://blog.taxmitrafinance.com/new-tax-regime-vs-old-tax-regime-which-is-better-in-fy-2025-26"
+      "hashnodeUrl": "https://blog.taxmitrafinance.com/new-tax-regime-vs-old-tax-regime-which-is-better-in-fy-2025-26",
+      "coverImage": "https://cdn.hashnode.com/uploads/covers/6a0a18d23104e2aff0d0f648/23f74605-7962-4dd1-a193-b6cc845babe9.jpg"
     },
     {
       "title": "Private Limited vs LLP: Which Business Structure is Right for Your Startup in India?",
       "slug": "private-limited-vs-llp-which-business-structure-is-right-for-your-startup-in-india",
-      "excerpt": "Compare taxation, compliance, startup funding, legal benefits, and registration costs.",
+      "excerpt": "Compare taxation, compliance, startup funding, legal benefits, and registration costs to choose the best business structure for your startup in India.",
       "date": "2026-05-17T00:00:00.000Z",
       "dateLabel": "17 May 2026",
       "readTime": 6,
       "category": "Startup & Company Law",
       "icon": "🏢",
       "url": "blog/private-limited-vs-llp-which-business-structure-is-right-for-your-startup-in-india.html",
-      "hashnodeUrl": "https://blog.taxmitrafinance.com/private-limited-vs-llp-which-business-structure-is-right-for-your-startup-in-india"
+      "hashnodeUrl": "https://blog.taxmitrafinance.com/private-limited-vs-llp-which-business-structure-is-right-for-your-startup-in-india",
+      "coverImage": "https://cdn.hashnode.com/uploads/covers/6a0a18d23104e2aff0d0f648/6a77835f-9012-41a4-9437-b24edec924d3.jpg"
     }
   ]
 }
