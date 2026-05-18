@@ -1,3 +1,13 @@
+---
+title: "Income Tax Slab Rates for FY 2025-26"
+date: "2026-05-18"
+description: "Latest income tax slab rates for FY 2025-26 explained in simple language."
+category: "Income Tax"
+icon: "💰"
+published: true
+---
+
+# Income Tax Slab Rates for FY 2025-26
 Understanding income tax slab rates is very important for proper tax planning and filing your Income Tax Return (ITR). In India, taxpayers can choose between:
 
 *   New Tax Regime
