@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EPF Calculator India — Retirement Corpus & Interest | TaxMitra</title>
+<meta name="description" content="Free EPF Calculator India. Project your Employee Provident Fund retirement corpus at the current 8.25% rate. Compute total employee + employer contribution and total interest with annual salary increment.">
+<meta name="keywords" content="EPF calculator, PF calculator, employee provident fund calculator, EPF retirement calculator India, EPF interest calculator, 8.25 EPF calculator">
+<meta name="author" content="CA Swapnil Soni — TaxMitra">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://taxmitrafinance.com/epf-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taxmitrafinance.com/epf-calculator/">
+<meta property="og:title" content="EPF Calculator India | TaxMitra">
+<meta property="og:description" content="Project your EPF retirement corpus at the current 8.25% rate.">
+<meta property="og:image" content="https://taxmitrafinance.com/og-image.png">
+<meta property="og:site_name" content="TaxMitra">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EPF Calculator India | TaxMitra">
+<meta name="twitter:description" content="Project your Employee Provident Fund retirement corpus.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"EPF Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://taxmitrafinance.com/epf-calculator/","author":{"@type":"Person","name":"CA Swapnil Soni"},"provider":{"@type":"Organization","name":"TaxMitra","url":"https://taxmitrafinance.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://taxmitrafinance.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://taxmitrafinance.com/calculators/"},{"@type":"ListItem","position":3,"name":"EPF Calculator","item":"https://taxmitrafinance.com/epf-calculator/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is EPF and how does the EPF Calculator work?","acceptedAnswer":{"@type":"Answer","text":"EPF (Employee Provident Fund) is a mandatory retirement savings scheme for salaried employees in India. Both employee and employer contribute 12% of Basic + DA each month. The calculator simulates year-by-year compounding at the current 8.25% rate, factoring in annual salary increments to project your final corpus at retirement."}},
+{"@type":"Question","name":"What is the current EPF interest rate?","acceptedAnswer":{"@type":"Answer","text":"The EPF interest rate for FY 2024-25 was 8.25% per annum, declared by EPFO. Interest is credited annually after government approval, computed on the monthly running balance."}},
+{"@type":"Question","name":"How is the employer contribution split?","acceptedAnswer":{"@type":"Answer","text":"Employer's 12% contribution is split: 8.33% goes to EPS (Employees' Pension Scheme, capped at ₹1,250/month on a ₹15,000 wage ceiling), and 3.67% goes to EPF. Only the EPF portion compounds in your provident fund balance — EPS provides a separate monthly pension."}},
+{"@type":"Question","name":"Is EPF withdrawal tax-free?","acceptedAnswer":{"@type":"Answer","text":"Yes, if you've completed 5 years of continuous service. Otherwise, EPF withdrawals are taxable as salary income, and TDS is deducted at 10% (or 30% if you don't furnish PAN). Employer's contribution + interest is treated as salary; employee's contribution + interest is treated as income from other sources for the year of withdrawal."}}
+]}
+</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calc.css">
+</head>
+<body>
+<nav class="site-nav">
+  <a class="logo" href="../">Tax<span>Mitra</span></a>
+  <div class="nav-actions">
+    <a href="../">Home</a>
+    <a href="../calculators/">All Calculators</a>
+    <a class="cta" href="../#contact">Book CA</a>
+  </div>
+</nav>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../">Home</a><span class="sep">›</span>
+  <a href="../calculators/">Calculators</a><span class="sep">›</span>
+  <span aria-current="page">EPF Calculator</span>
+</nav>
+<header class="page-hero">
+  <div class="badge">Free Tool · EPF Retirement Corpus</div>
+  <h1>EPF Calculator — <span>Employee Provident Fund</span></h1>
+  <p class="lead">Project your EPF retirement corpus with annual increments and the current 8.25% interest rate. See total employee contribution, employer EPF contribution, and total interest earned over your working years.</p>
+</header>
+<section class="calc-wrap">
+  <div class="calc-panel">
+    <h2>🏛️ EPF Calculator</h2>
+    <div class="calc-row">
+      <div class="form-group"><label>Current Age</label><input type="number" id="epf-age" placeholder="e.g. 28" oninput="TaxMitraCalc.calcEPF()"></div>
+      <div class="form-group"><label>Retirement Age</label><input type="number" id="epf-ret-age" value="58" oninput="TaxMitraCalc.calcEPF()"></div>
+    </div>
+    <div class="calc-row">
+      <div class="form-group"><label>Current Monthly Basic + DA (₹)</label><input type="number" id="epf-basic" placeholder="e.g. 40000" oninput="TaxMitraCalc.calcEPF()"></div>
+      <div class="form-group"><label>Current EPF Balance (₹, optional)</label><input type="number" id="epf-balance" placeholder="0" value="0" oninput="TaxMitraCalc.calcEPF()"></div>
+    </div>
+    <div class="calc-row">
+      <div class="form-group"><label>Annual Salary Increment (%)</label><input type="number" id="epf-increment" value="8" step="0.5" oninput="TaxMitraCalc.calcEPF()"></div>
+      <div class="form-group"><label>EPF Interest Rate (%)</label><input type="number" id="epf-rate" value="8.25" step="0.05" oninput="TaxMitraCalc.calcEPF()"></div>
+    </div>
+    <button class="calc-btn" onclick="TaxMitraCalc.calcEPF()">Calculate EPF Corpus</button>
+    <div class="calc-result" id="epf-result">
+      <div class="result-row"><span class="result-label">Total Employee Contribution</span><span id="epf-total-employee">—</span></div>
+      <div class="result-row"><span class="result-label">Total Employer EPF Contribution</span><span id="epf-total-employer">—</span></div>
+      <div class="result-row"><span class="result-label">Total Interest Earned</span><span id="epf-total-interest">—</span></div>
+      <div class="result-row" style="background:rgba(23,166,151,.08);border-radius:8px;padding:.7rem .8rem;margin-top:.6rem"><span class="result-label" style="color:var(--teal);font-weight:700">EPF Corpus at Retirement</span><span id="epf-corpus" style="color:var(--teal);font-weight:700;font-size:1.1rem">—</span></div>
+    </div>
+  </div>
+</section>
+<section class="info-section">
+  <h2>How EPF Works</h2>
+  <p>EPF is a mandatory retirement savings scheme for salaried employees in India, managed by EPFO. Both you and your employer contribute <strong>12% of Basic + DA</strong> each month. The corpus compounds tax-free at a government-declared rate (currently <strong>8.25% per annum</strong>).</p>
+
+  <h3>Contribution Split</h3>
+  <ul>
+    <li><strong>Employee 12%</strong> → entirely into EPF</li>
+    <li><strong>Employer 12%</strong> → split as 3.67% to EPF + 8.33% to EPS (pension), capped at ₹1,250/month on a ₹15,000 wage ceiling</li>
+  </ul>
+  <p>This calculator models <strong>EPF only</strong> (using the 3.67% employer share for EPF). EPS provides a separate monthly pension, not modeled here.</p>
+
+  <h2>EPF Tax Benefits</h2>
+  <ul>
+    <li><strong>Employee contribution:</strong> Deductible under Section 80C up to ₹1.5L per year (Old Regime).</li>
+    <li><strong>Interest earned:</strong> Tax-free (subject to certain caps for high earners).</li>
+    <li><strong>Maturity withdrawal:</strong> Tax-free if you've completed 5+ years of continuous service.</li>
+    <li>This makes EPF effectively EEE for most employees.</li>
+  </ul>
+
+  <h2>EPF Example — Age 28, ₹40,000 Basic+DA, 8% Annual Increment, 30 Years</h2>
+  <ul>
+    <li>Total employee contribution: ~₹65.2 lakh</li>
+    <li>Total employer EPF contribution (3.67% only): ~₹19.9 lakh</li>
+    <li>Total interest earned: ~₹1.3 Cr</li>
+    <li><strong>Final corpus at age 58: ~₹2.15 Cr</strong> (EPF only, excluding EPS pension)</li>
+  </ul>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><h3>What is EPF and how does the calculator work?</h3><p>EPF is a mandatory retirement scheme. Employee + employer each contribute 12% of Basic+DA. The calculator simulates year-by-year compounding at 8.25% with annual salary increments.</p></div>
+    <div class="faq-item"><h3>What is the current EPF interest rate?</h3><p>8.25% per annum (FY 2024-25). Declared annually by EPFO and credited on running monthly balance.</p></div>
+    <div class="faq-item"><h3>How is employer contribution split?</h3><p>12% employer = 3.67% to EPF + 8.33% to EPS (pension, capped at ₹1,250/month). Only EPF portion grows in your PF balance.</p></div>
+    <div class="faq-item"><h3>Is EPF tax-free?</h3><p>Yes, if 5+ years of service completed. Less than 5 years: taxable. Interest beyond ₹2.5L/year on employee contribution is taxable per recent rules for high earners.</p></div>
+  </div>
+</section>
+<section class="related-calc">
+  <h2>Related Calculators</h2>
+  <div class="calc-grid">
+    <a class="calc-card" href="../nps-calculator/"><div class="c-icon">👴</div><h3>NPS Calculator</h3><p>Compare retirement corpus via NPS.</p></a>
+    <a class="calc-card" href="../ppf-calculator/"><div class="c-icon">🏦</div><h3>PPF Calculator</h3><p>15-year EEE tax-free returns.</p></a>
+    <a class="calc-card" href="../salary-calculator/"><div class="c-icon">💼</div><h3>Salary Calculator</h3><p>See how EPF affects in-hand salary.</p></a>
+  </div>
+</section>
+<footer class="site-footer">© TaxMitra · <a href="../">taxmitrafinance.com</a> · CA Swapnil Soni, Pune</footer>
+<script src="../assets/calc.js"></script>
+</body>
+</html>

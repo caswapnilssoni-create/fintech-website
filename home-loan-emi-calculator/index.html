@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Loan EMI Calculator India — With Tax Benefit | TaxMitra</title>
+<meta name="description" content="Free Home Loan EMI Calculator India. Calculate monthly EMI, total interest, and tax benefits under Section 80C (principal) + Section 24(b) (interest up to ₹2L). Optimize your home loan with CA-built tool.">
+<meta name="keywords" content="home loan EMI calculator, home loan calculator India, EMI calculator home loan, section 24 calculator, 80C home loan calculator, home loan tax benefit calculator">
+<meta name="author" content="CA Swapnil Soni — TaxMitra">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://taxmitrafinance.com/home-loan-emi-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taxmitrafinance.com/home-loan-emi-calculator/">
+<meta property="og:title" content="Home Loan EMI Calculator with Tax Benefit | TaxMitra">
+<meta property="og:description" content="Monthly EMI plus full tax benefit calculation under 80C + Section 24(b).">
+<meta property="og:image" content="https://taxmitrafinance.com/og-image.png">
+<meta property="og:site_name" content="TaxMitra">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Home Loan EMI Calculator India | TaxMitra">
+<meta name="twitter:description" content="EMI + tax benefit calculator for Indian home loans.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Home Loan EMI Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://taxmitrafinance.com/home-loan-emi-calculator/","author":{"@type":"Person","name":"CA Swapnil Soni"},"provider":{"@type":"Organization","name":"TaxMitra","url":"https://taxmitrafinance.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://taxmitrafinance.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://taxmitrafinance.com/calculators/"},{"@type":"ListItem","position":3,"name":"Home Loan EMI Calculator","item":"https://taxmitrafinance.com/home-loan-emi-calculator/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What tax benefits does a home loan provide?","acceptedAnswer":{"@type":"Answer","text":"Under the Old Tax Regime: Principal repayment qualifies under Section 80C up to ₹1.5 lakh per year. Interest qualifies under Section 24(b) up to ₹2 lakh per year for self-occupied property (no upper limit for let-out). First-time buyers may get additional Section 80EE/80EEA benefits."}},
+{"@type":"Question","name":"How is home loan EMI calculated?","acceptedAnswer":{"@type":"Answer","text":"EMI = [P × r × (1+r)^n] / [(1+r)^n − 1], where P is principal, r is monthly interest rate (annual ÷ 12 ÷ 100), and n is number of monthly installments (tenure in months)."}},
+{"@type":"Question","name":"Can I claim home loan tax benefits under the New Regime?","acceptedAnswer":{"@type":"Answer","text":"Self-occupied home loan benefits (Section 24(b) and 80C principal) are NOT available under the New Tax Regime. For let-out property, interest deduction up to the loss-set-off limit is still available under New Regime."}}
+]}
+</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calc.css">
+</head>
+<body>
+<nav class="site-nav">
+  <a class="logo" href="../">Tax<span>Mitra</span></a>
+  <div class="nav-actions">
+    <a href="../">Home</a>
+    <a href="../calculators/">All Calculators</a>
+    <a class="cta" href="../#contact">Book CA</a>
+  </div>
+</nav>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../">Home</a><span class="sep">›</span>
+  <a href="../calculators/">Calculators</a><span class="sep">›</span>
+  <span aria-current="page">Home Loan EMI Calculator</span>
+</nav>
+<header class="page-hero">
+  <div class="badge">Free Tool · Home Loan + Tax</div>
+  <h1>Home Loan EMI Calculator — <span>With Tax Benefit</span></h1>
+  <p class="lead">Calculate monthly EMI, total interest, and tax benefits under Section 80C (principal) and Section 24(b) (interest up to ₹2L). Plan your home purchase end-to-end.</p>
+</header>
+<section class="calc-wrap">
+  <div class="calc-panel">
+    <h2>🏠 Home Loan EMI Calculator</h2>
+    <div class="calc-row">
+      <div class="form-group"><label>Loan Amount (₹)</label><input type="number" id="hl-principal" placeholder="e.g. 5000000" oninput="TaxMitraCalc.calcHomeLoan()"></div>
+      <div class="form-group"><label>Annual Interest Rate (%)</label><input type="number" id="hl-rate" placeholder="e.g. 8.5" step="0.05" oninput="TaxMitraCalc.calcHomeLoan()"></div>
+    </div>
+    <div class="form-group"><label>Tenure (Years)</label><input type="number" id="hl-years" placeholder="e.g. 20" oninput="TaxMitraCalc.calcHomeLoan()"></div>
+    <button class="calc-btn" onclick="TaxMitraCalc.calcHomeLoan()">Calculate EMI + Tax Benefit</button>
+    <div class="calc-result" id="hl-result">
+      <div class="result-row"><span class="result-label">Monthly EMI</span><span id="hl-emi">—</span></div>
+      <div class="result-row"><span class="result-label">Total Interest Payable</span><span id="hl-interest">—</span></div>
+      <div class="result-row"><span class="result-label">Total Amount Payable</span><span id="hl-total">—</span></div>
+      <div class="result-row" style="background:rgba(23,166,151,.08);border-radius:8px;padding:.7rem .8rem;margin-top:.6rem"><span class="result-label" style="color:var(--teal);font-weight:700">Year-1 Tax Benefit — Section 24(b)</span><span id="hl-tax-24" style="color:var(--teal);font-weight:700">—</span></div>
+      <div class="result-row" style="background:rgba(23,166,151,.08);border-radius:8px;padding:.7rem .8rem"><span class="result-label" style="color:var(--teal);font-weight:700">Year-1 Tax Benefit — Section 80C</span><span id="hl-tax-80c" style="color:var(--teal);font-weight:700">—</span></div>
+    </div>
+  </div>
+</section>
+<section class="info-section">
+  <h2>Home Loan Tax Benefits (Old Regime)</h2>
+  <ul>
+    <li><strong>Section 80C — Principal Repayment:</strong> Up to ₹1,50,000 per year (combined with PPF, ELSS, LIC etc.)</li>
+    <li><strong>Section 24(b) — Interest:</strong> Up to ₹2,00,000 per year for self-occupied property. No upper limit for let-out property.</li>
+    <li><strong>Section 80EE / 80EEA:</strong> First-time buyer additional benefits if loan sanctioned in eligible window.</li>
+    <li><strong>Stamp duty & registration:</strong> Eligible under 80C in the year of payment.</li>
+  </ul>
+  <p><em>Not available under New Tax Regime (self-occupied). Let-out interest still deductible.</em></p>
+
+  <h2>Example: ₹50 Lakh Loan, 8.5%, 20 Years</h2>
+  <ul>
+    <li>Monthly EMI: ~₹43,391</li>
+    <li>Total interest: ~₹54,13,879</li>
+    <li>Total repayment: ~₹1.04 Cr</li>
+    <li>Year-1 interest benefit (24b, capped at ₹2L): ₹2,00,000 → tax saved at 30% ≈ ₹60,000</li>
+    <li>Year-1 principal benefit (80C, capped at ₹1.5L): ~₹70,000 (combine with other 80C items)</li>
+  </ul>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><h3>What tax benefits does a home loan provide?</h3><p>Old Regime: Principal (80C, ₹1.5L cap), Interest (Section 24(b), ₹2L cap self-occupied). First-time buyers may get 80EE/80EEA.</p></div>
+    <div class="faq-item"><h3>How is EMI calculated?</h3><p>EMI = [P × r × (1+r)<sup>n</sup>] / [(1+r)<sup>n</sup> − 1], where P = principal, r = monthly rate, n = number of months.</p></div>
+    <div class="faq-item"><h3>Are tax benefits available under New Regime?</h3><p>Self-occupied: No. Let-out: Interest can still be set off subject to ₹2L loss cap.</p></div>
+  </div>
+</section>
+<section class="related-calc">
+  <h2>Related Calculators</h2>
+  <div class="calc-grid">
+    <a class="calc-card" href="../emi-calculator/"><div class="c-icon">🏦</div><h3>EMI Calculator</h3><p>Generic EMI for any loan type.</p></a>
+    <a class="calc-card" href="../income-tax-calculator/"><div class="c-icon">📊</div><h3>Income Tax Calculator</h3><p>Include home loan interest in tax calc.</p></a>
+    <a class="calc-card" href="../hra-calculator/"><div class="c-icon">🏠</div><h3>HRA Calculator</h3><p>Renting? Calculate HRA exemption.</p></a>
+  </div>
+</section>
+<footer class="site-footer">© TaxMitra · <a href="../">taxmitrafinance.com</a> · CA Swapnil Soni, Pune</footer>
+<script src="../assets/calc.js"></script>
+</body>
+</html>

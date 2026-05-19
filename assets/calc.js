@@ -248,27 +248,65 @@
   }
 
   // ===== HRA Calculator =====
-  // Annual HRA exempt = LEAST of (actual HRA, rent - 10% of (Basic+DA), 50% or 40% of (Basic+DA))
+  // Per Section 10(13A): HRA exempt = LEAST of
+  //   (1) actual HRA received
+  //   (2) rent paid − 10% of (Basic + DA)
+  //   (3) 50% of (Basic + DA) for metros / 40% for non-metros
   function calcHRA() {
     const basicM = parseFloat(document.getElementById('hra-basic').value) || 0;
     const daM = parseFloat(document.getElementById('hra-da').value) || 0;
     const hraM = parseFloat(document.getElementById('hra-received').value) || 0;
     const rentM = parseFloat(document.getElementById('hra-rent').value) || 0;
-    const city = document.getElementById('hra-city').value;
-    if (!basicM || !hraM || !rentM) return;
+    const cityEl = document.getElementById('hra-city');
+    const city = cityEl ? cityEl.value : 'metro';
+
     const basicAnnual = (basicM + daM) * 12;
     const actualHRA = hraM * 12;
     const rentMinus10 = Math.max(0, rentM * 12 - 0.1 * basicAnnual);
     const pctOfBasic = (city === 'metro' ? 0.5 : 0.4) * basicAnnual;
-    const exempt = Math.max(0, Math.min(actualHRA, rentMinus10, pctOfBasic));
+
+    // The exemption only applies if actually receiving HRA + paying rent
+    const eligible = actualHRA > 0 && rentM > 0;
+    const exempt = eligible ? Math.max(0, Math.min(actualHRA, rentMinus10, pctOfBasic)) : 0;
     const taxable = Math.max(0, actualHRA - exempt);
+
+    // Which condition is binding (the smallest of the three)?
+    let binding = '—';
+    if (eligible) {
+      const min = Math.min(actualHRA, rentMinus10, pctOfBasic);
+      if (min === actualHRA) binding = 'Actual HRA received';
+      else if (min === rentMinus10) binding = 'Rent − 10% of (Basic + DA)';
+      else binding = (city === 'metro' ? '50% of (Basic + DA) — metro' : '40% of (Basic + DA) — non-metro');
+    }
+
     const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
-    document.getElementById('hra-actual').textContent = f(actualHRA);
-    document.getElementById('hra-rent-minus').textContent = f(rentMinus10);
-    document.getElementById('hra-pct-basic').textContent = f(pctOfBasic);
-    document.getElementById('hra-exempt').textContent = f(exempt);
-    document.getElementById('hra-taxable').textContent = f(taxable);
-    document.getElementById('hra-result').classList.add('show');
+    const set = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
+
+    set('hra-actual', f(actualHRA));
+    set('hra-rent-minus', f(rentMinus10));
+    set('hra-pct-basic', f(pctOfBasic));
+    set('hra-exempt', f(exempt));
+    set('hra-taxable', f(taxable));
+    set('hra-exempt-monthly', f(exempt / 12));
+    set('hra-binding', binding);
+
+    // Mark winning row
+    ['row-actual', 'row-rent', 'row-pct'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('winner');
+    });
+    if (eligible) {
+      const min = Math.min(actualHRA, rentMinus10, pctOfBasic);
+      if (min === actualHRA) document.getElementById('row-actual')?.classList.add('winner');
+      else if (min === rentMinus10) document.getElementById('row-rent')?.classList.add('winner');
+      else document.getElementById('row-pct')?.classList.add('winner');
+    }
+
+    const res = document.getElementById('hra-result');
+    if (res) res.classList.add('show');
   }
 
   // ===== NPS Calculator =====
@@ -313,6 +351,164 @@
     document.getElementById('fd-result').classList.add('show');
   }
 
+  // ===== Compound Interest Calculator =====
+  // A = P (1 + r/n)^(nt)
+  function calcCI() {
+    const P = parseFloat(document.getElementById('ci-principal').value) || 0;
+    const r = parseFloat(document.getElementById('ci-rate').value) || 0;
+    const t = parseFloat(document.getElementById('ci-years').value) || 0;
+    const n = parseFloat(document.getElementById('ci-frequency').value) || 1;
+    const A = P * Math.pow(1 + r / (n * 100), n * t);
+    const interest = A - P;
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('ci-final', f(A));
+    set('ci-interest', f(interest));
+    set('ci-principal-out', f(P));
+    const res = document.getElementById('ci-result');
+    if (res) res.classList.add('show');
+  }
+
+  // ===== Home Loan EMI Calculator (variant of EMI with tax-benefit summary) =====
+  function calcHomeLoan() {
+    const P = parseFloat(document.getElementById('hl-principal').value) || 0;
+    const rAnn = parseFloat(document.getElementById('hl-rate').value) || 0;
+    const years = parseFloat(document.getElementById('hl-years').value) || 0;
+    const r = rAnn / 12 / 100;
+    const n = years * 12;
+    if (!P || !rAnn || !years) return;
+    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const total = emi * n;
+    const interest = total - P;
+    // Year-1 approximate split (interest-heavy in early years)
+    const year1Interest = Math.min(interest, P * (rAnn / 100));
+    const taxBenefit80C = Math.min(P / years, 150000); // approx principal in year 1, capped
+    const taxBenefit24 = Math.min(year1Interest, 200000);
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('hl-emi', f(emi));
+    set('hl-interest', f(interest));
+    set('hl-total', f(total));
+    set('hl-tax-24', f(taxBenefit24));
+    set('hl-tax-80c', f(taxBenefit80C));
+    const res = document.getElementById('hl-result');
+    if (res) res.classList.add('show');
+  }
+
+  // ===== Salary Calculator (CTC -> In-hand) =====
+  // Simplified model:
+  //   Basic = 50% of CTC
+  //   HRA = 50%/40% of Basic
+  //   Special allowance = remainder
+  //   Employer PF = 12% of Basic (capped at ₹21,600/year for many; we cap at min(Basic*12%, 21600))
+  //   Employee PF = 12% of Basic (capped same)
+  //   Gratuity (in CTC) = 4.81% of Basic
+  //   Gross = CTC - Employer PF - Gratuity
+  //   Net = Gross - Employee PF - Prof Tax (₹2,400/yr) - estimated tax
+  function calcSalary() {
+    const ctc = parseFloat(document.getElementById('sal-ctc').value) || 0;
+    const city = document.getElementById('sal-city')?.value || 'metro';
+    const regime = document.getElementById('sal-regime')?.value || 'new';
+    if (!ctc) return;
+
+    const basic = 0.5 * ctc;
+    const hra = (city === 'metro' ? 0.5 : 0.4) * basic;
+    const employerPF = Math.min(basic * 0.12, 21600);
+    const gratuity = 0.0481 * basic;
+    const special = Math.max(0, ctc - basic - hra - employerPF - gratuity);
+    const gross = ctc - employerPF - gratuity;
+    const employeePF = Math.min(basic * 0.12, 21600);
+    const profTax = 2400;
+
+    // Rough tax estimate based on regime
+    let taxable = 0;
+    let tax = 0;
+    if (regime === 'new') {
+      taxable = Math.max(0, gross - 75000);
+      const slabs = [[400000, 0], [400000, 0.05], [400000, 0.1], [400000, 0.15], [400000, 0.2], [400000, 0.25], [Infinity, 0.3]];
+      let rem = taxable;
+      for (const [w, r] of slabs) {
+        if (rem <= 0) break;
+        const chunk = w === Infinity ? rem : Math.min(rem, w);
+        tax += chunk * r;
+        rem -= chunk;
+      }
+      if (taxable <= 1200000) tax = Math.max(0, tax - 60000);
+    } else {
+      taxable = Math.max(0, gross - 50000 - hra * 0.7 - 150000 - employeePF);
+      const slabs = [[250000, 0], [250000, 0.05], [500000, 0.2], [Infinity, 0.3]];
+      let rem = taxable;
+      for (const [w, r] of slabs) {
+        if (rem <= 0) break;
+        const chunk = w === Infinity ? rem : Math.min(rem, w);
+        tax += chunk * r;
+        rem -= chunk;
+      }
+      if (taxable <= 500000) tax = Math.max(0, tax - 12500);
+    }
+    const cess = tax * 0.04;
+    const totalTax = tax + cess;
+
+    const netAnnual = gross - employeePF - profTax - totalTax;
+    const netMonthly = netAnnual / 12;
+
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('sal-basic', f(basic));
+    set('sal-hra', f(hra));
+    set('sal-special', f(special));
+    set('sal-emp-pf', f(employerPF));
+    set('sal-gratuity', f(gratuity));
+    set('sal-gross', f(gross));
+    set('sal-employee-pf', f(employeePF));
+    set('sal-prof-tax', f(profTax));
+    set('sal-tax', f(totalTax));
+    set('sal-net-annual', f(netAnnual));
+    set('sal-net-monthly', f(netMonthly));
+    const res = document.getElementById('sal-result');
+    if (res) res.classList.add('show');
+  }
+
+  // ===== EPF Calculator =====
+  // Year-by-year simulation with annual increment + 8.25% interest on running balance
+  function calcEPF() {
+    const age = parseFloat(document.getElementById('epf-age').value) || 0;
+    const retAge = parseFloat(document.getElementById('epf-ret-age').value) || 58;
+    const basicM = parseFloat(document.getElementById('epf-basic').value) || 0;
+    const balance = parseFloat(document.getElementById('epf-balance').value) || 0;
+    const inc = (parseFloat(document.getElementById('epf-increment').value) || 0) / 100;
+    const rate = (parseFloat(document.getElementById('epf-rate').value) || 8.25) / 100;
+    if (!age || !basicM || age >= retAge) return;
+
+    const years = retAge - age;
+    let corpus = balance;
+    let totalEmployee = 0;
+    let totalEmployerEPF = 0;
+    let monthlyBasic = basicM;
+
+    for (let y = 0; y < years; y++) {
+      const annualBasic = monthlyBasic * 12;
+      const empContrib = annualBasic * 0.12;
+      // Employer PF portion: 3.67% of basic (rest goes to EPS, not in EPF balance)
+      // For simplicity, use full 12% as combined corpus growth
+      const employerContrib = annualBasic * 0.0367;
+      totalEmployee += empContrib;
+      totalEmployerEPF += employerContrib;
+      corpus = (corpus + empContrib + employerContrib) * (1 + rate);
+      monthlyBasic *= (1 + inc);
+    }
+
+    const totalInterest = corpus - totalEmployee - totalEmployerEPF - balance;
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('epf-corpus', f(corpus));
+    set('epf-total-employee', f(totalEmployee));
+    set('epf-total-employer', f(totalEmployerEPF));
+    set('epf-total-interest', f(totalInterest));
+    const res = document.getElementById('epf-result');
+    if (res) res.classList.add('show');
+  }
+
   global.TaxMitraCalc = {
     calculateDetailedTax,
     calcGST,
@@ -322,6 +518,10 @@
     calcHRA,
     calcNPS,
     calcFD,
+    calcCI,
+    calcHomeLoan,
+    calcSalary,
+    calcEPF,
     FY_META
   };
 })(window);

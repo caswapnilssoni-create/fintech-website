@@ -86,12 +86,15 @@
       </select>
     </div>
     <button class="calc-btn" onclick="TaxMitraCalc.calcHRA()">Calculate HRA Exemption</button>
-    <div class="calc-result" id="hra-result">
-      <div class="result-row"><span class="result-label">Actual HRA Received (Annual)</span><span id="hra-actual">—</span></div>
-      <div class="result-row"><span class="result-label">Rent Paid − 10% of Basic+DA</span><span id="hra-rent-minus">—</span></div>
-      <div class="result-row"><span class="result-label">50%/40% of Basic+DA</span><span id="hra-pct-basic">—</span></div>
-      <div class="result-row"><span class="result-label">HRA Exempt (Annual)</span><span id="hra-exempt">—</span></div>
-      <div class="result-row"><span class="result-label">HRA Taxable (Annual)</span><span id="hra-taxable">—</span></div>
+    <div class="calc-result show" id="hra-result">
+      <p style="font-size:.85rem;color:var(--gray);margin-bottom:.6rem">Exemption = least of these three (highlighted row is the binding rule):</p>
+      <div class="result-row" id="row-actual"><span class="result-label">1. Actual HRA Received (Annual)</span><span id="hra-actual">₹0</span></div>
+      <div class="result-row" id="row-rent"><span class="result-label">2. Rent Paid − 10% of Basic+DA</span><span id="hra-rent-minus">₹0</span></div>
+      <div class="result-row" id="row-pct"><span class="result-label">3. 50% / 40% of Basic+DA</span><span id="hra-pct-basic">₹0</span></div>
+      <div class="result-row" style="background:rgba(23,166,151,.08);border-radius:8px;padding:.7rem .8rem;margin-top:.6rem"><span class="result-label" style="color:var(--teal);font-weight:700">✓ HRA Exempt (Annual)</span><span id="hra-exempt" style="color:var(--teal);font-weight:700;font-size:1.1rem">₹0</span></div>
+      <div class="result-row"><span class="result-label">HRA Exempt (Monthly)</span><span id="hra-exempt-monthly">₹0</span></div>
+      <div class="result-row"><span class="result-label">HRA Taxable (Annual)</span><span id="hra-taxable">₹0</span></div>
+      <div class="result-row"><span class="result-label">Binding rule</span><span id="hra-binding" style="font-weight:600;color:var(--navy)">—</span></div>
     </div>
   </div>
 </section>

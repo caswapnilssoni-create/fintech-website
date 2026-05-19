@@ -41,8 +41,10 @@ a:hover{text-decoration:underline}
 
 .calc-result{background:#fff;border-radius:16px;padding:1.5rem;margin-top:1.5rem;border:1px solid #e8edf5;display:none}
 .calc-result.show{display:block}
-.result-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid #f0f0f0;font-size:.92rem}
-.result-row:last-child{border-bottom:none;font-weight:700;color:var(--navy);font-size:1.05rem}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid #f0f0f0;font-size:.92rem;transition:background .2s}
+.result-row.winner{background:rgba(23,166,151,.07);border-left:3px solid var(--teal);padding-left:.6rem;border-radius:6px}
+.result-row.winner .result-label{color:var(--teal);font-weight:700}
+.result-row:last-child{border-bottom:none}
 .result-label{color:var(--gray)}
 
 .tax-section-title{font-size:1rem;font-weight:700;color:var(--navy);margin:1.5rem 0 1rem;padding-bottom:.5rem;border-bottom:2px solid #e8edf5}

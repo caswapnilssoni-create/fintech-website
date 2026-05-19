@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compound Interest Calculator — Daily, Monthly, Quarterly | TaxMitra</title>
+<meta name="description" content="Free Compound Interest Calculator for India. Compute maturity value, total interest, and effective rate for any principal, rate, tenure, and compounding frequency (daily/monthly/quarterly/annually).">
+<meta name="keywords" content="compound interest calculator, CI calculator India, daily compounding calculator, monthly compounding calculator, compound interest formula calculator">
+<meta name="author" content="CA Swapnil Soni — TaxMitra">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://taxmitrafinance.com/compound-interest-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taxmitrafinance.com/compound-interest-calculator/">
+<meta property="og:title" content="Compound Interest Calculator | TaxMitra">
+<meta property="og:description" content="Free compound interest calculator. Compare daily, monthly, quarterly, annual compounding instantly.">
+<meta property="og:image" content="https://taxmitrafinance.com/og-image.png">
+<meta property="og:site_name" content="TaxMitra">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compound Interest Calculator | TaxMitra">
+<meta name="twitter:description" content="Free compound interest calculator for India.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://taxmitrafinance.com/compound-interest-calculator/","author":{"@type":"Person","name":"CA Swapnil Soni"},"provider":{"@type":"Organization","name":"TaxMitra","url":"https://taxmitrafinance.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://taxmitrafinance.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://taxmitrafinance.com/calculators/"},{"@type":"ListItem","position":3,"name":"Compound Interest Calculator","item":"https://taxmitrafinance.com/compound-interest-calculator/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the compound interest formula?","acceptedAnswer":{"@type":"Answer","text":"A = P × (1 + r/n)^(n × t), where A is the final amount, P is principal, r is annual interest rate (decimal), n is compounding frequency per year, and t is tenure in years."}},
+{"@type":"Question","name":"How is compound interest different from simple interest?","acceptedAnswer":{"@type":"Answer","text":"Simple interest is calculated only on the original principal: SI = P × r × t. Compound interest is calculated on principal AND on accumulated interest, so your money grows much faster over long tenures."}},
+{"@type":"Question","name":"What is the best compounding frequency?","acceptedAnswer":{"@type":"Answer","text":"More frequent compounding = slightly higher returns. Daily > monthly > quarterly > annual. The difference is small but significant over long tenures. Most Indian banks use quarterly compounding for FDs."}}
+]}
+</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calc.css">
+</head>
+<body>
+<nav class="site-nav">
+  <a class="logo" href="../">Tax<span>Mitra</span></a>
+  <div class="nav-actions">
+    <a href="../">Home</a>
+    <a href="../calculators/">All Calculators</a>
+    <a class="cta" href="../#contact">Book CA</a>
+  </div>
+</nav>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../">Home</a><span class="sep">›</span>
+  <a href="../calculators/">Calculators</a><span class="sep">›</span>
+  <span aria-current="page">Compound Interest Calculator</span>
+</nav>
+<header class="page-hero">
+  <div class="badge">Free Tool · CI Formula</div>
+  <h1>Compound Interest Calculator — <span>India</span></h1>
+  <p class="lead">Calculate compound interest for any principal, rate, tenure, and compounding frequency. See how daily, monthly, quarterly, and annual compounding affect your returns.</p>
+</header>
+<section class="calc-wrap">
+  <div class="calc-panel">
+    <h2>📈 Compound Interest Calculator</h2>
+    <div class="calc-row">
+      <div class="form-group"><label>Principal Amount (₹)</label><input type="number" id="ci-principal" placeholder="e.g. 100000" oninput="TaxMitraCalc.calcCI()"></div>
+      <div class="form-group"><label>Annual Interest Rate (%)</label><input type="number" id="ci-rate" placeholder="e.g. 8" step="0.1" oninput="TaxMitraCalc.calcCI()"></div>
+    </div>
+    <div class="calc-row">
+      <div class="form-group"><label>Tenure (Years)</label><input type="number" id="ci-years" placeholder="e.g. 10" step="0.25" oninput="TaxMitraCalc.calcCI()"></div>
+      <div class="form-group"><label>Compounding Frequency</label>
+        <select id="ci-frequency" onchange="TaxMitraCalc.calcCI()">
+          <option value="1">Annually</option>
+          <option value="2">Half-Yearly</option>
+          <option value="4" selected>Quarterly</option>
+          <option value="12">Monthly</option>
+          <option value="365">Daily</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="TaxMitraCalc.calcCI()">Calculate Compound Interest</button>
+    <div class="calc-result" id="ci-result">
+      <div class="result-row"><span class="result-label">Principal</span><span id="ci-principal-out">—</span></div>
+      <div class="result-row"><span class="result-label">Total Interest</span><span id="ci-interest">—</span></div>
+      <div class="result-row"><span class="result-label">Maturity Amount</span><span id="ci-final">—</span></div>
+    </div>
+  </div>
+</section>
+<section class="info-section">
+  <h2>How Compound Interest Works</h2>
+  <p>Compound interest is interest earned on both your principal AND on previously accumulated interest. It's the most powerful force in long-term wealth building.</p>
+  <p style="background:var(--light);padding:1rem;border-radius:8px;font-family:monospace;text-align:center"><strong>A = P × (1 + r/n)<sup>n × t</sup></strong></p>
+  <ul>
+    <li><strong>A</strong> — final amount</li>
+    <li><strong>P</strong> — principal</li>
+    <li><strong>r</strong> — annual rate (as decimal)</li>
+    <li><strong>n</strong> — compounding frequency per year</li>
+    <li><strong>t</strong> — tenure (years)</li>
+  </ul>
+  <h2>Example: ₹1,00,000 at 8% for 10 Years</h2>
+  <table>
+    <thead><tr><th>Compounding</th><th>Maturity</th><th>Interest</th></tr></thead>
+    <tbody>
+      <tr><td>Annual</td><td>₹2,15,892</td><td>₹1,15,892</td></tr>
+      <tr><td>Quarterly</td><td>₹2,21,964</td><td>₹1,21,964</td></tr>
+      <tr><td>Monthly</td><td>₹2,21,964</td><td>₹1,21,964</td></tr>
+      <tr><td>Daily</td><td>₹2,22,535</td><td>₹1,22,535</td></tr>
+    </tbody>
+  </table>
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><h3>What is the compound interest formula?</h3><p>A = P × (1 + r/n)<sup>n × t</sup>. Substitute your principal, rate (decimal), compounding frequency, and tenure.</p></div>
+    <div class="faq-item"><h3>How is compound interest different from simple interest?</h3><p>Simple interest accrues only on principal. Compound interest accrues on principal + accumulated interest. Over 20+ years, the difference can be 3–5× your money.</p></div>
+    <div class="faq-item"><h3>Which compounding frequency is best?</h3><p>More frequent = slightly higher returns. Daily > monthly > quarterly > annual. Bank FDs in India use quarterly compounding.</p></div>
+  </div>
+</section>
+<section class="related-calc">
+  <h2>Related Calculators</h2>
+  <div class="calc-grid">
+    <a class="calc-card" href="../fd-calculator/"><div class="c-icon">🏛️</div><h3>FD Calculator</h3><p>FD maturity with quarterly compounding (Indian bank standard).</p></a>
+    <a class="calc-card" href="../sip-calculator/"><div class="c-icon">💰</div><h3>SIP Calculator</h3><p>Monthly SIP returns over any tenure.</p></a>
+    <a class="calc-card" href="../ppf-calculator/"><div class="c-icon">🏦</div><h3>PPF Calculator</h3><p>15-year EEE tax-free returns at 7.1%.</p></a>
+  </div>
+</section>
+<footer class="site-footer">© TaxMitra · <a href="../">taxmitrafinance.com</a> · CA Swapnil Soni, Pune</footer>
+<script src="../assets/calc.js"></script>
+</body>
+</html>
