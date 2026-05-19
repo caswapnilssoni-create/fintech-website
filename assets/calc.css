@@ -123,6 +123,16 @@ a:hover{text-decoration:underline}
 .blog-index-card p{color:var(--gray);font-size:.9rem;margin:0}
 .blog-index-card .bi-meta{font-size:.8rem;color:var(--gray);margin-top:1rem}
 
+.checklist-hub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin:2rem 0}
+.checklist-hub-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1.5rem;text-decoration:none;color:inherit;transition:all .25s;display:block}
+.checklist-hub-card:hover{border-color:var(--teal);box-shadow:0 12px 30px rgba(0,61,122,.1);transform:translateY(-3px);text-decoration:none}
+.checklist-hub-card .ch-emoji{font-size:2rem;margin-bottom:.6rem}
+.checklist-hub-card h3{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.1rem;margin-bottom:.4rem}
+.checklist-hub-card p{color:var(--gray);font-size:.9rem;margin:0;line-height:1.55}
+.checklist-hub-card .ch-tag{display:inline-block;margin-top:.8rem;font-size:.75rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.4px}
+.checklist-more{margin-top:2.5rem;padding-top:2rem;border-top:1px solid #e8edf5}
+.checklist-more h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.4rem;margin-bottom:1rem}
+
 @media(max-width:768px){
   .calc-row,.tax-compare,.tax-detail-grid{grid-template-columns:1fr}
   .nav-actions{gap:.7rem}

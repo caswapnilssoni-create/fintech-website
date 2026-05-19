@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GST Compliance Documents Checklist — Registration & Returns | TaxMitra</title>
+<meta name="description" content="Complete GST document checklist for registration, GSTR-1, GSTR-3B monthly filing, reconciliation and GSTR-9 annual return in India.">
+<link rel="canonical" href="https://taxmitrafinance.com/gst-compliance-checklist/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calc.css">
+</head>
+<body>
+<nav class="site-nav">
+  <a class="logo" href="../">Tax<span>Mitra</span></a>
+  <div class="nav-actions">
+    <a href="../checklists/">All Checklists</a>
+    <a href="../gst-calculator/">GST Calculator</a>
+    <a class="cta" href="../#contact">GST Help</a>
+  </div>
+</nav>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../">Home</a><span class="sep">›</span>
+  <a href="../checklists/">Checklists</a><span class="sep">›</span>
+  <span aria-current="page">GST Compliance</span>
+</nav>
+<header class="page-hero">
+  <div class="badge">GST · FY 2025-26</div>
+  <h1>GST Compliance <span>Checklist</span></h1>
+  <p class="lead">Documents for GST registration, monthly/quarterly returns, ITC reconciliation and annual filing.</p>
+</header>
+<section class="calc-wrap">
+  <div class="calc-panel">
+    <div class="checklist-progress" id="check-progress" data-label="documents">0 of 0 documents ready — 0%</div>
+    <div class="checklist-tabs">
+      <button type="button" class="checklist-tab active" data-tab="reg">Registration</button>
+      <button type="button" class="checklist-tab" data-tab="monthly">Monthly / Quarterly</button>
+      <button type="button" class="checklist-tab" data-tab="annual">Annual (GSTR-9)</button>
+    </div>
+    <div id="tab-reg" class="checklist-panel active" data-items="reg">
+      <div class="checklist-group"><h3>Business identity</h3>
+        <div class="checklist-item"><input type="checkbox" id="gr-pan" data-group="reg"><label for="gr-pan"><strong>PAN</strong> of business / proprietors / partners / directors</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gr-aadhaar" data-group="reg"><label for="gr-aadhaar">Aadhaar of promoters / authorised signatory</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gr-photo" data-group="reg"><label for="gr-photo">Passport-size photos and specimen signature</label></div>
+      </div>
+      <div class="checklist-group"><h3>Address &amp; bank</h3>
+        <div class="checklist-item"><input type="checkbox" id="gr-addr" data-group="reg"><label for="gr-addr">Principal place of business proof (rent agreement + NOC / electricity bill / ownership deed)</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gr-bank" data-group="reg"><label for="gr-bank">Cancelled cheque / bank statement with IFSC</label></div>
+      </div>
+      <div class="checklist-group"><h3>Business details</h3>
+        <div class="checklist-item"><input type="checkbox" id="gr-incorp" data-group="reg"><label for="gr-incorp">Certificate of incorporation / partnership deed (if applicable)</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gr-auth" data-group="reg"><label for="gr-auth">Board resolution / authorisation letter for signatory</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gr-dsc" data-group="reg"><label for="gr-dsc">Digital Signature Certificate (DSC) for company/LLP</label></div>
+      </div>
+    </div>
+    <div id="tab-monthly" class="checklist-panel" data-items="mon">
+      <div class="checklist-group"><h3>Sales &amp; purchases</h3>
+        <div class="checklist-item"><input type="checkbox" id="gm-sales" data-group="mon"><label for="gm-sales"><strong>Sales register</strong> — B2B, B2C, exports, e-commerce</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gm-purchase" data-group="mon"><label for="gm-purchase"><strong>Purchase register</strong> with vendor GSTIN</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gm-invoices" data-group="mon"><label for="gm-invoices">Tax invoices issued &amp; received (with correct GSTIN &amp; HSN)</label></div>
+      </div>
+      <div class="checklist-group"><h3>Returns &amp; payment</h3>
+        <div class="checklist-item"><input type="checkbox" id="gm-gstr1" data-group="mon"><label for="gm-gstr1">GSTR-1 data (outward supplies)</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gm-gstr2b" data-group="mon"><label for="gm-gstr2b">GSTR-2B download for ITC matching</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gm-gstr3b" data-group="mon"><label for="gm-gstr3b">GSTR-3B working — tax, ITC, interest if any</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gm-challan" data-group="mon"><label for="gm-challan">GST payment challan proof</label></div>
+        <div class="checklist-item"><input type="checkbox" id="gm-einv" data-group="mon"><label for="gm-einv">E-invoice / e-way bill records (if applicable)</label></div>
+      </div>
+    </div>
+    <div id="tab-annual" class="checklist-panel" data-items="ann">
+      <div class="checklist-group"><h3>GSTR-9 annual return</h3>
+        <div class="checklist-item"><input type="checkbox" id="ga-books" data-group="ann"><label for="ga-books"><strong>Full-year books</strong> — sales, purchases, expenses</label></div>
+        <div class="checklist-item"><input type="checkbox" id="ga-recon" data-group="ann"><label for="ga-recon">Reconciliation of GSTR-1, 3B, 2B and books</label></div>
+        <div class="checklist-item"><input type="checkbox" id="ga-itc" data-group="ann"><label for="ga-itc">ITC availed vs eligible — reversal working if needed</label></div>
+        <div class="checklist-item"><input type="checkbox" id="ga-hsn" data-group="ann"><label for="ga-hsn">HSN-wise summary (if turnover threshold applies)</label></div>
+        <div class="checklist-item"><input type="checkbox" id="ga-gstr9c" data-group="ann"><label for="ga-gstr9c">GSTR-9C audit report (if turnover &gt; ₹5 Cr)</label></div>
+      </div>
+    </div>
+    <div class="alert-box" style="margin-top:1.5rem"><strong>Tip:</strong> Reconcile GSTR-2B before filing GSTR-3B every period to avoid ITC mismatches and notices.</div>
+    <button type="button" class="calc-btn" onclick="location.href='../#contact'">Get GST Filing Help</button>
+  </div>
+</section>
+<section class="info-section checklist-more">
+  <h2>More checklists</h2>
+  <div class="checklist-hub-grid">
+    <a class="checklist-hub-card" href="../checklists/"><div class="ch-emoji">📚</div><h3>All checklists</h3><p>ITR, company, ROC, payroll &amp; more.</p></a>
+    <a class="checklist-hub-card" href="../itr-documents-checklist/"><div class="ch-emoji">📋</div><h3>ITR documents</h3><p>Income tax filing checklist.</p></a>
+    <a class="checklist-hub-card" href="../business-compliance-checklist/"><div class="ch-emoji">📈</div><h3>Business compliance</h3><p>TDS, PF, ESI checklist.</p></a>
+  </div>
+</section>
+<footer class="site-footer">© TaxMitra · <a href="../">taxmitrafinance.com</a></footer>
+<script src="../assets/checklist.js"></script>
+</body>
+</html>

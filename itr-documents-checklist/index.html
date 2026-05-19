@@ -15,7 +15,7 @@
 <nav class="site-nav">
   <a class="logo" href="../">Tax<span>Mitra</span></a>
   <div class="nav-actions">
-    <a href="../">Home</a>
+    <a href="../checklists/">All Checklists</a>
     <a href="../income-tax-calculator/">Tax Calculator</a>
     <a href="../faq/">FAQ</a>
     <a class="cta" href="../#contact">File ITR</a>
@@ -23,7 +23,8 @@
 </nav>
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <a href="../">Home</a><span class="sep">›</span>
-  <span aria-current="page">ITR Documents Checklist</span>
+  <a href="../checklists/">Checklists</a><span class="sep">›</span>
+  <span aria-current="page">ITR Documents</span>
 </nav>
 <header class="page-hero">
   <div class="badge">FY 2025-26 · ITR Filing</div>
@@ -32,7 +33,7 @@
 </header>
 <section class="calc-wrap">
   <div class="calc-panel">
-    <div class="checklist-progress" id="check-progress">0 of 0 documents ready — 0%</div>
+    <div class="checklist-progress" id="check-progress" data-label="documents">0 of 0 documents ready — 0%</div>
     <div class="checklist-tabs" role="tablist">
       <button type="button" class="checklist-tab active" data-tab="salaried">Salaried</button>
       <button type="button" class="checklist-tab" data-tab="business">Business / Freelancer</button>
@@ -105,8 +106,14 @@
 </section>
 <section class="info-section">
   <h2>Why This Checklist Matters</h2>
-  <p>Gathering documents before filing saves time, reduces errors, and helps maximise legitimate deductions. When our client portal launches, you can upload these securely in one place.</p>
-  <h2>Related Tools</h2>
+  <p>Gathering documents before filing saves time, reduces errors, and helps maximise legitimate deductions.</p>
+  <h2>More compliance checklists</h2>
+  <div class="checklist-hub-grid">
+    <a class="checklist-hub-card" href="../checklists/"><div class="ch-emoji">📚</div><h3>All checklists</h3><p>GST, company, ROC, property and more.</p></a>
+    <a class="checklist-hub-card" href="../gst-compliance-checklist/"><div class="ch-emoji">🧾</div><h3>GST compliance</h3><p>Registration and returns.</p></a>
+    <a class="checklist-hub-card" href="../business-compliance-checklist/"><div class="ch-emoji">📈</div><h3>Business and payroll</h3><p>TDS, PF, ESI.</p></a>
+  </div>
+  <h2>Related calculators</h2>
   <div class="calc-grid">
     <a class="calc-card" href="../income-tax-calculator/"><div class="c-icon">📊</div><h3>Income Tax Calculator</h3><p>Compare Old vs New regime.</p></a>
     <a class="calc-card" href="../tds-property-calculator/"><div class="c-icon">🏠</div><h3>TDS on Property</h3><p>Section 194-IA calculator.</p></a>
@@ -114,32 +121,6 @@
   </div>
 </section>
 <footer class="site-footer">© TaxMitra · <a href="../">taxmitrafinance.com</a></footer>
-<script>
-(function(){
-  const tabs=document.querySelectorAll('.checklist-tab');
-  const panels=document.querySelectorAll('.checklist-panel');
-  function updateProgress(){
-    const active=document.querySelector('.checklist-panel.active');
-    if(!active)return;
-    const group=active.dataset.items;
-    const boxes=document.querySelectorAll('input[data-group="'+group+'"]');
-    const done=[...boxes].filter(b=>b.checked).length;
-    const pct=boxes.length?Math.round(done/boxes.length*100):0;
-    const el=document.getElementById('check-progress');
-    if(el)el.textContent=done+' of '+boxes.length+' documents ready — '+pct+'%';
-  }
-  tabs.forEach(t=>t.addEventListener('click',()=>{
-    tabs.forEach(x=>x.classList.remove('active'));
-    panels.forEach(p=>p.classList.remove('active'));
-    t.classList.add('active');
-    document.getElementById('tab-'+t.dataset.tab).classList.add('active');
-    updateProgress();
-  }));
-  document.querySelectorAll('.checklist-panel input[type=checkbox]').forEach(cb=>{
-    cb.addEventListener('change',updateProgress);
-  });
-  updateProgress();
-})();
-</script>
+<script src="../assets/checklist.js"></script>
 </body>
 </html>
