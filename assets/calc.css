@@ -95,6 +95,33 @@ a:hover{text-decoration:underline}
 
 .site-footer{background:var(--navy);color:rgba(255,255,255,.8);text-align:center;padding:2rem 5%;font-size:.88rem}
 .site-footer a{color:var(--gold);font-weight:600}
+.site-footer .footer-legal{margin-top:.6rem;display:flex;flex-wrap:wrap;gap:.5rem 1rem;justify-content:center}
+.site-footer .footer-legal a{color:rgba(255,255,255,.65);font-weight:500;font-size:.82rem}
+.site-footer .footer-legal a:hover{color:var(--gold)}
+
+.checklist-tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem}
+.checklist-tab{padding:.55rem 1.2rem;border-radius:50px;border:2px solid #e8edf5;background:#fff;color:var(--gray);font-weight:600;cursor:pointer;font-size:.88rem;font-family:inherit;transition:all .25s}
+.checklist-tab.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.checklist-panel{display:none}
+.checklist-panel.active{display:block}
+.checklist-group{margin-bottom:1.5rem}
+.checklist-group h3{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin-bottom:.8rem}
+.checklist-item{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 0;border-bottom:1px solid #f0f4f8}
+.checklist-item input{margin-top:.25rem;accent-color:var(--teal);width:18px;height:18px;flex-shrink:0}
+.checklist-item label{font-size:.95rem;color:#334155;cursor:pointer}
+.checklist-item label strong{color:var(--navy)}
+.checklist-progress{background:var(--light);border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:.92rem;color:var(--navy);font-weight:600}
+.legal-updated{font-size:.88rem;color:var(--gray);margin-bottom:1.5rem}
+.info-section h4{color:var(--navy);font-size:1rem;margin:1.2rem 0 .5rem;font-weight:700}
+.alert-box{background:rgba(255,184,0,.12);border:1px solid rgba(255,184,0,.35);border-radius:12px;padding:1rem 1.2rem;margin:1rem 0;font-size:.92rem;color:#334155}
+.alert-box strong{color:var(--navy)}
+.blog-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0}
+.blog-index-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1.5rem;text-decoration:none;color:inherit;transition:all .25s;display:block}
+.blog-index-card:hover{border-color:var(--teal);box-shadow:0 12px 30px rgba(0,61,122,.1);transform:translateY(-3px);text-decoration:none}
+.blog-index-card .bi-cat{color:var(--teal);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.blog-index-card h3{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.1rem;margin:.5rem 0 .6rem;line-height:1.35}
+.blog-index-card p{color:var(--gray);font-size:.9rem;margin:0}
+.blog-index-card .bi-meta{font-size:.8rem;color:var(--gray);margin-top:1rem}
 
 @media(max-width:768px){
   .calc-row,.tax-compare,.tax-detail-grid{grid-template-columns:1fr}

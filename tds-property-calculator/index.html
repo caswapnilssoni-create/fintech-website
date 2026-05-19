@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDS on Property Purchase Calculator — Section 194-IA | TaxMitra</title>
+<meta name="description" content="Free TDS calculator for property purchase in India. Calculate 1% TDS under Section 194-IA on house/flat above ₹50 lakh. Form 26QB guide.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://taxmitrafinance.com/tds-property-calculator/">
+<meta property="og:title" content="TDS on Property Purchase Calculator | TaxMitra">
+<meta property="og:url" content="https://taxmitrafinance.com/tds-property-calculator/">
+<meta property="og:image" content="https://taxmitrafinance.com/og-image.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calc.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"TDS on Property Purchase Calculator","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://taxmitrafinance.com/tds-property-calculator/","author":{"@type":"Person","name":"CA Swapnil Soni"}}
+</script>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="logo" href="../">Tax<span>Mitra</span></a>
+  <div class="nav-actions">
+    <a href="../">Home</a>
+    <a href="../calculators/">Calculators</a>
+    <a href="../blog/tds-on-house-purchase-in-india-complete-guide.html">TDS Guide</a>
+    <a class="cta" href="../#contact">Book CA</a>
+  </div>
+</nav>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../">Home</a><span class="sep">›</span>
+  <a href="../calculators/">Calculators</a><span class="sep">›</span>
+  <span aria-current="page">TDS on Property</span>
+</nav>
+<header class="page-hero">
+  <div class="badge">Section 194-IA · FY 2025-26</div>
+  <h1>TDS on <span>Property Purchase</span> Calculator</h1>
+  <p class="lead">Calculate 1% TDS when buying residential or commercial property worth ₹50 lakh or more from a resident seller.</p>
+</header>
+<section class="calc-wrap">
+  <div class="calc-panel">
+    <h2>🏠 Property TDS Calculator</h2>
+    <div class="form-group"><label>Total Property Consideration (₹)</label>
+      <input type="number" id="tds-consideration" placeholder="e.g. 7500000" value="7500000" oninput="TaxMitraCalc.calcTDSProperty()">
+    </div>
+    <div class="form-group"><label>Does the seller have a valid PAN?</label>
+      <select id="tds-pan" onchange="TaxMitraCalc.calcTDSProperty()">
+        <option value="yes" selected>Yes — TDS @ 1%</option>
+        <option value="no">No — TDS @ 20%</option>
+      </select>
+    </div>
+    <button type="button" class="calc-btn" onclick="TaxMitraCalc.calcTDSProperty()">Calculate TDS</button>
+    <div class="calc-result" id="tds-result">
+      <div class="result-row"><span class="result-label">TDS Applicable?</span><span id="tds-applicable">—</span></div>
+      <div class="result-row"><span class="result-label">TDS Rate</span><span id="tds-rate">—</span></div>
+      <div class="result-row"><span class="result-label">TDS Amount to Deposit</span><span id="tds-amount">—</span></div>
+      <div class="result-row"><span class="result-label">Net Payable to Seller</span><span id="tds-seller">—</span></div>
+      <p id="tds-note" style="margin-top:1rem;font-size:.9rem;color:var(--gray)"></p>
+    </div>
+  </div>
+</section>
+<section class="info-section">
+  <h2>When is TDS on Property Required?</h2>
+  <p>Under <strong>Section 194-IA</strong>, the <strong>buyer</strong> must deduct TDS at <strong>1%</strong> of the sale consideration when:</p>
+  <ul>
+    <li>Property value is <strong>₹50 lakh or more</strong></li>
+    <li>Seller is a <strong>resident</strong> (not NRI — different section applies)</li>
+    <li>Property is land (other than agricultural), building, flat, or commercial unit</li>
+  </ul>
+  <div class="alert-box"><strong>Important:</strong> TDS is on the full consideration, not just the amount above ₹50 lakh. Deposit via <strong>Form 26QB</strong> within 30 days from month-end of deduction and issue <strong>Form 16B</strong> to the seller.</div>
+  <h2>Example</h2>
+  <p>Flat purchase price: <strong>₹75,00,000</strong> · Seller has PAN → TDS = 1% × ₹75,00,000 = <strong>₹75,000</strong>. Pay seller ₹74,25,000 and deposit ₹75,000 to the government.</p>
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><h3>Who deducts TDS — buyer or seller?</h3><p>The buyer deducts and deposits TDS. The seller receives the balance after TDS.</p></div>
+    <div class="faq-item"><h3>What if the seller does not have PAN?</h3><p>TDS rate increases to <strong>20%</strong> under Section 206AA.</p></div>
+    <div class="faq-item"><h3>Is agricultural land covered?</h3><p>Section 194-IA generally excludes agricultural land in rural areas. Consult a CA for specific plots.</p></div>
+    <div class="faq-item"><h3>How do I pay TDS?</h3><p>Pay online through the TIN-NSDL portal using Form 26QB (Challan 26QB).</p></div>
+  </div>
+</section>
+<section class="related-calc">
+  <h2>Related</h2>
+  <div class="calc-grid">
+    <a class="calc-card" href="../blog/tds-on-house-purchase-in-india-complete-guide.html"><div class="c-icon">📰</div><h3>Full TDS Guide</h3><p>Step-by-step Form 26QB article.</p></a>
+    <a class="calc-card" href="../home-loan-emi-calculator/"><div class="c-icon">🏡</div><h3>Home Loan EMI</h3><p>EMI + tax benefits.</p></a>
+    <a class="calc-card" href="../capital-gains-calculator/"><div class="c-icon">📈</div><h3>Capital Gains</h3><p>Tax on property sale.</p></a>
+  </div>
+</section>
+<section class="cta-section">
+  <h2>Buying Property? Get Expert Tax Help</h2>
+  <p>CA Swapnil Soni assists with TDS compliance, capital gains, and ITR reporting.</p>
+  <a class="btn" href="../#contact">Book Free Consultation</a>
+</section>
+<footer class="site-footer">© TaxMitra · <a href="../">taxmitrafinance.com</a></footer>
+<script src="../assets/calc.js"></script>
+<script>TaxMitraCalc.calcTDSProperty();</script>
+</body>
+</html>

@@ -558,9 +558,9 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
           <button class="btn-outline" onclick="showPage('services')">Explore Services →</button>
         </div>
         <div class="hero-stats">
-          <div class="hero-stat"><span class="num" data-target="500">0</span><span class="lbl">Clients Served</span></div>
-          <div class="hero-stat"><span class="num" data-target="10">0</span><span class="lbl">Years Experience</span></div>
-          <div class="hero-stat"><span class="num" data-target="98">0</span><span class="lbl">% Satisfaction</span></div>
+          <div class="hero-stat"><span class="num" data-target="500">500</span><span class="lbl">Clients Served</span></div>
+          <div class="hero-stat"><span class="num" data-target="10">10</span><span class="lbl">Years Experience</span></div>
+          <div class="hero-stat"><span class="num" data-target="98">98</span><span class="lbl">% Satisfaction</span></div>
         </div>
       </div>
       <div class="hero-visual">
@@ -588,10 +588,10 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
   <!-- CLIENT COUNTER -->
   <div class="counter-section">
     <div class="counter-grid">
-      <div class="counter-item reveal"><span class="counter-num" data-target="500">0</span>+<div class="counter-label">Happy Clients</div></div>
-      <div class="counter-item reveal"><span class="counter-num" data-target="10">0</span>+<div class="counter-label">Years Experience</div></div>
-      <div class="counter-item reveal"><span class="counter-num" data-target="1000">0</span>+<div class="counter-label">Returns Filed</div></div>
-      <div class="counter-item reveal"><span class="counter-num" data-target="50">0</span>+<div class="counter-label">Companies Formed</div></div>
+      <div class="counter-item reveal"><span class="counter-num" data-target="500">500</span>+<div class="counter-label">Happy Clients</div></div>
+      <div class="counter-item reveal"><span class="counter-num" data-target="10">10</span>+<div class="counter-label">Years Experience</div></div>
+      <div class="counter-item reveal"><span class="counter-num" data-target="1000">1000</span>+<div class="counter-label">Returns Filed</div></div>
+      <div class="counter-item reveal"><span class="counter-num" data-target="50">50</span>+<div class="counter-label">Companies Formed</div></div>
     </div>
   </div>
 
@@ -718,7 +718,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
     </div>
     <div class="blog-grid" id="home-blog-grid"></div>
     <div style="text-align:center;margin-top:2.5rem">
-      <button class="btn-primary" onclick="showPage('blog')">View All Articles →</button>
+      <a href="blog/" class="btn-primary" style="display:inline-block;text-decoration:none">View All Articles →</a>
     </div>
   </section>
 
@@ -982,7 +982,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
     <div class="section-title">
       <div class="section-label">Free Tools</div>
       <h2>Tax & <span>Financial</span> Calculators</h2>
-      <p>12 free online calculators to help you plan your finances better.</p>
+      <p>14 free online calculators to help you plan your finances better.</p>
     </div>
     <div class="calc-hub-grid">
       <a class="calc-hub-card" href="income-tax-calculator/">
@@ -1032,6 +1032,14 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
       <a class="calc-hub-card" href="compound-interest-calculator/">
         <span class="ch-icon">📈</span>
         <div class="ch-body"><h3>Compound Interest</h3><p>Daily, monthly, quarterly, annual compounding.</p></div>
+      </a>
+      <a class="calc-hub-card" href="tds-property-calculator/">
+        <span class="ch-icon">🏠</span>
+        <div class="ch-body"><h3>TDS on Property</h3><p>Section 194-IA — 1% TDS on ₹50L+ purchases.</p></div>
+      </a>
+      <a class="calc-hub-card" href="capital-gains-calculator/">
+        <span class="ch-icon">💹</span>
+        <div class="ch-body"><h3>Capital Gains</h3><p>LTCG &amp; STCG on equity, property &amp; more.</p></div>
       </a>
     </div>
     <div style="text-align:center;margin-top:2.5rem">
@@ -1418,10 +1426,11 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
       <h4>Quick Links</h4>
       <a onclick="showPage('home')">Home</a>
       <a onclick="showPage('about')">About Us</a>
-      <a href="#" onclick="showPage('blog');return false">Blog</a>
+      <a href="blog/">Blog</a>
+      <a href="itr-documents-checklist/">ITR Checklist</a>
       <a onclick="showPage('duedates')">Due Dates</a>
       <a onclick="showPage('calculators')">Calculators</a>
-      <a onclick="showPage('investments')">Investments</a>
+      <a href="faq/">FAQ</a>
       <a onclick="showPage('contact')">Contact</a>
     </div>
     <div class="footer-col">
@@ -1433,7 +1442,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025–2026 TaxMitra. All rights reserved.</span>
+    <span>© 2025–2026 TaxMitra. All rights reserved. · <a href="privacy-policy/" style="color:rgba(255,255,255,.5)">Privacy</a> · <a href="terms-of-use/" style="color:rgba(255,255,255,.5)">Terms</a> · <a href="faq/" style="color:rgba(255,255,255,.5)">FAQ</a></span>
     <span>Made with ❤️ for Indian Taxpayers</span>
   </div>
 </footer>
@@ -1665,7 +1674,7 @@ function initParticles(){
 function animateCounters(){
   document.querySelectorAll('[data-target]').forEach(el=>{
     const target=parseInt(el.getAttribute('data-target'));
-    let cur=0;const step=target/60;
+    let cur=parseInt(el.textContent,10)||0;const step=target/60;
     const t=setInterval(()=>{
       cur=Math.min(cur+step,target);
       el.textContent=Math.floor(cur);

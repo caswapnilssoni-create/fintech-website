@@ -509,6 +509,87 @@
     if (res) res.classList.add('show');
   }
 
+  // ===== TDS on Property (Section 194-IA) =====
+  function calcTDSProperty() {
+    const consideration = parseFloat(document.getElementById('tds-consideration')?.value) || 0;
+    const hasPan = document.getElementById('tds-pan')?.value === 'yes';
+    const threshold = 5000000;
+    const applicable = consideration >= threshold;
+    const rate = applicable ? (hasPan ? 0.01 : 0.2) : 0;
+    const tds = consideration * rate;
+    const toSeller = consideration - tds;
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('tds-applicable', applicable ? 'Yes — Section 194-IA applies' : 'No — below ₹50 lakh threshold');
+    set('tds-rate', applicable ? (hasPan ? '1% (seller has PAN)' : '20% (PAN not available)') : '—');
+    set('tds-amount', applicable ? f(tds) : '₹0');
+    set('tds-seller', f(toSeller));
+    set('tds-note', applicable
+      ? 'Deposit TDS via Form 26QB within 30 days from month-end of deduction. Issue Form 16B to seller.'
+      : 'TDS under Section 194-IA is not required when total consideration is below ₹50 lakh.');
+    const res = document.getElementById('tds-result');
+    if (res) res.classList.add('show');
+  }
+
+  // ===== Capital Gains (indicative FY 2025-26) =====
+  function calcCapitalGains() {
+    const asset = document.getElementById('cg-asset')?.value || 'equity';
+    const term = document.getElementById('cg-term')?.value || 'ltcg';
+    const purchase = parseFloat(document.getElementById('cg-purchase')?.value) || 0;
+    const sale = parseFloat(document.getElementById('cg-sale')?.value) || 0;
+    const improvement = parseFloat(document.getElementById('cg-improvement')?.value) || 0;
+    const slabRate = (parseFloat(document.getElementById('cg-slab')?.value) || 30) / 100;
+    const cost = purchase + improvement;
+    const gain = Math.max(0, sale - cost);
+    let taxableGain = gain;
+    let tax = 0;
+    let rateLabel = '—';
+    let note = '';
+
+    if (term === 'ltcg') {
+      if (asset === 'equity') {
+        const exempt = 125000;
+        taxableGain = Math.max(0, gain - exempt);
+        tax = taxableGain * 0.125;
+        rateLabel = '12.5% on LTCG above ₹1.25 lakh (listed equity/MF, STT paid)';
+        note = 'Section 112A. Holding period assumed > 12 months for listed equity.';
+      } else {
+        taxableGain = gain;
+        tax = gain * 0.125;
+        rateLabel = '12.5% LTCG (property / unlisted / other assets — indicative)';
+        note = 'Indexation rules may apply for certain pre-July 2024 acquisitions. Consult a CA for exact computation.';
+      }
+    } else {
+      taxableGain = gain;
+      if (asset === 'equity') {
+        tax = gain * 0.2;
+        rateLabel = '20% STCG (listed equity/MF, STT paid)';
+        note = 'Section 111A. Holding period assumed ≤ 12 months.';
+      } else {
+        tax = gain * slabRate;
+        rateLabel = (slabRate * 100) + '% (added to income — STCG at slab rate)';
+        note = 'STCG on property and most non-equity assets is taxed at your applicable income tax slab.';
+      }
+    }
+
+    const cess = tax * 0.04;
+    const total = tax + cess;
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('cg-cost', f(cost));
+    set('cg-gain', f(gain));
+    set('cg-taxable', f(taxableGain));
+    set('cg-rate', rateLabel);
+    set('cg-tax', f(tax));
+    set('cg-cess', f(cess));
+    set('cg-total', f(total));
+    set('cg-note', note);
+    const slabRow = document.getElementById('cg-slab-row');
+    if (slabRow) slabRow.style.display = (term === 'stcg' && asset !== 'equity') ? 'block' : 'none';
+    const res = document.getElementById('cg-result');
+    if (res) res.classList.add('show');
+  }
+
   global.TaxMitraCalc = {
     calculateDetailedTax,
     calcGST,
@@ -522,6 +603,8 @@
     calcHomeLoan,
     calcSalary,
     calcEPF,
+    calcTDSProperty,
+    calcCapitalGains,
     FY_META
   };
 })(window);

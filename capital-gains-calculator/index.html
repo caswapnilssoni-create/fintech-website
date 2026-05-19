@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital Gains Tax Calculator India — LTCG & STCG FY 2025-26 | TaxMitra</title>
+<meta name="description" content="Free capital gains tax calculator for India. Estimate LTCG and STCG on equity, mutual funds, and property per FY 2025-26 rules. Built by CA Swapnil Soni.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://taxmitrafinance.com/capital-gains-calculator/">
+<meta property="og:title" content="Capital Gains Tax Calculator | TaxMitra">
+<meta property="og:url" content="https://taxmitrafinance.com/capital-gains-calculator/">
+<meta property="og:image" content="https://taxmitrafinance.com/og-image.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calc.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Capital Gains Tax Calculator India","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://taxmitrafinance.com/capital-gains-calculator/","author":{"@type":"Person","name":"CA Swapnil Soni"}}
+</script>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="logo" href="../">Tax<span>Mitra</span></a>
+  <div class="nav-actions">
+    <a href="../">Home</a>
+    <a href="../income-tax-calculator/">Income Tax</a>
+    <a href="../tds-property-calculator/">TDS Property</a>
+    <a class="cta" href="../#contact">Book CA</a>
+  </div>
+</nav>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../">Home</a><span class="sep">›</span>
+  <a href="../calculators/">Calculators</a><span class="sep">›</span>
+  <span aria-current="page">Capital Gains</span>
+</nav>
+<header class="page-hero">
+  <div class="badge">LTCG &amp; STCG · FY 2025-26</div>
+  <h1>Capital Gains <span>Tax Calculator</span></h1>
+  <p class="lead">Estimate tax on sale of shares, mutual funds, or property — indicative rates per current Indian tax law.</p>
+</header>
+<section class="calc-wrap">
+  <div class="calc-panel">
+    <h2>📈 Capital Gains Calculator</h2>
+    <div class="calc-row">
+      <div class="form-group"><label>Asset Type</label>
+        <select id="cg-asset" onchange="TaxMitraCalc.calcCapitalGains()">
+          <option value="equity">Listed equity / equity MF (STT paid)</option>
+          <option value="property">Real estate / land / building</option>
+          <option value="other">Other (gold, debt MF, unlisted, etc.)</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Holding Period</label>
+        <select id="cg-term" onchange="TaxMitraCalc.calcCapitalGains()">
+          <option value="ltcg">Long-term (LTCG)</option>
+          <option value="stcg">Short-term (STCG)</option>
+        </select>
+      </div>
+    </div>
+    <div class="calc-row">
+      <div class="form-group"><label>Purchase Price / Cost (₹)</label>
+        <input type="number" id="cg-purchase" value="5000000" oninput="TaxMitraCalc.calcCapitalGains()">
+      </div>
+      <div class="form-group"><label>Sale Price (₹)</label>
+        <input type="number" id="cg-sale" value="8000000" oninput="TaxMitraCalc.calcCapitalGains()">
+      </div>
+    </div>
+    <div class="calc-row">
+      <div class="form-group"><label>Improvement / Expenses (₹)</label>
+        <input type="number" id="cg-improvement" value="0" oninput="TaxMitraCalc.calcCapitalGains()">
+      </div>
+      <div class="form-group" id="cg-slab-row" style="display:none"><label>Your income tax slab (%)</label>
+        <input type="number" id="cg-slab" value="30" min="0" max="40" step="0.5" oninput="TaxMitraCalc.calcCapitalGains()">
+      </div>
+    </div>
+    <button type="button" class="calc-btn" onclick="TaxMitraCalc.calcCapitalGains()">Calculate Capital Gains Tax</button>
+    <div class="calc-result" id="cg-result">
+      <div class="result-row"><span class="result-label">Indexed Cost / Total Cost</span><span id="cg-cost">—</span></div>
+      <div class="result-row"><span class="result-label">Capital Gain</span><span id="cg-gain">—</span></div>
+      <div class="result-row"><span class="result-label">Taxable Gain</span><span id="cg-taxable">—</span></div>
+      <div class="result-row"><span class="result-label">Rate Applied</span><span id="cg-rate">—</span></div>
+      <div class="result-row"><span class="result-label">Base Tax</span><span id="cg-tax">—</span></div>
+      <div class="result-row"><span class="result-label">Cess (4%)</span><span id="cg-cess">—</span></div>
+      <div class="result-row"><span class="result-label" style="font-weight:700;color:var(--navy)">Total Tax</span><span id="cg-total">—</span></div>
+      <p id="cg-note" style="margin-top:1rem;font-size:.88rem;color:var(--gray)"></p>
+    </div>
+  </div>
+</section>
+<section class="info-section">
+  <h2>Capital Gains Rates (Indicative FY 2025-26)</h2>
+  <table>
+    <thead><tr><th>Asset</th><th>Short-term</th><th>Long-term</th></tr></thead>
+    <tbody>
+      <tr><td>Listed equity / equity MF (STT)</td><td>20% (Section 111A)</td><td>12.5% above ₹1.25L exemption (Section 112A)</td></tr>
+      <tr><td>Real estate / unlisted</td><td>Income tax slab rate</td><td>12.5% LTCG (indexation rules may apply for older assets)</td></tr>
+      <tr><td>Debt MF (units after 1 Apr 2023)</td><td>Slab rate</td><td>Slab rate</td></tr>
+    </tbody>
+  </table>
+  <div class="alert-box"><strong>Disclaimer:</strong> This calculator provides estimates only. Actual tax may differ based on holding period, grandfathering, set-off of losses, and indexation. Consult CA Swapnil Soni before filing.</div>
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><h3>What is the LTCG exemption on equity?</h3><p>Long-term capital gains on listed equity and equity-oriented mutual funds (where STT is paid) are taxed at 12.5% on gains exceeding <strong>₹1,25,000</strong> per financial year.</p></div>
+    <div class="faq-item"><h3>How is property LTCG calculated?</h3><p>For many assets, LTCG is sale price minus cost of acquisition and improvement. Indexation may apply for properties acquired before specified dates — get professional advice.</p></div>
+    <div class="faq-item"><h3>Can I set off capital losses?</h3><p>Yes, subject to Income Tax Act rules — STCL can offset STCG/LTCG in prescribed order. Losses may be carried forward.</p></div>
+  </div>
+</section>
+<section class="related-calc">
+  <h2>Related</h2>
+  <div class="calc-grid">
+    <a class="calc-card" href="../income-tax-calculator/"><div class="c-icon">📊</div><h3>Income Tax Calculator</h3><p>Old vs New regime.</p></a>
+    <a class="calc-card" href="../tds-property-calculator/"><div class="c-icon">🏠</div><h3>TDS on Property</h3><p>Buyer TDS calculator.</p></a>
+    <a class="calc-card" href="../itr-documents-checklist/"><div class="c-icon">📋</div><h3>ITR Checklist</h3><p>Documents for filing.</p></a>
+  </div>
+</section>
+<section class="cta-section">
+  <h2>Need Help Reporting Capital Gains?</h2>
+  <p>Schedule ITR filing with accurate capital gains schedules and loss set-off.</p>
+  <a class="btn" href="../#contact">Book Free Consultation</a>
+</section>
+<footer class="site-footer">© TaxMitra · <a href="../">taxmitrafinance.com</a></footer>
+<script src="../assets/calc.js"></script>
+<script>TaxMitraCalc.calcCapitalGains();</script>
+</body>
+</html>
