@@ -209,10 +209,119 @@
     document.getElementById('emi-result').classList.add('show');
   }
 
+  // ===== SIP Calculator =====
+  // FV of SIP = P * [((1+r)^n - 1) / r] * (1+r) where r is monthly rate, n is months
+  function calcSIP() {
+    const P = parseFloat(document.getElementById('sip-amount').value) || 0;
+    const annual = parseFloat(document.getElementById('sip-return').value) || 0;
+    const years = parseFloat(document.getElementById('sip-years').value) || 0;
+    if (!P || !annual || !years) return;
+    const r = annual / 12 / 100;
+    const n = years * 12;
+    const fv = P * (((Math.pow(1 + r, n) - 1) / r)) * (1 + r);
+    const invested = P * n;
+    const returns = fv - invested;
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    document.getElementById('sip-invested').textContent = f(invested);
+    document.getElementById('sip-returns').textContent = f(returns);
+    document.getElementById('sip-fv').textContent = f(fv);
+    document.getElementById('sip-result').classList.add('show');
+  }
+
+  // ===== PPF Calculator =====
+  // Annual contribution compounded annually for n years
+  // FV = P * [((1+r)^n - 1) / r] * (1+r) - annuity-due variant
+  function calcPPF() {
+    const P = parseFloat(document.getElementById('ppf-amount').value) || 0;
+    const annual = parseFloat(document.getElementById('ppf-rate').value) || 0;
+    const years = parseFloat(document.getElementById('ppf-years').value) || 0;
+    if (!P || !annual || !years) return;
+    const r = annual / 100;
+    const fv = P * (((Math.pow(1 + r, years) - 1) / r)) * (1 + r);
+    const invested = P * years;
+    const interest = fv - invested;
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    document.getElementById('ppf-invested').textContent = f(invested);
+    document.getElementById('ppf-interest').textContent = f(interest);
+    document.getElementById('ppf-maturity').textContent = f(fv);
+    document.getElementById('ppf-result').classList.add('show');
+  }
+
+  // ===== HRA Calculator =====
+  // Annual HRA exempt = LEAST of (actual HRA, rent - 10% of (Basic+DA), 50% or 40% of (Basic+DA))
+  function calcHRA() {
+    const basicM = parseFloat(document.getElementById('hra-basic').value) || 0;
+    const daM = parseFloat(document.getElementById('hra-da').value) || 0;
+    const hraM = parseFloat(document.getElementById('hra-received').value) || 0;
+    const rentM = parseFloat(document.getElementById('hra-rent').value) || 0;
+    const city = document.getElementById('hra-city').value;
+    if (!basicM || !hraM || !rentM) return;
+    const basicAnnual = (basicM + daM) * 12;
+    const actualHRA = hraM * 12;
+    const rentMinus10 = Math.max(0, rentM * 12 - 0.1 * basicAnnual);
+    const pctOfBasic = (city === 'metro' ? 0.5 : 0.4) * basicAnnual;
+    const exempt = Math.max(0, Math.min(actualHRA, rentMinus10, pctOfBasic));
+    const taxable = Math.max(0, actualHRA - exempt);
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    document.getElementById('hra-actual').textContent = f(actualHRA);
+    document.getElementById('hra-rent-minus').textContent = f(rentMinus10);
+    document.getElementById('hra-pct-basic').textContent = f(pctOfBasic);
+    document.getElementById('hra-exempt').textContent = f(exempt);
+    document.getElementById('hra-taxable').textContent = f(taxable);
+    document.getElementById('hra-result').classList.add('show');
+  }
+
+  // ===== NPS Calculator =====
+  // Accumulation via SIP-like formula; at retirement 60% lump-sum (tax-free), 40% min annuity
+  function calcNPS() {
+    const age = parseFloat(document.getElementById('nps-age').value) || 0;
+    const retAge = parseFloat(document.getElementById('nps-ret-age').value) || 60;
+    const monthly = parseFloat(document.getElementById('nps-monthly').value) || 0;
+    const ret = parseFloat(document.getElementById('nps-return').value) || 0;
+    const annPct = parseFloat(document.getElementById('nps-annuity-pct').value) || 40;
+    const annRate = parseFloat(document.getElementById('nps-annuity-rate').value) || 6;
+    if (!age || !monthly || age >= retAge) return;
+    const months = (retAge - age) * 12;
+    const r = ret / 12 / 100;
+    const corpus = monthly * (((Math.pow(1 + r, months) - 1) / r)) * (1 + r);
+    const invested = monthly * months;
+    const annuityCorpus = corpus * (annPct / 100);
+    const lumpSum = corpus - annuityCorpus;
+    const monthlyPension = (annuityCorpus * annRate / 100) / 12;
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    document.getElementById('nps-invested').textContent = f(invested);
+    document.getElementById('nps-corpus').textContent = f(corpus);
+    document.getElementById('nps-lump').textContent = f(lumpSum);
+    document.getElementById('nps-pension').textContent = f(monthlyPension);
+    document.getElementById('nps-result').classList.add('show');
+  }
+
+  // ===== FD Calculator =====
+  // A = P (1 + r/n)^(nt) — compounds quarterly by default
+  function calcFD() {
+    const P = parseFloat(document.getElementById('fd-amount').value) || 0;
+    const r = parseFloat(document.getElementById('fd-rate').value) || 0;
+    const t = parseFloat(document.getElementById('fd-years').value) || 0;
+    const n = parseFloat(document.getElementById('fd-compounding').value) || 4;
+    if (!P || !r || !t) return;
+    const amount = P * Math.pow(1 + r / (n * 100), n * t);
+    const interest = amount - P;
+    const f = (x) => '₹' + Math.round(x).toLocaleString('en-IN');
+    document.getElementById('fd-principal').textContent = f(P);
+    document.getElementById('fd-interest').textContent = f(interest);
+    document.getElementById('fd-maturity').textContent = f(amount);
+    document.getElementById('fd-result').classList.add('show');
+  }
+
   global.TaxMitraCalc = {
     calculateDetailedTax,
     calcGST,
     calcEMI,
+    calcSIP,
+    calcPPF,
+    calcHRA,
+    calcNPS,
+    calcFD,
     FY_META
   };
 })(window);

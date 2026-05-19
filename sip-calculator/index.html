@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP Calculator India — Mutual Fund SIP Returns | TaxMitra</title>
+<meta name="description" content="Free SIP Calculator for mutual fund investments in India. Calculate future value, total invested, and estimated returns of your monthly SIP instantly. Plan your ELSS, large-cap, or index fund SIP with CA-built precision.">
+<meta name="keywords" content="SIP calculator, mutual fund SIP calculator, SIP return calculator India, monthly SIP calculator, ELSS SIP, SIP returns calculator">
+<meta name="author" content="CA Swapnil Soni — TaxMitra">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://taxmitrafinance.com/sip-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taxmitrafinance.com/sip-calculator/">
+<meta property="og:title" content="SIP Calculator India — Mutual Fund SIP Returns | TaxMitra">
+<meta property="og:description" content="Calculate SIP returns instantly. See future value, total invested, and growth.">
+<meta property="og:image" content="https://taxmitrafinance.com/og-image.png">
+<meta property="og:site_name" content="TaxMitra">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SIP Calculator India | TaxMitra">
+<meta name="twitter:description" content="Calculate monthly SIP returns for any mutual fund instantly.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"SIP Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Free online SIP calculator for mutual funds in India. Computes future value, total invested, and returns based on monthly SIP, expected rate of return, and tenure.","url":"https://taxmitrafinance.com/sip-calculator/","author":{"@type":"Person","name":"CA Swapnil Soni"},"provider":{"@type":"Organization","name":"TaxMitra","url":"https://taxmitrafinance.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://taxmitrafinance.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://taxmitrafinance.com/calculators/"},{"@type":"ListItem","position":3,"name":"SIP Calculator","item":"https://taxmitrafinance.com/sip-calculator/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is SIP and how does the SIP calculator work?","acceptedAnswer":{"@type":"Answer","text":"SIP (Systematic Investment Plan) lets you invest a fixed amount in mutual funds every month. The SIP calculator uses the future value of annuity-due formula: FV = P × [((1+r)^n − 1) / r] × (1+r), where P is the monthly amount, r is the monthly rate of return, and n is the number of months. It estimates your final corpus based on assumed returns."}},
+{"@type":"Question","name":"What return rate should I assume for SIP calculation?","acceptedAnswer":{"@type":"Answer","text":"Historical long-term equity mutual fund returns in India are around 11–13% per annum. For conservative planning use 10%, optimistic 14%. Debt funds typically yield 6–8%. Hybrid funds 8–10%. Past returns do not guarantee future performance."}},
+{"@type":"Question","name":"Are SIP returns guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. Mutual fund returns are market-linked and not guaranteed. The calculator gives an estimate assuming a constant rate of return. Actual returns can be higher or lower based on market performance."}},
+{"@type":"Question","name":"How is SIP taxed in India?","acceptedAnswer":{"@type":"Answer","text":"For equity funds: LTCG (held > 1 year) is taxed at 12.5% above ₹1.25 lakh per year. STCG (held ≤ 1 year) at 20%. For debt funds: gains taxed at slab rate (no indexation post-April 2023). ELSS funds qualify for Section 80C up to ₹1.5 lakh under the Old Regime."}},
+{"@type":"Question","name":"What is the power of compounding in SIP?","acceptedAnswer":{"@type":"Answer","text":"Compounding means your returns earn returns. A ₹10,000 monthly SIP at 12% for 10 years gives ~₹23 lakh, but for 20 years gives ~₹99 lakh, and for 30 years gives ~₹3.5 crore. The longer you stay invested, the more dramatic the compounding effect."}}
+]}
+</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/calc.css">
+</head>
+<body>
+<nav class="site-nav">
+  <a class="logo" href="../">Tax<span>Mitra</span></a>
+  <div class="nav-actions">
+    <a href="../">Home</a>
+    <a href="../calculators/">All Calculators</a>
+    <a href="../#blog">Blog</a>
+    <a class="cta" href="../#contact">Book CA</a>
+  </div>
+</nav>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../">Home</a><span class="sep">›</span>
+  <a href="../calculators/">Calculators</a><span class="sep">›</span>
+  <span aria-current="page">SIP Calculator</span>
+</nav>
+<header class="page-hero">
+  <div class="badge">Free Tool · Mutual Fund</div>
+  <h1>SIP Calculator — <span>Mutual Fund Returns India</span></h1>
+  <p class="lead">Free SIP calculator for mutual fund investments. Enter your monthly SIP, expected return, and tenure — instantly see total invested, estimated returns, and the final corpus you'll build.</p>
+</header>
+<section class="calc-wrap">
+  <div class="calc-panel">
+    <h2>💰 SIP Calculator</h2>
+    <div class="calc-row">
+      <div class="form-group"><label>Monthly Investment (₹)</label>
+        <input type="number" id="sip-amount" placeholder="e.g. 10000" oninput="TaxMitraCalc.calcSIP()">
+      </div>
+      <div class="form-group"><label>Expected Annual Return (%)</label>
+        <input type="number" id="sip-return" placeholder="e.g. 12" step="0.5" oninput="TaxMitraCalc.calcSIP()">
+      </div>
+    </div>
+    <div class="form-group"><label>Investment Duration (Years)</label>
+      <input type="number" id="sip-years" placeholder="e.g. 15" oninput="TaxMitraCalc.calcSIP()">
+    </div>
+    <button class="calc-btn" onclick="TaxMitraCalc.calcSIP()">Calculate SIP Returns</button>
+    <div class="calc-result" id="sip-result">
+      <div class="result-row"><span class="result-label">Total Invested</span><span id="sip-invested">—</span></div>
+      <div class="result-row"><span class="result-label">Estimated Returns</span><span id="sip-returns">—</span></div>
+      <div class="result-row"><span class="result-label">Future Value (Maturity)</span><span id="sip-fv">—</span></div>
+    </div>
+  </div>
+</section>
+<section class="info-section">
+  <h2>How the SIP Calculator Works</h2>
+  <p>The SIP calculator uses the standard <strong>future value of an annuity-due</strong> formula. You contribute a fixed amount each month, and assuming a constant rate of return, the calculator projects the corpus you'd accumulate at the end of your chosen tenure.</p>
+  <p style="background:var(--light);padding:1rem;border-radius:8px;font-family:monospace;text-align:center"><strong>FV = P × [((1+r)<sup>n</sup> − 1) / r] × (1+r)</strong></p>
+  <ul>
+    <li><strong>P</strong> = Monthly SIP amount</li>
+    <li><strong>r</strong> = Monthly rate of return (annual rate ÷ 12 ÷ 100)</li>
+    <li><strong>n</strong> = Total months (years × 12)</li>
+  </ul>
+
+  <h2>Why SIP Is the Best Way to Build Wealth</h2>
+  <ul>
+    <li><strong>Discipline:</strong> Auto-debit removes the need for willpower every month.</li>
+    <li><strong>Rupee cost averaging:</strong> Same ₹ buys more units when markets fall, fewer when they rise — averaging out volatility.</li>
+    <li><strong>Power of compounding:</strong> Time multiplies returns exponentially.</li>
+    <li><strong>Low entry barrier:</strong> Start with as little as ₹500/month.</li>
+    <li><strong>Tax efficient:</strong> ELSS SIPs qualify for 80C deduction up to ₹1.5L under Old Regime.</li>
+  </ul>
+
+  <h2>SIP Example — ₹10,000/month at 12% for 15 Years</h2>
+  <table>
+    <thead><tr><th>Year</th><th>Invested</th><th>Estimated Value</th></tr></thead>
+    <tbody>
+      <tr><td>5</td><td>₹6,00,000</td><td>~₹8,24,000</td></tr>
+      <tr><td>10</td><td>₹12,00,000</td><td>~₹23,23,000</td></tr>
+      <tr><td>15</td><td>₹18,00,000</td><td>~₹50,46,000</td></tr>
+      <tr><td>20</td><td>₹24,00,000</td><td>~₹99,91,000</td></tr>
+      <tr><td>25</td><td>₹30,00,000</td><td>~₹1.89 Cr</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><h3>What is SIP and how does the SIP calculator work?</h3><p>SIP (Systematic Investment Plan) lets you invest a fixed amount in mutual funds every month. The calculator uses the future value of annuity-due formula to estimate your final corpus.</p></div>
+    <div class="faq-item"><h3>What return rate should I assume?</h3><p>Historical long-term equity mutual fund returns in India are around 11–13% per annum. Use 10% conservatively, 14% optimistically. Debt funds typically 6–8%. Past returns don't guarantee future performance.</p></div>
+    <div class="faq-item"><h3>Are SIP returns guaranteed?</h3><p>No. Mutual fund returns are market-linked. The calculator assumes a constant rate — actual returns will vary based on market performance.</p></div>
+    <div class="faq-item"><h3>How is SIP taxed in India?</h3><p>Equity LTCG (held > 1 year) is taxed at 12.5% above ₹1.25 lakh/year. Equity STCG at 20%. Debt fund gains taxed at slab rate. ELSS funds qualify for 80C up to ₹1.5L under Old Regime.</p></div>
+    <div class="faq-item"><h3>What is the power of compounding?</h3><p>Your returns earn returns. ₹10,000/month at 12% for 10 years = ~₹23L; for 20 years = ~₹99L; for 30 years = ~₹3.5 Cr. Time multiplies wealth exponentially.</p></div>
+  </div>
+</section>
+<section class="related-calc">
+  <h2>Related Calculators</h2>
+  <div class="calc-grid">
+    <a class="calc-card" href="../ppf-calculator/"><div class="c-icon">🏦</div><h3>PPF Calculator</h3><p>15-year tax-free returns. Government-backed at 7.1%.</p></a>
+    <a class="calc-card" href="../nps-calculator/"><div class="c-icon">👴</div><h3>NPS Calculator</h3><p>Retirement corpus + monthly pension projection.</p></a>
+    <a class="calc-card" href="../income-tax-calculator/"><div class="c-icon">📊</div><h3>Income Tax Calculator</h3><p>Compare Old vs New regime tax savings.</p></a>
+  </div>
+</section>
+<section class="cta-section">
+  <h2>Need Help Choosing the Right Fund?</h2>
+  <p>CA Swapnil Soni offers tax-efficient mutual fund advisory — pick the right funds for your goals, not just the ones with the highest ads.</p>
+  <a class="btn" href="../#contact">📅 Book Free Consultation</a>
+</section>
+<footer class="site-footer">© TaxMitra · <a href="../">taxmitrafinance.com</a> · CA Swapnil Soni, Pune</footer>
+<script src="../assets/calc.js"></script>
+</body>
+</html>
