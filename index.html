@@ -44,7 +44,14 @@ gtag('config', 'G-S2JLZPJM4F');
 <meta name="twitter:description" content="ITR, GST, tax planning & compliance for individuals and businesses across India.">
 <meta name="twitter:image" content="https://taxmitrafinance.com/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<!-- PWA: installable to home screen on Android / iOS / desktop -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#003D7A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="TaxMitra">
+<meta name="mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
@@ -1526,7 +1533,35 @@ window.addEventListener('load',()=>{
   initItrPopup();
   showPage(getPageFromUrl(),true);
   loadBlogs();
+  initPWA();
 });
+
+// ===== PWA: register service worker + install banner =====
+let __pwaPrompt=null;
+function initPWA(){
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js',{scope:'/'}).catch(e=>console.warn('SW failed:',e));
+  }
+  window.addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault();
+    __pwaPrompt=e;
+    if(!sessionStorage.getItem('pwa-dismissed'))showInstallBanner();
+  });
+  window.addEventListener('appinstalled',()=>{
+    hideInstallBanner();__pwaPrompt=null;
+  });
+}
+function showInstallBanner(){
+  if(document.getElementById('pwa-banner'))return;
+  const div=document.createElement('div');
+  div.id='pwa-banner';
+  div.innerHTML='<span style="font-size:1.8rem">📲</span><div style="flex:1;font-size:.85rem;line-height:1.4"><div style="font-weight:700;color:var(--navy)">Install TaxMitra app</div><div style="color:var(--gray)">Add to home screen for quick access</div></div><button onclick="dismissInstall()" style="background:none;border:none;color:var(--gray);font-size:.85rem;padding:6px 8px;cursor:pointer">Later</button><button onclick="doInstall()" style="background:var(--teal);color:#fff;border:none;border-radius:50px;padding:8px 16px;font-size:.85rem;font-weight:700;cursor:pointer">Install</button>';
+  div.style.cssText='position:fixed;bottom:80px;left:16px;right:16px;max-width:460px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:14px 16px;box-shadow:0 20px 50px rgba(0,61,122,.18);display:flex;align-items:center;gap:12px;z-index:9999;font-family:"DM Sans",sans-serif';
+  document.body.appendChild(div);
+}
+function hideInstallBanner(){const el=document.getElementById('pwa-banner');if(el)el.remove();}
+function dismissInstall(){sessionStorage.setItem('pwa-dismissed','1');hideInstallBanner();}
+async function doInstall(){if(!__pwaPrompt)return;__pwaPrompt.prompt();const r=await __pwaPrompt.userChoice;if(r.outcome==='accepted'){hideInstallBanner();__pwaPrompt=null;}}
 window.addEventListener('hashchange',()=>{showPage(getPageFromUrl(),true);});
 const __VALID_PAGES=['home','services','about','blog','duedates','calculators','investments','contact'];
 function getPageFromUrl(){
