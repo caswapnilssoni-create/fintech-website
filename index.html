@@ -89,6 +89,9 @@ nav{position:sticky;top:36px;left:0;right:0;background:rgba(255,255,255,.96);bac
 .nav-cta{background:var(--teal);color:#fff!important;padding:.65rem 1.5rem;border-radius:50px;font-weight:600!important;transition:all .3s!important}
 .nav-cta:hover{background:var(--navy)!important;transform:translateY(-2px);box-shadow:0 8px 24px rgba(23,166,151,.3)}
 .nav-cta::after{display:none!important}
+.nav-login{background:#fff;border:2px solid var(--gold);color:var(--navy)!important;padding:.5rem 1.1rem;border-radius:50px;font-weight:700!important;font-size:.85rem!important;transition:all .3s!important;display:inline-flex;align-items:center;gap:.3rem}
+.nav-login:hover{background:var(--gold);color:var(--navy)!important;transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,184,0,.3)}
+.nav-login::after{display:none!important}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -523,6 +526,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
     <li><a onclick="showPage('duedates')">Due Dates</a></li>
     <li><a onclick="showPage('calculators')">Calculators</a></li>
     <li><a onclick="showPage('investments')">Investments</a></li>
+    <li><a href="https://app.taxmitrafinance.com/login" target="_blank" rel="noopener" class="nav-login" title="Existing client? Log in to your portal">🔐 Client Login</a></li>
     <li><a onclick="showPage('contact')" class="nav-cta">Book Appointment</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
@@ -539,6 +543,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
   <a onclick="showPage('duedates');closeMobileMenu()">Due Dates</a>
   <a onclick="showPage('calculators');closeMobileMenu()">Calculators</a>
   <a onclick="showPage('investments');closeMobileMenu()">Investments</a>
+  <a href="https://app.taxmitrafinance.com/login" target="_blank" rel="noopener" style="color:var(--gold)!important">🔐 Client Login</a>
   <a onclick="showPage('contact');closeMobileMenu()">Book Appointment</a>
 </div>
 
@@ -1284,17 +1289,13 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
         </ul>
         <p style="margin-top:1rem;font-size:.9rem;color:var(--gray)">Don't have an account? <a onclick="showPage('contact')" style="color:var(--teal);cursor:pointer;font-weight:600">Contact us to get started →</a></p>
       </div>
-      <div class="login-form">
-        <h3>🔐 Client Login</h3>
-        <input type="email" id="login-email" placeholder="Registered Email Address">
-        <input type="password" id="login-pw" placeholder="Password">
-        <button onclick="loginClient()">Login to Portal</button>
-        <button type="button" class="inv-cta" style="margin-top:.75rem" onclick="portalWaitlist()">Notify me when portal launches</button>
-<div id="portal-msg" class="form-msg"></div>
-        <div class="login-links">
-          <a onclick="showPage('contact')" style="cursor:pointer">Forgot Password?</a>
-          <a onclick="showPage('contact')">New Client? Contact Us</a>
-        </div>
+      <div class="login-form" style="text-align:center">
+        <div style="font-size:3rem;margin-bottom:.5rem">🔐</div>
+        <h3 style="margin-bottom:.5rem">Client Portal is Live</h3>
+        <p style="color:var(--gray);font-size:.95rem;margin-bottom:1.5rem">Secure login at app.taxmitrafinance.com — upload docs, track filings, download returns.</p>
+        <a href="https://app.taxmitrafinance.com/login" target="_blank" rel="noopener" style="display:block;background:var(--teal);color:#fff;padding:.9rem 1.5rem;border-radius:50px;font-weight:700;text-decoration:none;margin-bottom:.75rem;transition:all .3s" onmouseover="this.style.background='var(--navy)'" onmouseout="this.style.background='var(--teal)'">Login to Portal →</a>
+        <a href="https://app.taxmitrafinance.com/signup" target="_blank" rel="noopener" style="display:block;background:#fff;color:var(--navy);padding:.9rem 1.5rem;border-radius:50px;font-weight:700;text-decoration:none;border:2px solid var(--navy);margin-bottom:1rem;transition:all .3s" onmouseover="this.style.background='var(--navy)';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='var(--navy)'">Create Your Account</a>
+        <p style="font-size:.85rem;color:var(--gray)">First time? <a onclick="showPage('contact')" style="color:var(--teal);cursor:pointer;font-weight:600">Talk to us first →</a></p>
       </div>
     </div>
   </section>
@@ -1432,6 +1433,7 @@ footer{background:#0a1628;color:#fff;padding:60px 5% 30px}
       <a href="calculators/">Calculators</a>
       <a href="faq/">FAQ</a>
       <a href="/#contact">Contact</a>
+      <a href="https://app.taxmitrafinance.com/login" target="_blank" rel="noopener" style="color:var(--gold)!important;font-weight:600">🔐 Client Login →</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
