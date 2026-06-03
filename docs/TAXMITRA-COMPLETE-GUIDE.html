@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TaxMitra — Complete Project Guide</title>
+<style>
+  /* Word-compatible, print-friendly styles */
+  @page { size: A4; margin: 2cm 2cm 2cm 2cm; }
+  body {
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: #1e293b;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.5em 2em;
+    background: #fff;
+  }
+  .cover {
+    text-align: center;
+    padding: 3em 1em 2em;
+    border-bottom: 3px solid #003D7A;
+    margin-bottom: 2em;
+    page-break-after: always;
+  }
+  .cover h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 36pt;
+    color: #003D7A;
+    margin-bottom: 0.3em;
+    border: none;
+  }
+  .cover .tagline { font-size: 14pt; color: #17A697; font-weight: 600; }
+  .cover .meta { color: #64748b; margin-top: 1.5em; font-size: 10pt; }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #003D7A;
+    font-size: 22pt;
+    margin: 1.5em 0 0.5em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #17A697;
+    page-break-before: always;
+    page-break-after: avoid;
+  }
+  h1:first-of-type { page-break-before: avoid; }
+  h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #003D7A;
+    font-size: 16pt;
+    margin: 1.4em 0 0.4em;
+    page-break-after: avoid;
+  }
+  h3 {
+    color: #003D7A;
+    font-size: 13pt;
+    margin: 1.2em 0 0.3em;
+    page-break-after: avoid;
+  }
+  h4 {
+    color: #17A697;
+    font-size: 11pt;
+    margin: 0.9em 0 0.3em;
+    page-break-after: avoid;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  p { margin: 0 0 0.7em; }
+  ul, ol { margin: 0 0 0.9em 0; padding-left: 1.6em; }
+  li { margin-bottom: 0.25em; }
+  strong { color: #003D7A; }
+  code {
+    background: #f4f8fc;
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.92em;
+    color: #003D7A;
+    border: 1px solid #e2e8f0;
+  }
+  pre {
+    background: #f4f8fc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 0.9em 1em;
+    overflow-x: auto;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    page-break-inside: avoid;
+  }
+  pre code { background: none; border: none; padding: 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.6em 0 1.3em;
+    font-size: 10pt;
+    page-break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 0.45em 0.65em;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #003D7A; color: #fff; font-weight: 700; }
+  tr:nth-child(even) td { background: #f4f8fc; }
+  blockquote {
+    border-left: 4px solid #17A697;
+    padding: 0.4em 1em;
+    margin: 0.8em 0;
+    color: #475569;
+    background: #f4f8fc;
+    font-style: italic;
+  }
+  hr { border: none; border-top: 1px solid #cbd5e1; margin: 2em 0; }
+  a { color: #17A697; text-decoration: none; font-weight: 600; }
+  a:hover { text-decoration: underline; }
+  .toc { background: #f4f8fc; padding: 1.5em 2em; border-radius: 8px; margin-bottom: 2em; }
+  .toc ol { margin: 0; padding-left: 1.5em; }
+  .toc li { margin-bottom: 0.35em; font-size: 10.5pt; }
+  .toc a { color: #003D7A; }
+  .callout {
+    background: #fef3c7;
+    border-left: 4px solid #FFB800;
+    padding: 0.8em 1.2em;
+    margin: 1em 0;
+    border-radius: 4px;
+  }
+  .footer {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid #cbd5e1;
+    color: #64748b;
+    font-size: 9pt;
+    text-align: center;
+  }
+  @media print {
+    body { padding: 0; max-width: none; font-size: 10.5pt; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <h1>TaxMitra</h1>
+  <div class="tagline">Complete Project Guide</div>
+  <p style="font-size: 12pt; margin-top: 1.5em; color: #475569;">
+    Your reference manual for everything we built together.
+  </p>
+  <div class="meta">
+    Prepared for CA Swapnil Soni · TaxMitra<br>
+    taxmitrafinance.com · app.taxmitrafinance.com<br>
+    Last updated: May 2026
+  </div>
+</div>
+
+<p>This document is written for non-technical readers. Every concept is explained in plain English with real-world analogies. By the end you'll understand:</p>
+<ul>
+  <li>What you have running</li>
+  <li>How it all fits together</li>
+  <li>Which tool does what</li>
+  <li>How to make changes safely</li>
+  <li>What to do if something breaks</li>
+</ul>
+<p>If a term sounds unfamiliar, jump to the <strong>Glossary</strong> at the bottom.</p>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h3 style="margin-top: 0;">Table of Contents</h3>
+  <ol>
+    <li><a href="#sec1">The Big Picture — What You Own Now</a></li>
+    <li><a href="#sec2">The Tools We Use</a></li>
+    <li><a href="#sec3">Marketing Website — taxmitrafinance.com</a></li>
+    <li><a href="#sec4">The 14 Calculators</a></li>
+    <li><a href="#sec5">The Blog System</a></li>
+    <li><a href="#sec6">SEO — Why Your Site Can Be Found on Google</a></li>
+    <li><a href="#sec7">Client Portal — app.taxmitrafinance.com</a></li>
+    <li><a href="#sec8">Portal Build, Session by Session</a></li>
+    <li><a href="#sec9">PWA — Install as Mobile App</a></li>
+    <li><a href="#sec10">How You (Admin) Use the System Daily</a></li>
+    <li><a href="#sec11">How Your Clients Use It</a></li>
+    <li><a href="#sec12">Maintenance & Things to Watch</a></li>
+    <li><a href="#sec13">What to Do If Something Breaks</a></li>
+    <li><a href="#sec14">Future Improvements</a></li>
+    <li><a href="#sec15">Glossary of Terms</a></li>
+  </ol>
+</div>
+
+<h1 id="sec1">1. The Big Picture</h1>
+<p>You now own <strong>three connected systems</strong>:</p>
+
+<h3>A. Marketing Website</h3>
+<p><strong>Address:</strong> taxmitrafinance.com<br>
+<strong>Purpose:</strong> Attracts new clients. Shows your services, calculators, blog articles.<br>
+<strong>Who sees it:</strong> The general public + anyone Googling tax topics.<br>
+<strong>Think of it like:</strong> Your shop window on the main road.</p>
+
+<h3>B. Client Portal</h3>
+<p><strong>Address:</strong> app.taxmitrafinance.com<br>
+<strong>Purpose:</strong> Where existing clients log in to upload documents and track their tax filings. Where you (admin) manage everything.<br>
+<strong>Who sees it:</strong> Only logged-in users.<br>
+<strong>Think of it like:</strong> The back office where actual work happens.</p>
+
+<h3>C. Blog</h3>
+<p><strong>Address:</strong> blog.taxmitrafinance.com<br>
+<strong>Purpose:</strong> Where you write articles using Hashnode. Articles are auto-copied to taxmitrafinance.com.<br>
+<strong>Think of it like:</strong> Your writing journal that automatically gets republished on your main site.</p>
+
+<pre>       Public visitors                  Existing clients
+              │                                 │
+              ▼                                 ▼
+   taxmitrafinance.com               app.taxmitrafinance.com
+   (marketing + calculators)            (login + documents)
+              │                                 │
+              └─────── connected by ───────────┘
+                "Client Login" button</pre>
+
+<h1 id="sec2">2. The Tools We Use</h1>
+<p>Each of these is a separate service. Think of them like the contractors building your house — each does one specific job.</p>
+
+<h3>2.1 GitHub</h3>
+<p><strong>What it is:</strong> A website that stores your code/files in the cloud. Free.<br>
+<strong>Why:</strong> So your files exist somewhere other than just your laptop. If your laptop dies, nothing is lost.<br>
+<strong>Account:</strong> caswapnilssoni-create<br>
+<strong>Two repos:</strong> fintech-website (marketing) and taxmitra-portal (client portal)<br>
+<strong>Analogy:</strong> Like Google Drive, but specifically for code, with extra features like change history.</p>
+
+<h3>2.2 GitHub Desktop</h3>
+<p><strong>What it is:</strong> An app on your computer that talks to GitHub.<br>
+<strong>Why:</strong> It lets you "save" your file changes from your laptop to GitHub with a button click.<br>
+<strong>Analogy:</strong> The courier that delivers your work from your desk to the warehouse.</p>
+
+<h3>2.3 GitHub Pages</h3>
+<p><strong>What it is:</strong> Free hosting from GitHub. Turns HTML files into a live website.<br>
+<strong>Why:</strong> Hosts your marketing site. Every push = new version live in ~30 seconds.<br>
+<strong>Cost:</strong> Free forever.</p>
+
+<h3>2.4 Vercel</h3>
+<p><strong>What it is:</strong> Hosting service for modern web apps.<br>
+<strong>Why:</strong> Hosts the client portal. The portal needs server features (login, etc.) that Vercel handles.<br>
+<strong>Cost:</strong> Free until thousands of users.<br>
+<strong>Analogy:</strong> GitHub Pages is for a static shop window. Vercel is for a real working office.</p>
+
+<h3>2.5 Supabase</h3>
+<p><strong>What it is:</strong> Database + login system + file storage in one.<br>
+<strong>Region:</strong> Mumbai (fast for Indian users).<br>
+<strong>Cost:</strong> Free until ~500 active clients.</p>
+<p><strong>What's inside Supabase:</strong></p>
+<ul>
+  <li><strong>Auth</strong> — stores signups (emails + passwords)</li>
+  <li><strong>Database</strong> — tables for clients, filings, documents, notifications, admins</li>
+  <li><strong>Storage</strong> — keeps actual uploaded files (PDFs, JPGs)</li>
+</ul>
+<p><strong>Analogy:</strong> Filing cabinet + receptionist + secure storage room.</p>
+
+<h3>2.6 Resend</h3>
+<p><strong>What it is:</strong> Service that sends emails on behalf of your portal.<br>
+<strong>Why:</strong> When filing status changes, Resend automatically emails the client.<br>
+<strong>Cost:</strong> Free for 3,000 emails/month.<br>
+<strong>Analogy:</strong> A virtual postman.</p>
+
+<h3>2.7 Hashnode</h3>
+<p><strong>What it is:</strong> Free blogging platform.<br>
+<strong>Why:</strong> You write blogs there in a nice editor. We copy content to your main site for SEO.<br>
+<strong>Address:</strong> blog.taxmitrafinance.com</p>
+
+<h3>2.8 Namecheap</h3>
+<p><strong>What it is:</strong> Where you bought taxmitrafinance.com.<br>
+<strong>Why:</strong> Controls DNS — which servers your domain points to.<br>
+<strong>Cost:</strong> ~₹1,000/year.</p>
+
+<h3>2.9 Google Search Console</h3>
+<p><strong>What it is:</strong> Free SEO tool from Google.<br>
+<strong>Why:</strong> Tells you how Google sees your site and lets you submit your sitemap.</p>
+
+<h3>2.10 Cowork (Claude)</h3>
+<p><strong>What it is:</strong> The AI assistant (me).<br>
+<strong>Why:</strong> Writes code, plans features, fixes bugs, explains things.</p>
+
+<h1 id="sec3">3. Marketing Website</h1>
+
+<h3>What it is</h3>
+<p>A traditional website at taxmitrafinance.com. Single HTML file with multiple "pages" inside (SPA). Plus 18 separate sub-pages for calculators, blog articles, FAQ, etc.</p>
+
+<h3>What pages it has</h3>
+<p><strong>Main pages (inside the SPA):</strong> Home, Services, About, Blog, Due Dates, Calculators, Investments, Contact</p>
+<p><strong>Standalone sub-pages:</strong> 14 calculator pages, /calculators/ hub, /blog/{article}.html, /checklists/, /faq/</p>
+
+<h3>How it's built</h3>
+<p>Plain HTML + CSS + JavaScript in one folder (fintech-website repo). No fancy frameworks. Fast, simple, runs anywhere.</p>
+
+<h3>How changes happen</h3>
+<ol>
+  <li>You (or I) edit a file on your laptop (e.g., index.html).</li>
+  <li>Open GitHub Desktop → see the changed file.</li>
+  <li>Write a short message (commit message).</li>
+  <li>Click <strong>Commit to main</strong> → <strong>Push origin</strong>.</li>
+  <li>GitHub Pages detects the change and re-publishes in ~30 seconds.</li>
+</ol>
+
+<h3>Important features we built</h3>
+<table>
+  <thead><tr><th>Feature</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><td>Hash routing</td><td>URL changes when you click nav (e.g., #calculators). Shareable links.</td></tr>
+    <tr><td>Sticky banner</td><td>ITR Filing reminder at top</td></tr>
+    <tr><td>Mobile menu</td><td>Hamburger menu on phones</td></tr>
+    <tr><td>Newsletter signup</td><td>Form connected to Formspree</td></tr>
+    <tr><td>Animated counters</td><td>Numbers that count up on scroll</td></tr>
+    <tr><td>Reveal animations</td><td>Cards fade in on scroll</td></tr>
+    <tr><td>Live chatbot</td><td>Simple Q&amp;A bot</td></tr>
+    <tr><td>ITR popup</td><td>"File Your ITR" banner that pops up</td></tr>
+    <tr><td>Client Login button</td><td>4 places: top nav, mobile menu, footer, Contact page</td></tr>
+  </tbody>
+</table>
+
+<h1 id="sec4">4. The 14 Calculators</h1>
+
+<p>Each calculator is a standalone page at its own URL — for <strong>SEO</strong>. Google can only rank a page that exists at its own URL.</p>
+
+<h3>The 14 calculators</h3>
+<table>
+  <thead><tr><th>#</th><th>URL</th><th>What it computes</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>/income-tax-calculator/</td><td>Old vs New regime tax for FY 2025-26</td></tr>
+    <tr><td>2</td><td>/gst-calculator/</td><td>Add or extract GST (5/12/18/28%)</td></tr>
+    <tr><td>3</td><td>/emi-calculator/</td><td>Generic EMI for any loan</td></tr>
+    <tr><td>4</td><td>/home-loan-emi-calculator/</td><td>EMI + tax benefit under 80C and Section 24(b)</td></tr>
+    <tr><td>5</td><td>/sip-calculator/</td><td>Mutual fund SIP returns</td></tr>
+    <tr><td>6</td><td>/ppf-calculator/</td><td>Public Provident Fund maturity</td></tr>
+    <tr><td>7</td><td>/hra-calculator/</td><td>House Rent Allowance exemption</td></tr>
+    <tr><td>8</td><td>/nps-calculator/</td><td>NPS corpus + monthly pension</td></tr>
+    <tr><td>9</td><td>/fd-calculator/</td><td>Fixed Deposit maturity</td></tr>
+    <tr><td>10</td><td>/epf-calculator/</td><td>EPF retirement corpus</td></tr>
+    <tr><td>11</td><td>/salary-calculator/</td><td>CTC → in-hand salary</td></tr>
+    <tr><td>12</td><td>/compound-interest-calculator/</td><td>Generic compound interest</td></tr>
+    <tr><td>13</td><td>/capital-gains-calculator/</td><td>Capital gains tax (you added)</td></tr>
+    <tr><td>14</td><td>/tds-property-calculator/</td><td>TDS on property purchase (you added)</td></tr>
+  </tbody>
+</table>
+<p>Plus a <strong>hub page</strong> at /calculators/ showing all of them in a card grid.</p>
+
+<h3>What's in each calculator page</h3>
+<ul>
+  <li>Unique SEO-optimized title (e.g., "Income Tax Calculator India FY 2025-26 — Old vs New Regime")</li>
+  <li>Meta description (shown in Google results)</li>
+  <li>Structured data (JSON-LD with WebApplication, BreadcrumbList, FAQPage schemas)</li>
+  <li>The calculator UI (input fields, calculate button, results)</li>
+  <li>Educational content (how it works, examples, tax rules)</li>
+  <li>6-8 FAQs (long-tail SEO + rich snippets)</li>
+  <li>Cross-links to other calculators</li>
+  <li>Call-to-action (Book a CA, view related blog)</li>
+  <li>Breadcrumb navigation</li>
+  <li>Nav with 🔐 Login link</li>
+</ul>
+
+<h3>How the math works</h3>
+<p>All calculations happen <strong>in your browser</strong> (JavaScript). Nothing is sent to any server. This means: fast (no server wait), private (we don't see calculations), works offline (thanks to PWA).</p>
+<p>The shared calculator logic lives in <code>/assets/calc.js</code>.</p>
+
+<h1 id="sec5">5. The Blog System</h1>
+
+<h3>How it works (step by step)</h3>
+<ol>
+  <li>You write a blog post in <strong>Hashnode</strong>.</li>
+  <li>In Hashnode, click <strong>"..." → Export as Markdown</strong>. A .md file downloads.</li>
+  <li>Edit the first few lines (frontmatter) — title, date, category, etc.</li>
+  <li>Drop the file into <code>content/blog/</code> in fintech-website.</li>
+  <li>Commit + Push via GitHub Desktop.</li>
+  <li>A <strong>GitHub Action</strong> runs <code>build-blog.mjs</code>.</li>
+  <li>The script converts .md → HTML at <code>/blog/&lt;slug&gt;.html</code>.</li>
+  <li>Updates <code>data/blogs.json</code> (homepage list).</li>
+  <li>Updates <code>sitemap.xml</code> (so Google knows about the new article).</li>
+</ol>
+<p><strong>Total time from writing → live:</strong> ~2 minutes.</p>
+
+<h3>Current blog posts</h3>
+<table>
+  <thead><tr><th>Article</th><th>URL slug</th></tr></thead>
+  <tbody>
+    <tr><td>New Tax Regime vs Old Tax Regime (FY 2025-26)</td><td>new-tax-regime-vs-old-tax-regime-which-is-better-in-fy-2025-26</td></tr>
+    <tr><td>Private Limited vs LLP for Startups</td><td>private-limited-vs-llp-which-business-structure-is-right-for-your-startup-in-india</td></tr>
+    <tr><td>TDS on House Purchase (Section 194-IA)</td><td>tds-on-house-purchase-in-india-complete-guide</td></tr>
+    <tr><td>Income Tax Slab Rates FY 2025-26</td><td>income-tax-slab-rates-fy-2025-26</td></tr>
+  </tbody>
+</table>
+
+<h3>What each blog page automatically has</h3>
+<ul>
+  <li>SEO-optimized title and description</li>
+  <li>BlogPosting schema (Google rich results)</li>
+  <li>BreadcrumbList schema</li>
+  <li>FAQPage schema (if article has Q&amp;A)</li>
+  <li>Visual breadcrumb at top</li>
+  <li>"Related Articles" section</li>
+  <li>"Book Free Consultation" CTA box</li>
+  <li>"Originally published on Hashnode" link (canonical SEO)</li>
+  <li>Mobile responsive design</li>
+</ul>
+
+<h3>How to write a new blog post</h3>
+<ol>
+  <li>Hashnode → log in → click <strong>Write</strong>. Write your article normally.</li>
+  <li>Set cover image, title, slug, tags.</li>
+  <li>Click <strong>Publish</strong>.</li>
+  <li>Click "..." menu on the published post → <strong>Export as Markdown</strong>. A .md file downloads.</li>
+  <li>Open the .md file in Notepad or VS Code.</li>
+  <li>Fill in the frontmatter (between --- lines):
+    <pre>---
+title: "Your Article Title"
+slug: your-article-slug-from-hashnode
+date: 2026-MM-DD
+excerpt: Short summary shown on blog list.
+category: Income Tax
+icon: 📰
+readTime: 6
+hashnodeUrl: https://blog.taxmitrafinance.com/your-slug
+tags: [tag1, tag2]
+---</pre>
+  </li>
+  <li>Save the file.</li>
+  <li>Drop it into <code>C:\Users\USER\Documents\GitHub\fintech-website\content\blog\</code></li>
+  <li>GitHub Desktop → commit (<code>blog: short title</code>) → Push.</li>
+  <li>Wait ~60 sec. Live at <code>taxmitrafinance.com/blog/your-slug.html</code>.</li>
+</ol>
+
+<h1 id="sec6">6. SEO Work</h1>
+<p>SEO = Search Engine Optimization. How Google decides which sites to show on top.</p>
+
+<h3>What we did for your site</h3>
+<p><strong>1. Sitemap (sitemap.xml)</strong> — list of every page given to Google. Auto-updates when you publish a new blog.</p>
+<p><strong>2. Robots.txt</strong> — tells Google "yes, index everything".</p>
+<p><strong>3. Meta tags on every page:</strong></p>
+<ul>
+  <li><code>&lt;title&gt;</code> — shows on browser tab and Google results</li>
+  <li><code>&lt;meta description&gt;</code> — short text in Google results</li>
+  <li>Open Graph tags — nice previews on WhatsApp/LinkedIn</li>
+  <li>Twitter Card tags — Twitter previews</li>
+</ul>
+<p><strong>4. Structured data (JSON-LD)</strong> — hidden JSON code telling Google extra info:</p>
+<ul>
+  <li>AccountingService — you're a CA firm in India</li>
+  <li>WebApplication — each calculator is a tool</li>
+  <li>BreadcrumbList — shows nav path in search results</li>
+  <li>FAQPage — makes FAQ accordion show in Google</li>
+  <li>BlogPosting — for blog articles</li>
+</ul>
+<p><strong>5. Internal linking</strong> — every calculator links to others. Every blog links to related blogs. Helps Google understand topic clusters.</p>
+<p><strong>6. Canonical URLs</strong> — each page declares its "official" URL.</p>
+<p><strong>7. Mobile responsive</strong> — Google ranks mobile-friendly sites higher.</p>
+<p><strong>8. Fast loading</strong> — static HTML + minimal JS = pages load in under 1 second.</p>
+<p><strong>9. HTTPS</strong> — all sites secure (automatic).</p>
+
+<h3>What you should do (off-page SEO)</h3>
+<p>Google also looks at <em>other</em> sites that link to yours (backlinks). Right now you have ~0. Some ways:</p>
+<ul>
+  <li><strong>Quora</strong> — answer 5 tax questions per week. Link to your calculator.</li>
+  <li><strong>Google Business Profile</strong> — claim your listing. Adds you to Google Maps.</li>
+  <li><strong>Directories</strong> — Justdial, Sulekha, IndiaMART (free).</li>
+  <li><strong>Reddit</strong> (r/IndiaTax, r/personalfinanceindia) — answer questions, link when helpful.</li>
+  <li><strong>Guest blog</strong> — write for other finance blogs in exchange for a backlink.</li>
+</ul>
+
+<h1 id="sec7">7. Client Portal</h1>
+
+<h3>What it is</h3>
+<p>A separate web application at app.taxmitrafinance.com. Built with <strong>Next.js</strong> (React framework). Hosted on <strong>Vercel</strong>. Uses <strong>Supabase</strong> for data.</p>
+
+<h3>Why a separate site?</h3>
+<ul>
+  <li><strong>Different purpose:</strong> Marketing is for public discovery. Portal is for paying clients.</li>
+  <li><strong>Different technology:</strong> Portal needs login, database, secure file storage.</li>
+  <li><strong>Different hosting:</strong> Marketing = free static (GitHub Pages). Portal = server-capable (Vercel).</li>
+  <li><strong>Cleaner experience:</strong> Clients see a focused dashboard, not marketing pages.</li>
+</ul>
+
+<h3>Tech stack</h3>
+<table>
+  <thead><tr><th>Layer</th><th>Tool</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><td>Frontend</td><td>Next.js 14 (React)</td><td>Makes the screens</td></tr>
+    <tr><td>Styling</td><td>Tailwind CSS</td><td>Pre-made styling shortcuts</td></tr>
+    <tr><td>Hosting</td><td>Vercel</td><td>Runs the app on the internet</td></tr>
+    <tr><td>Database</td><td>Supabase Postgres</td><td>Stores clients, filings, document info</td></tr>
+    <tr><td>Authentication</td><td>Supabase Auth</td><td>Signup, login, password reset</td></tr>
+    <tr><td>File storage</td><td>Supabase Storage</td><td>Stores uploaded PDFs/images</td></tr>
+    <tr><td>Email</td><td>Resend</td><td>Sends notification emails</td></tr>
+    <tr><td>Code repo</td><td>GitHub (taxmitra-portal)</td><td>Stores all code</td></tr>
+  </tbody>
+</table>
+
+<h3>The database tables</h3>
+<table>
+  <thead><tr><th>Table</th><th>What it stores</th></tr></thead>
+  <tbody>
+    <tr><td>clients</td><td>Each client's name, phone, PAN, GST, address</td></tr>
+    <tr><td>admins</td><td>Who has admin access (you)</td></tr>
+    <tr><td>filings</td><td>Each filing engagement (ITR/GST) per client per year, with current status</td></tr>
+    <tr><td>documents</td><td>List of uploaded files (Form 16, Form 26AS, etc.)</td></tr>
+    <tr><td>status_history</td><td>Audit log: every status change, when, by whom</td></tr>
+    <tr><td>notifications</td><td>In-portal notifications shown via the 🔔 bell</td></tr>
+  </tbody>
+</table>
+
+<h3>How data is protected</h3>
+<p>Supabase has <strong>Row-Level Security (RLS)</strong>. Rules ensure: clients only see their own data; bugs can't leak one client's data to another; admins see all (you're marked as super_admin). Enforced at the database level for maximum security.</p>
+
+<h3>File storage</h3>
+<p>When a client uploads a Form 16:</p>
+<ol>
+  <li>File saved at <code>documents/{client-id}/{random-uuid}.pdf</code> in Supabase Storage</li>
+  <li>Each client has their own private "folder"</li>
+  <li>Files only downloadable via "signed URLs" that expire after 1 hour</li>
+  <li>Even guessing another client's file path is rejected by Supabase</li>
+</ol>
+
+<h1 id="sec8">8. Portal Build Sessions</h1>
+<p>We built the portal across 6 sessions. Each added one major capability.</p>
+
+<h3>Session 1 — Setup</h3>
+<p><strong>What it did:</strong> Created the empty shell. Landing page existed but no real features.</p>
+<p><strong>You did:</strong> Created Supabase + Vercel accounts. Ran SQL in Supabase. Set up DNS subdomain. Connected GitHub repo to Vercel.</p>
+
+<h3>Session 2 — Real Authentication</h3>
+<p><strong>Added:</strong> Working signup, login, password reset, route protection. Dashboard layout with nav. Profile editor.</p>
+<p><strong>You did:</strong> Set Site URL in Supabase. Signed up your first account. Made yourself admin via SQL.</p>
+
+<h3>Session 3 — Document Upload</h3>
+<p><strong>Added:</strong> Drag-and-drop upload with 10 categories, secure download via signed URLs, delete.</p>
+
+<h3>Session 4 — Admin Panel</h3>
+<p><strong>Added:</strong> CA workspace — manage all clients, create filings, advance status, send docs back, internal notes.</p>
+<p><strong>Issue fixed:</strong> RLS infinite recursion in admins table policy. Fixed by simplifying.</p>
+
+<h3>Session 5 — Email Notifications</h3>
+<p><strong>Added:</strong> Auto-emails on status change + doc upload. 🔔 Notification bell with unread badge.</p>
+<p><strong>You did:</strong> Signed up for Resend. Added API key to Vercel.</p>
+
+<h3>Session 6 — PWA (Install as App)</h3>
+<p><strong>Added:</strong> Both sites installable to home screen. Manifest, icons, service worker, install banner.</p>
+
+<h1 id="sec9">9. PWA</h1>
+<p><strong>PWA = Progressive Web App.</strong> A normal website browsers can install like a native app.</p>
+
+<h3>What clients see</h3>
+
+<h4>On Android (Chrome)</h4>
+<ol>
+  <li>Visit app.taxmitrafinance.com and log in.</li>
+  <li>After a few seconds, our "📲 Install TaxMitra Portal" banner pops up.</li>
+  <li>Tap <strong>Install</strong>. App icon lands on home screen.</li>
+  <li>Tap icon → opens like a native app, full-screen, no browser UI.</li>
+</ol>
+
+<h4>On iOS (Safari)</h4>
+<ol>
+  <li>Visit app.taxmitrafinance.com in Safari.</li>
+  <li>Tap <strong>Share</strong> button (square with arrow).</li>
+  <li>Scroll down → tap <strong>"Add to Home Screen"</strong>.</li>
+  <li>Confirm. App icon on home screen.</li>
+  <li>Tap → full-screen, no Safari chrome.</li>
+</ol>
+
+<h4>On desktop (Chrome / Edge)</h4>
+<ol>
+  <li>Visit app.taxmitrafinance.com.</li>
+  <li>URL bar — right side has an install icon (monitor with down arrow).</li>
+  <li>Click → "Install TaxMitra Portal" dialog → Install.</li>
+  <li>App opens in its own window.</li>
+</ol>
+
+<h3>App shortcuts (Android)</h3>
+<p>Long-press the TaxMitra marketing app icon → see shortcut menu: Income Tax Calculator, GST Calculator, EMI Calculator, Client Login.</p>
+
+<h1 id="sec10">10. Admin Daily Workflows</h1>
+
+<h3>Onboarding a new client (5 minutes)</h3>
+<p><strong>Option A — client signs up themselves:</strong></p>
+<ol>
+  <li>Tell them: "Go to app.taxmitrafinance.com/signup. Use your real email."</li>
+  <li>They sign up → get verification email → click link.</li>
+  <li>They log in. They see "Welcome to your portal" with no filings yet.</li>
+  <li>You go to /admin/clients → click their name → click <strong>Open</strong>.</li>
+  <li>Filings tab → Create filing for the service ("ITR Filing FY 2025-26").</li>
+  <li>They'll get an email saying their filing has been created.</li>
+</ol>
+
+<h3>Advancing a filing through the year</h3>
+<table>
+  <thead><tr><th>Time</th><th>Action</th><th>What client sees</th></tr></thead>
+  <tbody>
+    <tr><td>Day 1</td><td>You create filing</td><td>Status: "Documents Requested"</td></tr>
+    <tr><td>Day 2</td><td>Client uploads Form 16 + 26AS</td><td>(You see them in admin)</td></tr>
+    <tr><td>Day 3</td><td>You click "→ Documents Received"</td><td>Email: "Documents Received ✓"</td></tr>
+    <tr><td>Day 5</td><td>You click "→ Under Review"</td><td>Email: "Our team is reviewing..."</td></tr>
+    <tr><td>Day 7</td><td>You click "→ Computing Tax"</td><td>Email: "Computing your tax"</td></tr>
+    <tr><td>Day 8</td><td>You file the actual ITR on incometax.gov.in</td><td>(External to portal)</td></tr>
+    <tr><td>Day 8</td><td>Upload ITR ack via Documents tab → Send to client</td><td>Email: "Your CA shared a document"</td></tr>
+    <tr><td>Day 8</td><td>Click "→ Ack Sent"</td><td>Email: "Acknowledgement available"</td></tr>
+    <tr><td>Day 30+</td><td>When refund processed</td><td>Click "→ Refund Pending" + set amount</td></tr>
+    <tr><td>Day X</td><td>Refund credited</td><td>Click "→ Refund Credited" → Email: "Refund Credited 💰"</td></tr>
+  </tbody>
+</table>
+<p>Total emails sent during one ITR cycle: ~5. Client always knows where they stand.</p>
+
+<h3>Sending a document to a client</h3>
+<ol>
+  <li>Admin → Clients → Open client → <strong>Documents tab</strong>.</li>
+  <li>Choose category (ITR Acknowledgement, Tax Computation, etc.).</li>
+  <li>Pick the file from your computer.</li>
+  <li>Click <strong>Send to client</strong>.</li>
+  <li>Client gets email + in-portal notification with download link.</li>
+</ol>
+
+<h3>Internal notes about a client</h3>
+<p>Admin → Clients → Open client → <strong>Notes tab</strong>. Write anything — only admins see. Examples: "Prefers WhatsApp over phone", "Has 2 home loans".</p>
+
+<h1 id="sec11">11. Client Experience</h1>
+
+<h3>A typical client's journey</h3>
+
+<p><strong>1. Discovery</strong> — They Google "income tax calculator FY 2025-26" → land on your calculator page. They use it. See "Book Free Consultation". Click → Contact form.</p>
+
+<p><strong>2. First meeting</strong> — You consult. Onboard them as a paying client.</p>
+
+<p><strong>3. Signup</strong> — Go to app.taxmitrafinance.com/signup → verify email → log in.</p>
+
+<p><strong>4. First filing</strong> — They see "Welcome" but no filings yet. You create their filing. Now they see "Documents Requested" status.</p>
+
+<p><strong>5. Upload documents</strong> — Click Documents → drag-drop Form 16, Form 26AS, etc. Each shows with category labels.</p>
+
+<p><strong>6. Track progress</strong> — Get emails as you advance status. Can also open app anytime → see timeline. 🔔 bell with unread count.</p>
+
+<p><strong>7. Filed</strong> — You upload ITR acknowledgement via admin. They get email "Filed Successfully" + "Your CA shared a document". Download from portal.</p>
+
+<p><strong>8. Refund tracking</strong> — You update to "Refund Pending" with expected amount. When refund hits bank, mark "Refund Credited". Done!</p>
+
+<h3>What they can do anytime</h3>
+<ul>
+  <li>Update profile (PAN, GST number, address)</li>
+  <li>Reset password if forgotten</li>
+  <li>Download any document you've ever shared</li>
+  <li>See past filings (FY 2024-25, FY 2025-26, etc.)</li>
+  <li>Install the app to their phone (PWA)</li>
+</ul>
+
+<h1 id="sec12">12. Maintenance</h1>
+
+<h3>What runs without your attention</h3>
+<table>
+  <thead><tr><th>Service</th><th>What it does automatically</th></tr></thead>
+  <tbody>
+    <tr><td>GitHub Pages</td><td>Auto-deploys marketing site on every push</td></tr>
+    <tr><td>Vercel</td><td>Auto-deploys portal on every push</td></tr>
+    <tr><td>Build blog GitHub Action</td><td>Auto-rebuilds blog HTML when you push a .md file</td></tr>
+    <tr><td>Supabase backups</td><td>Free tier keeps 7 days of daily backups</td></tr>
+    <tr><td>Resend deliverability</td><td>Handles SPF/DKIM automatically</td></tr>
+    <tr><td>Vercel HTTPS</td><td>Auto-renews SSL certificates</td></tr>
+  </tbody>
+</table>
+
+<h3>Things to check periodically</h3>
+<p><strong>Weekly (5 min):</strong> Check Vercel deploys are green. Check Resend dashboard for delivered emails.</p>
+<p><strong>Monthly (15 min):</strong> Check Google Search Console queries. Publish 1-2 new blog articles. Check Supabase usage.</p>
+<p><strong>Quarterly (1 hour):</strong> Review tax slabs in calculators if government changed anything. Close completed client filings.</p>
+
+<h3>Costs to expect</h3>
+<table>
+  <thead><tr><th>Service</th><th>Free until</th><th>Then</th></tr></thead>
+  <tbody>
+    <tr><td>GitHub + GitHub Pages</td><td>Always free</td><td>—</td></tr>
+    <tr><td>Vercel</td><td>100GB bandwidth/month</td><td>$20/month</td></tr>
+    <tr><td>Supabase</td><td>500 MB DB, 1 GB storage, 50K users</td><td>$25/month</td></tr>
+    <tr><td>Resend</td><td>3,000 emails/month</td><td>$20/month</td></tr>
+    <tr><td>Namecheap domain</td><td>₹1,000/year</td><td>Same</td></tr>
+    <tr><td><strong>Total annual</strong></td><td><strong>₹1,000 (just the domain)</strong></td><td>₹50K+/year only at serious scale</td></tr>
+  </tbody>
+</table>
+<p>You'll likely stay free for years.</p>
+
+<h1 id="sec13">13. Troubleshooting</h1>
+
+<h3>"Site is down" / "Vercel deploy failed"</h3>
+<ol>
+  <li>Open Vercel → your project → <strong>Deployments</strong>.</li>
+  <li>Find recent deploy with red ❌.</li>
+  <li>Click → see build log → look for "Error:" lines.</li>
+  <li>Common: forgot to commit a file, syntax error in code, missing env variable.</li>
+  <li>Share the error with me — I'll patch it.</li>
+</ol>
+
+<h3>"Emails aren't being sent"</h3>
+<ol>
+  <li>Resend dashboard → <strong>Emails</strong> tab → see if attempts listed.</li>
+  <li>If "Bounced" → recipient email invalid.</li>
+  <li>If not listed → check Vercel env var <code>RESEND_API_KEY</code> is set.</li>
+  <li>Check Vercel function logs for [email] errors.</li>
+</ol>
+
+<h3>"I can't log in to the portal"</h3>
+<ul>
+  <li>Try <strong>Forgot Password</strong> → check inbox (and spam) for reset email.</li>
+  <li>If reset email doesn't come, check Supabase Dashboard → Authentication → Users → confirm account exists.</li>
+  <li>If your account doesn't exist, sign up fresh.</li>
+</ul>
+
+<h3>"I made changes but the site doesn't show them"</h3>
+<ul>
+  <li>GitHub Desktop — did you click both <strong>Commit to main</strong> AND <strong>Push origin</strong>?</li>
+  <li>Hard-refresh your browser (Ctrl+Shift+R) to bypass cache.</li>
+  <li>Wait 2 minutes — GitHub Pages can take time.</li>
+</ul>
+
+<h3>"A calculator is showing wrong numbers"</h3>
+<ul>
+  <li>Math is in <code>assets/calc.js</code>.</li>
+  <li>Send me the specific inputs + expected vs actual output.</li>
+</ul>
+
+<h3>"Sitemap not updated for new blog posts"</h3>
+<ul>
+  <li>Check GitHub Action for "Build blog from Markdown". Should run automatically.</li>
+  <li>Vercel → Actions → latest run → check logs.</li>
+</ul>
+
+<h1 id="sec14">14. Future Improvements</h1>
+
+<h3>Easy wins (1-2 sessions each)</h3>
+<ul>
+  <li><strong>Verify Resend domain</strong> → emails from noreply@taxmitrafinance.com</li>
+  <li><strong>Welcome email</strong> on signup (currently Supabase sends only verification)</li>
+  <li><strong>WhatsApp Click-to-Chat</strong> button on every page</li>
+  <li><strong>Google Reviews widget</strong> showing live reviews</li>
+  <li><strong>More calculators:</strong> HSN code finder, Rent Receipt generator, IFSC search</li>
+</ul>
+
+<h3>Medium effort (3-5 sessions)</h3>
+<ul>
+  <li><strong>Appointment booking</strong> in portal (instead of just a contact form)</li>
+  <li><strong>Razorpay payment integration</strong> for invoices</li>
+  <li><strong>WhatsApp notifications</strong> (Gupshup or Twilio — paid)</li>
+  <li><strong>Multi-staff support</strong>: hire associates, give limited admin access</li>
+  <li><strong>Bulk client import</strong> from Excel/CSV</li>
+</ul>
+
+<h3>Big projects (1-2 weeks)</h3>
+<ul>
+  <li><strong>Native mobile apps</strong> (iOS + Android) via Capacitor or React Native</li>
+  <li><strong>E-signature</strong> on engagement letters (DocuSign)</li>
+  <li><strong>Integration with Tally / Zoho Books</strong> for accounting sync</li>
+  <li><strong>AI-powered tax planning suggestions</strong> based on past returns</li>
+</ul>
+
+<h1 id="sec15">15. Glossary of Terms</h1>
+<table>
+  <thead><tr><th>Term</th><th>Plain English</th></tr></thead>
+  <tbody>
+    <tr><td>API</td><td>A way for two programs to talk. Like a waiter taking your order to the kitchen.</td></tr>
+    <tr><td>API Key</td><td>A password letting one program access another. Like a key card. Never share publicly.</td></tr>
+    <tr><td>Auth / Authentication</td><td>Verifying who someone is (email + password).</td></tr>
+    <tr><td>Backend</td><td>Server-side parts — database, logic. The kitchen, not the dining room.</td></tr>
+    <tr><td>Browser cache</td><td>Browser saves a copy of a page for speed. Sometimes shows old version. Ctrl+Shift+R to force-refresh.</td></tr>
+    <tr><td>CSS</td><td>Styling language for websites. Controls colors, fonts, spacing.</td></tr>
+    <tr><td>Cookie</td><td>Small file your browser stores. Used to remember you're logged in.</td></tr>
+    <tr><td>CTC</td><td>Cost to Company — total annual cost employer bears for an employee.</td></tr>
+    <tr><td>Database</td><td>Structured storage — like a powerful spreadsheet.</td></tr>
+    <tr><td>Deployment</td><td>Pushing your code to a server so it goes live.</td></tr>
+    <tr><td>DNS</td><td>Translates taxmitrafinance.com to an IP address. Internet's phone book.</td></tr>
+    <tr><td>Domain</td><td>The address users type (taxmitrafinance.com).</td></tr>
+    <tr><td>Email verification</td><td>User gets email, clicks link to confirm email is real.</td></tr>
+    <tr><td>Environment variable</td><td>A secret value (like API key) on the server, not in code.</td></tr>
+    <tr><td>Form 16</td><td>TDS certificate from employer. Shows salary + tax deducted.</td></tr>
+    <tr><td>Frontend</td><td>User-facing parts — what users see and click.</td></tr>
+    <tr><td>Frontmatter</td><td>Metadata block at top of Markdown file (between --- lines).</td></tr>
+    <tr><td>GitHub Action</td><td>Robot script that runs automatically when something happens.</td></tr>
+    <tr><td>HTML</td><td>Structural language for websites. Defines content on the page.</td></tr>
+    <tr><td>HTTPS</td><td>Secure version of HTTP. Encrypts data.</td></tr>
+    <tr><td>Incognito mode</td><td>Browser mode that doesn't save cookies/cache.</td></tr>
+    <tr><td>JavaScript</td><td>Programming language that runs in browsers.</td></tr>
+    <tr><td>JSON</td><td>Simple text format for data. Looks like {"name": "TaxMitra"}.</td></tr>
+    <tr><td>JSON-LD</td><td>Way to add structured data to a webpage for Google.</td></tr>
+    <tr><td>Markdown</td><td>Simple text format with light formatting (# Heading, **bold**).</td></tr>
+    <tr><td>Manifest (PWA)</td><td>JSON file describing an installable web app.</td></tr>
+    <tr><td>Meta tags</td><td>Hidden HTML tags describing the page. Used by Google.</td></tr>
+    <tr><td>Middleware</td><td>Code that runs before each request reaches the page.</td></tr>
+    <tr><td>Next.js</td><td>A React framework. We use it for the portal.</td></tr>
+    <tr><td>Push</td><td>Sending your local commits to GitHub.</td></tr>
+    <tr><td>PWA</td><td>Progressive Web App. A website installable as a regular app.</td></tr>
+    <tr><td>React</td><td>JavaScript library for building user interfaces.</td></tr>
+    <tr><td>Repo / Repository</td><td>A folder of code on GitHub. You have two.</td></tr>
+    <tr><td>RLS</td><td>Row-Level Security. Database feature controlling which rows each user sees.</td></tr>
+    <tr><td>Schema</td><td>Structure of data — what tables, what columns. Or structured data for SEO.</td></tr>
+    <tr><td>Service worker</td><td>Small script in background of browser. Enables PWA + offline.</td></tr>
+    <tr><td>Session</td><td>Period between login and logout. Tracked via cookies.</td></tr>
+    <tr><td>Sitemap</td><td>List of all pages on your site, given to Google.</td></tr>
+    <tr><td>SPA</td><td>Single Page Application. One HTML file, JS swaps content.</td></tr>
+    <tr><td>SQL</td><td>Language to query databases.</td></tr>
+    <tr><td>SSL Certificate</td><td>Security thing behind HTTPS. Auto-managed.</td></tr>
+    <tr><td>Supabase</td><td>All-in-one backend service. DB + Auth + Storage.</td></tr>
+    <tr><td>Tailwind</td><td>CSS framework with utility classes. Used in portal.</td></tr>
+    <tr><td>TypeScript</td><td>JavaScript with type checking. Used in portal.</td></tr>
+    <tr><td>UUID</td><td>Long random ID like 8826b8fe-3953-...</td></tr>
+    <tr><td>Vercel</td><td>Hosting service. Hosts our portal.</td></tr>
+    <tr><td>Webhook</td><td>One service notifies another when something happens.</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<div class="callout">
+  <strong>Need help?</strong> If anything breaks, doesn't make sense, or you want to add a feature — just message me. Bring: a description of what you're trying to do; a screenshot if it's visual; the error message if there is one.
+</div>
+
+<div class="footer">
+  End of guide · Prepared for CA Swapnil Soni, TaxMitra<br>
+  taxmitrafinance.com · app.taxmitrafinance.com · Last updated May 2026
+</div>
+
+</body>
+</html>
